@@ -36,14 +36,14 @@ const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
   },
 }));
 
-const Sidebar = () => {
+const Sidebar = ({ mode, setMode }) => {
   return (
     <Box
       flex={1}
-      p={2}
       sx={{
         display: { xs: "none", sm: "block" },
-        flex: { sm: "0", md: "1", lg: "1" },
+        flex: { sm: "0.5", md: "1", lg: "1" },
+        padding: { sm: "1", md: "2", lg: "2" },
       }}
     >
       <Box position={"fixed"}>
@@ -53,7 +53,7 @@ const Sidebar = () => {
               <StyledListItemIcon>
                 <HomeIcon />
               </StyledListItemIcon>
-              <StyledListItemText primary={"Home Page"} />
+              <StyledListItemText primary={"Home"} />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -109,7 +109,9 @@ const Sidebar = () => {
               <StyledListItemIcon>
                 <ModeNightIcon />
               </StyledListItemIcon>
-              <StyledSwitch />
+              <StyledSwitch
+                onChange={() => setMode(mode === "light" ? "dark" : "light")}
+              />
             </ListItemButton>
           </ListItem>
         </List>

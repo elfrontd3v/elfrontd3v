@@ -17,9 +17,13 @@ import ShareIcon from "@mui/icons-material/Share";
 
 const Post = () => {
   return (
-    <Card sx={{ marginBottom: 2 }}>
+    <Card sx={{ margin: 2 }}>
       <CardHeader
-        avatar={<Avatar sx={{ bgcolor: "red" }} aria-label="post"></Avatar>}
+        avatar={
+          <Avatar sx={{ bgcolor: "red" }} aria-label="post">
+            J
+          </Avatar>
+        }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
