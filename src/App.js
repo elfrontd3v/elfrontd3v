@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button, styled } from "@mui/material";
+import AddchartIcon from "@mui/icons-material/Addchart";
 
 function App() {
+  const BlueButton = styled(Button)({
+    backgroundColor: "skyblue",
+    color: "#888",
+    margin: 5,
+    "&:hover": {
+      backgroundColor: "lightblue",
+    },
+    "&:disabled": {
+      backgroundColor: "gray",
+      color: "white",
+    },
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button variant="text" color="primary">
+        hi
+      </Button>
+      <Button
+        variant="contained"
+        color="otherColor"
+        startIcon={<AddchartIcon />}
+      >
+        hi
+      </Button>
+      <Button variant="outlined" disabled>
+        hi
+      </Button>
+      <BlueButton>My Button</BlueButton>
+      <BlueButton>Another button</BlueButton>
     </div>
   );
 }
