@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { Suspense } from "react";
 import Content from "./pages/layout/Content";
 import RightBar from "./pages/layout/RightBar";
 import Sidebar from "./pages/layout/Sidebar";
 import Navbar from "./pages/layout/Navbar";
 import Add from "./pages/layout/Add";
 
-import { Box, Stack, createTheme, ThemeProvider } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { AllRoutes } from "./routes";
 
 const App = ({ setMode, mode }) => {
@@ -15,7 +15,9 @@ const App = ({ setMode, mode }) => {
       <Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
         <Sidebar setMode={setMode} mode={mode} />
         <Content>
-          <AllRoutes />
+          <Suspense fallback={<></>}>
+            <AllRoutes />
+          </Suspense>
         </Content>
         <RightBar />
       </Stack>

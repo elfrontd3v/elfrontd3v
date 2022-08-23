@@ -17,6 +17,8 @@ import ModeNightIcon from "@mui/icons-material/ModeNight";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import CreditCardOffIcon from "@mui/icons-material/CreditCardOff";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import { useNavigate } from "react-router-dom";
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
@@ -36,7 +38,8 @@ const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
   },
 }));
 
-const Sidebar = ({ mode, setMode }) => {
+const Sidebar = () => {
+  const navigate = useNavigate();
   return (
     <Box
       flex={1}
@@ -49,7 +52,7 @@ const Sidebar = ({ mode, setMode }) => {
       <Box position={"fixed"}>
         <List>
           <ListItem disablePadding>
-            <ListItemButton href="/home">
+            <ListItemButton onClick={() => navigate("/home")}>
               <StyledListItemIcon>
                 <HomeIcon />
               </StyledListItemIcon>
@@ -57,7 +60,15 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/dashboard")}>
+              <StyledListItemIcon>
+                <DashboardIcon />
+              </StyledListItemIcon>
+              <StyledListItemText primary={"Dashboard"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => navigate("/shop")}>
               <StyledListItemIcon>
                 <AddBusinessIcon />
               </StyledListItemIcon>
@@ -65,7 +76,7 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/earnings")}>
               <StyledListItemIcon>
                 <AddCardIcon />
               </StyledListItemIcon>
@@ -73,7 +84,7 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/expenses")}>
               <StyledListItemIcon>
                 <CreditCardOffIcon />
               </StyledListItemIcon>
@@ -81,7 +92,7 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/friends")}>
               <StyledListItemIcon>
                 <PersonIcon />
               </StyledListItemIcon>
@@ -89,7 +100,7 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/profile")}>
               <StyledListItemIcon>
                 <AccountBoxIcon />
               </StyledListItemIcon>
@@ -97,7 +108,7 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton onClick={() => navigate("/settings")}>
               <StyledListItemIcon>
                 <SettingsIcon />
               </StyledListItemIcon>
@@ -105,13 +116,11 @@ const Sidebar = ({ mode, setMode }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton href="#home">
+            <ListItemButton>
               <StyledListItemIcon>
                 <ModeNightIcon />
               </StyledListItemIcon>
-              <StyledSwitch
-                onChange={() => setMode(mode === "light" ? "dark" : "light")}
-              />
+              <StyledSwitch />
             </ListItemButton>
           </ListItem>
         </List>

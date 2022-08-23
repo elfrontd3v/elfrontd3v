@@ -1,4 +1,5 @@
 import React from "react";
+import "./post.scss";
 import {
   Card,
   CardHeader,
@@ -17,7 +18,7 @@ import ShareIcon from "@mui/icons-material/Share";
 
 const Post = () => {
   return (
-    <Card sx={{ margin: 2 }}>
+    <Card sx={{ margin: 2 }} className="cardClass">
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="post">
