@@ -5,12 +5,12 @@ import Add from "./pages/layout/Add";
 import { Box, Stack } from "@mui/material";
 import { AllRoutes } from "./routes";
 
-const App = ({ setMode, mode }) => {
+const App = () => {
   return (
     <Box bgcolor={"background.default"} color={"text.primary"}>
       <Navbar />
-      <Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
-        <Sidebar setMode={setMode} mode={mode} />
+      <Stack direction={"row"} justifyContent={"space-between"}>
+        {<Sidebar />}
         <Box flex={6} p={2}>
           <Suspense fallback={<></>}>
             <AllRoutes />

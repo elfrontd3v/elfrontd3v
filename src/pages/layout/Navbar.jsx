@@ -16,6 +16,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 const StyledToolBar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
+  minHeight: "64px",
 });
 
 const Icons = styled(Box)(({ theme }) => ({
@@ -29,10 +30,16 @@ const Navbar = () => {
   return (
     <AppBar position="sticky">
       <StyledToolBar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          El front d3v
-        </Typography>
-        <BugReportIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        <Icons>
+          <BugReportIcon />
+          <Typography
+            variant="h6"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            EL FRONT D3V
+          </Typography>
+        </Icons>
+
         <Icons>
           <Typography variant="span">Juan Cano</Typography>
 

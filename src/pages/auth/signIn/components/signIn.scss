@@ -1,0 +1,15 @@
+.boxContainer {
+  margin: 64px 25px;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+}
+.sigInButton {
+  margin: 10px 0px;
+  &.icons {
+    margin: 10px 0px 20px 0px;
+  }
+}
