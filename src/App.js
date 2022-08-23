@@ -6,26 +6,21 @@ import Navbar from "./pages/layout/Navbar";
 import Add from "./pages/layout/Add";
 
 import { Box, Stack, createTheme, ThemeProvider } from "@mui/material";
+import { AllRoutes } from "./routes";
 
-const App = () => {
-  const [mode, setMode] = useState("light");
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+const App = ({ setMode, mode }) => {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box bgcolor={"background.default"} color={"text.primary"}>
-        <Navbar />
-        <Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
-          <Sidebar setMode={setMode} mode={mode} />
-          <Content />
-          <RightBar />
-        </Stack>
-        <Add />
-      </Box>
-    </ThemeProvider>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
+      <Navbar />
+      <Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
+        <Sidebar setMode={setMode} mode={mode} />
+        <Content>
+          <AllRoutes />
+        </Content>
+        <RightBar />
+      </Stack>
+      <Add />
+    </Box>
   );
 };
 
