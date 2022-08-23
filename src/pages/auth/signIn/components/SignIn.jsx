@@ -20,7 +20,7 @@ const SignIn = () => {
   return (
     <>
       <Box className="boxContainer">
-        <Avatar sx={{ m: 2, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography variant="h5">{generalDictionary.SIGN_IN}</Typography>
