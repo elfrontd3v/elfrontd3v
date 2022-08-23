@@ -1,11 +1,16 @@
 // ESPAÑOL - ESPAÑOL - ESPAÑOL
 export const generalDictionary = {
+  //GENERAL
   ACCEPT: "Aceptar",
   CANCEL: "Cancelar",
   ACTIONS: "Acciones",
+
+  //SIGN_IN
+  SIGN_IN: "Iniciar sesión",
   EMAIL: "Correo",
   PASSWORD: "Contraseña",
-  LOG_IN: "Ingresar",
+  NOT_HAVE_ACCOUNT: "Aun no tienes una cuenta? Regístrate aquí",
+
   SEARCH: "Buscar",
   TYPE_SOMETHING: "Escribe algo",
   TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
@@ -43,10 +48,17 @@ export const generalDictionary = {
   TODOS: "Tareas",
   SEE_DETAIL: "Ver detalle",
 
+  //VALIDATIONS
+  REQUIRED: "Este campo es obligatorio",
+  VALIDATE_EMAIL: "Introduce un correo valido",
+  VALIDATE_EMAIL_LENGTH: "El correo debe tener entre 5 y 50 caracteres",
+  VALIDATE_PASSWORD: "Introduce una clave valida",
+  VALIDATE_PASSWORD_LENGTH: "La clave debe tener entre 5 y 15 caracteres",
   VALIDATE_NAME: "Introduce un nombre valido",
   VALIDATE_VALUE: "Introduce un valor valido",
   VALIDATE_PERIODICITY: "Selecciona un periodo valido",
 
+  //ENDPOINTS_RESPONSES
   ENDPOINT_INSERT_OK: "Se agrego correctamente",
   ENDPOINT_UPDATE_OK: "Se ha actualizado correctamente",
   ENDPOINT_DELETE: "Se ha eliminado correctamente",
