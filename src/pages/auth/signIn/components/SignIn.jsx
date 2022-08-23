@@ -66,7 +66,7 @@ const SignIn = () => {
             <Button color="primary">{<FacebookIcon />}</Button>
             <Button color="secondary">{<GitHubIcon />}</Button>
           </ButtonGroup>
-          <Link onClick={() => {}}>{generalDictionary.NOT_HAVE_ACCOUNT}</Link>
+          <Link>{generalDictionary.NOT_HAVE_ACCOUNT}</Link>
         </Box>
       </Box>
     </>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   List,
@@ -7,96 +7,31 @@ import {
   ListItemIcon,
   ListItemText,
   Switch,
-  styled,
   Drawer,
 } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import PersonIcon from "@mui/icons-material/Person";
-import SettingsIcon from "@mui/icons-material/Settings";
-import ModeNightIcon from "@mui/icons-material/ModeNight";
-import AddBusinessIcon from "@mui/icons-material/AddBusiness";
-import AddCardIcon from "@mui/icons-material/AddCard";
-import CreditCardOffIcon from "@mui/icons-material/CreditCardOff";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router-dom";
+import MenuItems from "./MenuItems";
 
 const Sidebar = ({ visibleDrawer, setVisibleDrawer }) => {
   const navigate = useNavigate();
-  const menuList = (
+  const menuItems = MenuItems();
+
+  const menuItemsList = (
     <List>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/home")}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Home"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/dashboard")}>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Dashboard"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/shop")}>
-          <ListItemIcon>
-            <AddBusinessIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Shop"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/earnings")}>
-          <ListItemIcon>
-            <AddCardIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Earnings"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/expenses")}>
-          <ListItemIcon>
-            <CreditCardOffIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Expenses"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/friends")}>
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Friends"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/profile")}>
-          <ListItemIcon>
-            <AccountBoxIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Profile"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton onClick={() => navigate("/settings")}>
-          <ListItemIcon>
-            <SettingsIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Settings"} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton>
-          <ListItemIcon>
-            <ModeNightIcon />
-          </ListItemIcon>
-          <Switch />
-        </ListItemButton>
-      </ListItem>
+      {menuItems.map((item) => (
+        <ListItem disablePadding key={item.id}>
+          <ListItemButton
+            onClick={() => {
+              setVisibleDrawer(false);
+              if (item.navigate) navigate(item.path);
+            }}
+          >
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            {item.type === "text" && <ListItemText primary={item.title} />}
+            {item.type === "switch" && <Switch />}
+          </ListItemButton>
+        </ListItem>
+      ))}
     </List>
   );
 
@@ -110,7 +45,7 @@ const Sidebar = ({ visibleDrawer, setVisibleDrawer }) => {
           padding: { xs: "0", sm: "0", md: "2", lg: "2" },
         }}
       >
-        <Box position={"fixed"}>{menuList}</Box>
+        <Box position={"fixed"}>{menuItemsList}</Box>
       </Box>
       <Drawer
         variant="temporary"
@@ -118,7 +53,7 @@ const Sidebar = ({ visibleDrawer, setVisibleDrawer }) => {
         open={visibleDrawer}
         onClose={() => setVisibleDrawer(false)}
       >
-        {menuList}
+        {menuItemsList}
       </Drawer>
     </>
   );

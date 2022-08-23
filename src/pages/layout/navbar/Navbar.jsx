@@ -33,12 +33,13 @@ const Navbar = ({ setVisibleDrawer }) => {
       <StyledToolBar>
         <Icons>
           <IconButton
+            onClick={() => setVisibleDrawer(true)}
             sx={{
               color: "white",
               display: { xs: "block", sm: "block", md: "none", lg: "none" },
             }}
           >
-            <MenuIcon onClick={() => setVisibleDrawer(true)} />
+            <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Navbar from "./navbar/Navbar";
 import Sidebar from "./sidebar/Sidebar";
 import Add from "./Add";
@@ -12,14 +12,16 @@ const Layout = ({ children }) => {
       <Box bgcolor={"background.default"} color={"text.primary"}>
         <Navbar setVisibleDrawer={setVisibleDrawer} />
         <Grid container>
-          <Grid md={2}>
+          <Grid md={2} item>
             <Sidebar
               visibleDrawer={visibleDrawer}
               setVisibleDrawer={setVisibleDrawer}
             />
           </Grid>
-          <Grid md={8}>{children}</Grid>
-          <Grid md={2}>
+          <Grid md={8} item>
+            {children}
+          </Grid>
+          <Grid md={2} item>
             <RightBar />
           </Grid>
         </Grid>
