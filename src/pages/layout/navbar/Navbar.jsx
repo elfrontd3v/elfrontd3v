@@ -9,8 +9,9 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  IconButton,
 } from "@mui/material";
-import BugReportIcon from "@mui/icons-material/BugReport";
+import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 const StyledToolBar = styled(Toolbar)({
@@ -25,13 +26,21 @@ const Icons = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
-const Navbar = () => {
+const Navbar = ({ setVisibleDrawer }) => {
   const [rightMenu, setRightMenu] = useState(false);
   return (
     <AppBar position="sticky">
       <StyledToolBar>
         <Icons>
-          <BugReportIcon />
+          <IconButton
+            onClick={() => setVisibleDrawer(true)}
+            sx={{
+              color: "white",
+              display: { xs: "block", sm: "block", md: "none", lg: "none" },
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography
             variant="h6"
             sx={{ display: { xs: "none", sm: "block" } }}

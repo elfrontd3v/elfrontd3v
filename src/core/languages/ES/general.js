@@ -16,9 +16,7 @@ export const generalDictionary = {
   TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
   TYPE_YOUR_EMAIL: "Escribe tu correo",
   COUNTS: "Cuentas",
-  EXPENSES: "Gastos",
-  EARNINGS: "Ingresos",
-  PROFILE: "Perfil",
+
   BACK_TO_HOME: "Volver al home",
   NOT_FOUND_PAGE:
     "La pagina a la que tratas de acceder no existe o está en mantenimiento",
@@ -31,8 +29,17 @@ export const generalDictionary = {
   LANGUAGE: "Lenguaje",
   SPANISH: "Español",
   ENGLISH: "Ingles",
+
+  //SIDEBAR
   HOME: "Principal",
   DASHBOARD: "Dashboard",
+  SHOP: "Tienda",
+  EARNINGS: "Ingresos",
+  EXPENSES: "Gastos",
+  FRIENDS: "Amigos",
+  PROFILE: "Perfil",
+  SETTINGS: "Configuración",
+
   PERIODICITY: "Periodicidad",
   SELECT_PERIODICITY: "Selecciona un periodo",
   DAILY: "Diario",
@@ -42,7 +49,7 @@ export const generalDictionary = {
   DAY_VALUE: "Valor diario",
   MONTH_VALUE: "Valor mensual",
   SAVING: "Guardando...",
-  SHOP: "Tienda",
+
   PROVIDERS: "Proveedores",
   TODO_LIST: "Lista de tareas",
   TODOS: "Tareas",
