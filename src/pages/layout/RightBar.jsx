@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 const RightBar = () => {
   return (
     <Box flex={2} p={1} sx={{ display: { xs: "none", sm: "block" } }}>
-      RightBar
+      Work in progress...
     </Box>
   );
 };

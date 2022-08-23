@@ -1,14 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-
+import { AllRoutes } from "./routes";
 import ThemeAppProvider from "./core/context/ThemeContext";
-import App from "./App";
+import Layout from "./pages/layout/Layout";
 
 const ApplicationProviders = () => (
   <ThemeAppProvider>
     <BrowserRouter>
-      <App />
+      <Layout>
+        <Suspense fallback={<></>}>
+          <AllRoutes />
+        </Suspense>
+      </Layout>
     </BrowserRouter>
   </ThemeAppProvider>
 );
