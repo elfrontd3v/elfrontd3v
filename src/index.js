@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { AllRoutes } from "./routes";
-import ThemeAppProvider from "./core/context/ThemeContext";
+import ThemeAppProvider from "./core/context/ThemeAppContext";
 import Layout from "./pages/layout/layout/Layout";
 import { AuthProvider } from "./core/context";
 import { SnackbarProvider } from "notistack";
