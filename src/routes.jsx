@@ -13,6 +13,7 @@ export const PublicRoute = ({ children }) => {
 const SignIn = lazy(() => import("./pages/auth/signIn/components/SignIn"));
 const Home = lazy(() => import("./pages/home/components/Home"));
 const NotFoundPage = lazy(() => import("./pages/layout/NotFoundPage"));
+const LogOut = lazy(() => import("./pages/layout/LogOut"));
 
 export const AllRoutes = () => {
   return (
@@ -20,16 +21,24 @@ export const AllRoutes = () => {
       <Route
         path={"/home"}
         element={
-          <PublicRoute>
+          <PrivateRoute>
             <Home />
-          </PublicRoute>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={"/logOut"}
+        element={
+          <PrivateRoute>
+            <LogOut />
+          </PrivateRoute>
         }
       />
       <Route
         path={"/"}
         element={
           <PublicRoute>
-            <SignIn></SignIn>
+            <SignIn />
           </PublicRoute>
         }
       />

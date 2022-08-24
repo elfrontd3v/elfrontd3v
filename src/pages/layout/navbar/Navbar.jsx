@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -10,6 +11,7 @@ import {
   Menu,
   MenuItem,
   IconButton,
+  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -26,8 +28,9 @@ const Icons = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
-const Navbar = ({ setVisibleDrawer }) => {
+const Navbar = ({ authState, setVisibleDrawer }) => {
   const [rightMenu, setRightMenu] = useState(false);
+  const navigate = useNavigate();
   return (
     <AppBar position="sticky">
       <StyledToolBar>
@@ -48,19 +51,23 @@ const Navbar = ({ setVisibleDrawer }) => {
             EL FRONT D3V
           </Typography>
         </Icons>
-
-        <Icons>
-          <Typography variant="span">Juan Cano</Typography>
-
-          <Avatar
-            sx={{ width: 30, height: 30 }}
-            src=""
-            onClick={() => setRightMenu(true)}
-          />
-          <Badge badgeContent={4} color={"error"}>
-            <NotificationsNoneIcon />
-          </Badge>
-        </Icons>
+        {authState.uid ? (
+          <Icons>
+            <Typography variant="span">Juan Cano</Typography>
+            <Avatar
+              sx={{ width: 30, height: 30 }}
+              src=""
+              onClick={() => setRightMenu(true)}
+            />
+            <Badge badgeContent={4} color={"error"}>
+              <NotificationsNoneIcon />
+            </Badge>
+          </Icons>
+        ) : (
+          <Button color="inherit" onClick={() => navigate("/")}>
+            Login
+          </Button>
+        )}
       </StyledToolBar>
       <Menu
         id="avatar-menu"
@@ -69,8 +76,6 @@ const Navbar = ({ setVisibleDrawer }) => {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <MenuItem>Home</MenuItem>
-        <MenuItem>Profile</MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
     </AppBar>

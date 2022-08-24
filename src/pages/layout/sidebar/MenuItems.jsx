@@ -9,6 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ModeNightIcon from "@mui/icons-material/ModeNight";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const MenuItems = () => {
   const [languageState] = useContext(ThemeAppContext);
@@ -80,6 +81,14 @@ const MenuItems = () => {
     },
     {
       id: 9,
+      title: generalDictionary.LOG_OUT,
+      path: "/logOut",
+      icon: <LogoutIcon />,
+      navigate: true,
+      type: "text",
+    },
+    {
+      id: 10,
       title: "",
       path: "",
       icon: <ModeNightIcon />,

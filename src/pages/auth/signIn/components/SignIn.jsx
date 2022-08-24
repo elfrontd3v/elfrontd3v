@@ -7,6 +7,8 @@ import {
   TextField,
   Typography,
   ButtonGroup,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -16,9 +18,15 @@ import useSignIn from "../hooks/useSignIn";
 import "./signIn.scss";
 
 const SignIn = () => {
-  const { formik, generalDictionary } = useSignIn();
+  const { formik, generalDictionary, isLoading, signInMethods } = useSignIn();
   return (
     <>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Box className="boxContainer">
         <Avatar sx={{ bgcolor: "secondary.main" }}>
           <LockOutlinedIcon />
@@ -62,11 +70,19 @@ const SignIn = () => {
             {generalDictionary.SIGN_IN}
           </Button>
           <ButtonGroup variant="text" fullWidth className="sigInButton icons">
-            <Button color="error">{<GoogleIcon />}</Button>
-            <Button color="primary">{<FacebookIcon />}</Button>
-            <Button color="secondary">{<GitHubIcon />}</Button>
+            <Button onClick={signInMethods.signInGoogle} color="error">
+              {<GoogleIcon />}
+            </Button>
+            <Button onClick={signInMethods.sigInFacebook} color="primary">
+              {<FacebookIcon />}
+            </Button>
+            <Button onClick={signInMethods.sigInGitHub} color="secondary">
+              {<GitHubIcon />}
+            </Button>
           </ButtonGroup>
-          <Link>{generalDictionary.NOT_HAVE_ACCOUNT}</Link>
+          <Link href="#" underline="hover">
+            {generalDictionary.NOT_HAVE_ACCOUNT}
+          </Link>
         </Box>
       </Box>
     </>
