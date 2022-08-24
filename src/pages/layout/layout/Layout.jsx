@@ -13,7 +13,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          color: (theme) => theme.palette.primary.main,
+          bgcolor: (theme) => theme.palette.background.default,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
         open={authLoading}
       >
         <CircularProgress color="inherit" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   List,
@@ -11,8 +11,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import MenuItems from "./MenuItems";
+import { ThemeAppContext } from "../../../core/context";
 
 const Sidebar = ({ visibleDrawer, setVisibleDrawer }) => {
+  const [themeState, themeAppDispatch] = useContext(ThemeAppContext);
   const navigate = useNavigate();
   const menuItems = MenuItems();
 
@@ -28,7 +30,19 @@ const Sidebar = ({ visibleDrawer, setVisibleDrawer }) => {
           >
             <ListItemIcon>{item.icon}</ListItemIcon>
             {item.type === "text" && <ListItemText primary={item.title} />}
-            {item.type === "switch" && <Switch />}
+            {item.type === "switch" && (
+              <Switch
+                checked={themeState.themeClass === "light" ? false : true}
+                onChange={() =>
+                  themeAppDispatch({
+                    type:
+                      themeState.themeClass === "light"
+                        ? "DARK_MODE"
+                        : "LIGHT_MODE",
+                  })
+                }
+              />
+            )}
           </ListItemButton>
         </ListItem>
       ))}
