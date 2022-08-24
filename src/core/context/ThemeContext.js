@@ -18,9 +18,9 @@ const ThemeAppReducer = (state = initialState, action) => {
     case "LIGHT_MODE":
       return { ...state, themeClass: "light" };
     case "SWITCH_TO_ENGLISH":
-      return { language: "EN", ...EN };
+      return { ...state, language: "EN", ...EN };
     case "SWITCH_TO_SPANISH":
-      return { language: "ES", ...ES };
+      return { ...state, language: "ES", ...ES };
     default:
       return { ...initialState };
   }

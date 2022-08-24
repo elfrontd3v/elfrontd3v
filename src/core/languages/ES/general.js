@@ -21,7 +21,7 @@ export const generalDictionary = {
   NOT_FOUND_PAGE:
     "La pagina a la que tratas de acceder no existe o está en mantenimiento",
   EDIT_PROFILE: "Editar perfil",
-  LOG_OUT: "Cerrar sesión",
+
   CONFIG: "Configuración",
   STYLE: "Estilo",
   DARK_MODE: "Modo oscuro",
@@ -39,6 +39,7 @@ export const generalDictionary = {
   FRIENDS: "Amigos",
   PROFILE: "Perfil",
   SETTINGS: "Configuración",
+  LOG_OUT: "Cerrar sesión",
 
   PERIODICITY: "Periodicidad",
   SELECT_PERIODICITY: "Selecciona un periodo",
@@ -72,4 +73,14 @@ export const generalDictionary = {
   ENDPOINT_OK: "Todo salió bien",
   ENDPOINT_WARNING: "No pudimos validar el cambio",
   ENDPOINT_ERROR: "Ha ocurrido un error",
+
+  //ENDPOINT AUTH
+  LOGIN_ERROR: "Error al iniciar sesión",
+  USER_OR_PASSWORD_INCORRECT: "Usuario o contraseña incorrectos",
+  EMAIL_NOT_AVAILABLE: "Este correo no se encuentra disponible",
+  CLOSED_POPUP: "Debes seleccionar una cuenta antes de cerrar el PopUp",
+  EMAIL_REGISTER_WITH_DIFFERENT_METHOD:
+    "Este correo ya se ha registrado por otro método",
+  PASSWORD_INCORRECT:
+    "Contraseña incorrecta, por favor inicie con otro servicio",
 };
