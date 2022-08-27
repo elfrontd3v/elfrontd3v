@@ -15,6 +15,8 @@ const Home = lazy(() => import("./pages/home/components/Home"));
 const NotFoundPage = lazy(() => import("./pages/layout/NotFoundPage"));
 const LogOut = lazy(() => import("./pages/layout/LogOut"));
 
+const Expenses = lazy(() => import("./pages/expenses/components/Expenses"));
+
 export const AllRoutes = () => {
   return (
     <Routes>
@@ -23,6 +25,14 @@ export const AllRoutes = () => {
         element={
           <PrivateRoute>
             <Home />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={"/expenses"}
+        element={
+          <PrivateRoute>
+            <Expenses />
           </PrivateRoute>
         }
       />

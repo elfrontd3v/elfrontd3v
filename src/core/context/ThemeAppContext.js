@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { SnackbarProvider } from "notistack";
 import ES from "../languages/ES";
 import EN from "../languages/EN";
 
@@ -37,7 +38,18 @@ export const ThemeAppProvider = ({ children }) => {
 
   return (
     <ThemeAppContext.Provider value={[state, ThemeAppDispatch]}>
-      <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>
+      <ThemeProvider theme={darkTheme}>
+        <SnackbarProvider
+          preventDuplicate
+          autoHideDuration={2000}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          {children}
+        </SnackbarProvider>
+      </ThemeProvider>
     </ThemeAppContext.Provider>
   );
 };
