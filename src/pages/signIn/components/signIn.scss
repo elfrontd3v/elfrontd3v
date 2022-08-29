@@ -1,0 +1,40 @@
+@import "../../../assets/theme.scss";
+.sigInContainer {
+  margin: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 12px;
+  .imagenContainer {
+    text-align: end;
+  }
+  .formContainer {
+    width: 100%;
+    padding: 50px;
+    .ant-form-item-control-input {
+      margin: 5px;
+    }
+    .iconButton {
+      font-size: 40px;
+      margin: 15px;
+      &.google {
+        color: red;
+      }
+      &.facebook {
+        color: blue;
+      }
+      &.git {
+        color: black;
+      }
+    }
+  }
+
+  .sigInContainer:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+}

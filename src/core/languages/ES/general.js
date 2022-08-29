@@ -7,9 +7,9 @@ export const generalDictionary = {
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
+  WELCOME_BACK: "Bienvenido de nuevo",
   EMAIL: "Correo",
   PASSWORD: "Contraseña",
-  NOT_HAVE_ACCOUNT: "Aun no tienes una cuenta? Regístrate aquí",
 
   SEARCH: "Buscar",
   TYPE_SOMETHING: "Escribe algo",

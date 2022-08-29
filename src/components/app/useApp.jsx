@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import AuthService from "../../../../api/AuthService";
-import { AuthContext, ThemeAppContext } from "../../../../core/context";
+import AuthService from "../../api/AuthService";
+import { AuthContext, ThemeContext } from "../../core/context";
 
-const useLayout = () => {
+const useApp = () => {
   const [authState, authDispatch] = useContext(AuthContext);
+  const [themeState, themeDispatch] = useContext(ThemeContext);
   const [authLoading, setAuthLoading] = useState(false);
-  const [, themeAppDispatch] = useContext(ThemeAppContext);
-
   useEffect(() => {
     setAuthLoading(true);
     const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
@@ -17,11 +16,8 @@ const useLayout = () => {
             type: "LOGIN_USER",
             payload: response,
           });
-          themeAppDispatch({
+          themeDispatch({
             type: response.themePreference,
-          });
-          themeAppDispatch({
-            type: response.languagePreference,
           });
           setAuthLoading(false);
         })
@@ -36,8 +32,8 @@ const useLayout = () => {
         type: "LOGOUT_USER",
       });
     }
-  }, [authState.uid]);
-  return { authState, authLoading };
+  }, []);
+  return { authState, themeState, authLoading };
 };
 
-export default useLayout;
+export default useApp;

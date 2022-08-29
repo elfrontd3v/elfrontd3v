@@ -10,12 +10,8 @@ export const PublicRoute = ({ children }) => {
   return sessionInfo ? <Navigate to={"/home"} /> : children;
 };
 
-const SignIn = lazy(() => import("./pages/auth/signIn/components/SignIn"));
+const SignIn = lazy(() => import("./pages/signIn/components/SignIn"));
 const Home = lazy(() => import("./pages/home/components/Home"));
-const NotFoundPage = lazy(() => import("./pages/layout/NotFoundPage"));
-const LogOut = lazy(() => import("./pages/layout/LogOut"));
-
-const Expenses = lazy(() => import("./pages/expenses/components/Expenses"));
 
 export const AllRoutes = () => {
   return (
@@ -28,22 +24,8 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path={"/expenses"}
-        element={
-          <PrivateRoute>
-            <Expenses />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/logOut"}
-        element={
-          <PrivateRoute>
-            <LogOut />
-          </PrivateRoute>
-        }
-      />
+      <Route path={"/expenses"} element={<PrivateRoute></PrivateRoute>} />
+      <Route path={"/logOut"} element={<PrivateRoute></PrivateRoute>} />
       <Route
         path={"/"}
         element={
@@ -52,7 +34,7 @@ export const AllRoutes = () => {
           </PublicRoute>
         }
       />
-      <Route path={"*"} element={<NotFoundPage />} />
+      <Route path={"*"} element={<></>} />
     </Routes>
   );
 };

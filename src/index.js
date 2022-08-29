@@ -1,24 +1,22 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { AllRoutes } from "./routes";
-import ThemeAppProvider from "./core/context/ThemeAppContext";
-import Layout from "./pages/layout/layout/Layout";
-import { AuthProvider } from "./core/context";
+import { AuthProvider, ThemeProvider } from "./core/context";
+import App from "./components/app/App";
+import "antd/dist/antd.min.css";
+import "./assets/index.scss";
 
-const ApplicationProviders = () => (
+const ApplicationProviders = ({ children }) => (
   <AuthProvider>
-    <ThemeAppProvider>
-      <BrowserRouter>
-        <Layout>
-          <Suspense fallback={<></>}>
-            <AllRoutes />
-          </Suspense>
-        </Layout>
-      </BrowserRouter>
-    </ThemeAppProvider>
+    <ThemeProvider>
+      <BrowserRouter>{children}</BrowserRouter>
+    </ThemeProvider>
   </AuthProvider>
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<ApplicationProviders />);
+root.render(
+  <ApplicationProviders>
+    <App />
+  </ApplicationProviders>
+);
