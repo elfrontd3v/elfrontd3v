@@ -2,7 +2,7 @@
 
 .headerClass {
   .ant-page-header {
-    background-color: $white;
+    transition: 0.3s;
   }
   .ant-page-header-heading {
     display: flex;
@@ -13,6 +13,7 @@
     margin-right: 15px;
   }
 }
+
 .drawerClass {
   .ant-drawer-header {
     display: none;

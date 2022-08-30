@@ -12,7 +12,16 @@ export const PublicRoute = ({ children }) => {
 };
 
 const SignIn = lazy(() => import("./pages/signIn/components/SignIn"));
-const Home = lazy(() => import("./pages/home/components/Home"));
+const Home = lazy(() => import("./pages/home/home/components/Home"));
+const Dashboard = lazy(() =>
+  import("./pages/home/dashboard/components/Dashboard")
+);
+const Earnings = lazy(() =>
+  import("./pages/counts/earnings/components/Earnings")
+);
+const Expenses = lazy(() =>
+  import("./pages/counts/expenses/components/Expenses")
+);
 
 export const routes = ({ generalDictionary }) => [
   {
@@ -42,7 +51,7 @@ export const routes = ({ generalDictionary }) => [
         icon: null,
         element: (
           <PrivateRoute>
-            <Home />
+            <Dashboard />
           </PrivateRoute>
         ),
         text: generalDictionary.DASHBOARD,
@@ -65,7 +74,7 @@ export const routes = ({ generalDictionary }) => [
         icon: null,
         element: (
           <PrivateRoute>
-            <></>
+            <Earnings />
           </PrivateRoute>
         ),
         text: generalDictionary.EARNINGS,
@@ -78,7 +87,7 @@ export const routes = ({ generalDictionary }) => [
         icon: null,
         element: (
           <PrivateRoute>
-            <></>
+            <Expenses />
           </PrivateRoute>
         ),
         text: generalDictionary.EXPENSES,
