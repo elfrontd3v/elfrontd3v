@@ -1,6 +1,9 @@
 @import "../../assets/theme.scss";
 
 .headerClass {
+  position: fixed;
+  z-index: 1;
+  width: "100%";
   .ant-page-header {
     transition: 0.3s;
   }

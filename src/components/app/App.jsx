@@ -19,13 +19,22 @@ const App = () => {
     >
       <Layout>
         {authState?.uid && <NavBar items={items} />}
-        <Layout>
+        <Layout
+          style={authState?.uid ? { marginTop: "64px" } : { marginTop: "0px" }}
+        >
           {authState?.uid && (
             <Col xs={0} sm={0} md={0} lg={5} xl={4} xxl={3}>
               <SideBar items={items} />
             </Col>
           )}
-          <Col xs={24} sm={24} md={24} lg={19} xl={20} xxl={21}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={authState.uid ? 19 : 24}
+            xl={authState.uid ? 20 : 24}
+            xxl={authState.uid ? 21 : 24}
+          >
             <Content>
               <Suspense fallback={<></>}>
                 <Routes>{routesList}</Routes>

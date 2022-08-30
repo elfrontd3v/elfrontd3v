@@ -11,6 +11,7 @@ const NavBar = ({ items }) => {
   return (
     <>
       <PageHeader
+        style={{ position: "fixed", zIndex: 1, width: "100%" }}
         ghost={false}
         className="headerClass"
         title={"EL FRONT D3V"}
@@ -36,7 +37,7 @@ const NavBar = ({ items }) => {
       >
         <Menu
           mode="inline"
-          defaultOpenKeys={["home", "counts"]}
+          defaultOpenKeys={["home", "counts", "profile"]}
           selectedKeys={[location.pathname]}
           items={items}
           onClick={() => setVisible(false)}

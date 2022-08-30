@@ -10,7 +10,7 @@ const SideBar = ({ items }) => {
     <Sider theme="light" className="sideBarContainer" width={"100%"}>
       <Menu
         mode="inline"
-        defaultOpenKeys={["home", "counts"]}
+        defaultOpenKeys={["home", "counts", "profile"]}
         selectedKeys={[location.pathname]}
         items={items}
       />
