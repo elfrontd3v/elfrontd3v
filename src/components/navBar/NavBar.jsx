@@ -1,30 +1,46 @@
 import React, { useState } from "react";
-import { Drawer, Row, Col } from "antd";
-import {  MenuUnfoldOutlined } from "@ant-design/icons";
+import { Drawer, Col, Menu, Button, PageHeader } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 
-import { Header } from "antd/lib/layout/layout";
+import "./navBar.scss";
+import { useLocation } from "react-router-dom";
 
-
-
-const NavBar = ({ menu }) => {
+const NavBar = ({ items }) => {
+  const location = useLocation();
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Header className="site-layout-background" style={{ padding: 0 }}>
-        <Row>
-          <Col xs={2} sm={2} md={2} lg={0} xl={0}>
-            <MenuUnfoldOutlined onClick={() => setVisible(true)} />
-          </Col>
-        </Row>
-      </Header>
+      <PageHeader
+        ghost={false}
+        className="headerClass"
+        title={"EL FRONT D3V"}
+        extra={[
+          <Col xs={2} sm={2} md={2} lg={0} xl={0} key={"button"}>
+            <Button
+              type="primary"
+              shape="circle"
+              icon={<MenuOutlined />}
+              onClick={() => setVisible(true)}
+            />
+          </Col>,
+        ]}
+      />
       <Drawer
-        title="Topics"
-        placement="left"
+        className="drawerClass"
+        width={"240px"}
+        placement={"left"}
+        closeIcon={false}
         onClick={() => setVisible(false)}
         onClose={() => setVisible(false)}
         visible={visible}
       >
-        {menu}
+        <Menu
+          mode="inline"
+          defaultOpenKeys={["home", "counts"]}
+          selectedKeys={[location.pathname]}
+          items={items}
+          onClick={() => setVisible(false)}
+        />
       </Drawer>
     </>
   );

@@ -1,11 +1,16 @@
 import { useContext, useEffect, useState } from "react";
+import { Route, useNavigate } from "react-router-dom";
 import AuthService from "../../api/AuthService";
 import { AuthContext, ThemeContext } from "../../core/context";
+import { routes } from "../../routes";
 
 const useApp = () => {
   const [authState, authDispatch] = useContext(AuthContext);
   const [themeState, themeDispatch] = useContext(ThemeContext);
+  const { generalDictionary } = themeState;
   const [authLoading, setAuthLoading] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     setAuthLoading(true);
     const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
@@ -33,7 +38,59 @@ const useApp = () => {
       });
     }
   }, []);
-  return { authState, themeState, authLoading };
+
+  const getRoutes = (routes) => {
+    return routes.map((route) => {
+      if (route.children && route.children.length > 0) {
+        return route.children.map((children) => (
+          <Route
+            path={children.path}
+            element={children.element}
+            key={route.name}
+          />
+        ));
+      } else {
+        return (
+          <Route path={route.path} element={route.element} key={route.name} />
+        );
+      }
+    });
+  };
+
+  const getItem = (label, key, icon, children, disabled, hidden, onClick) => {
+    return {
+      label,
+      key,
+      icon,
+      children,
+      disabled,
+      hidden,
+      onClick,
+    };
+  };
+
+  const generateList = (routes) => {
+    if (routes && routes.length) {
+      return routes.map((route) =>
+        getItem(
+          route.text,
+          route.name,
+          route.icon,
+          generateList(route.children),
+          route.disabled,
+          route.isHidden,
+          () => (route.path ? navigate(route.path) : null)
+        )
+      );
+    } else {
+      return null;
+    }
+  };
+
+  const items = generateList(routes({ generalDictionary }));
+  const routesList = getRoutes(routes({ generalDictionary }));
+
+  return { authState, authLoading, items, routesList };
 };
 
 export default useApp;

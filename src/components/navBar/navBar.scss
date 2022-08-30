@@ -1,0 +1,23 @@
+@import "../../assets/theme.scss";
+
+.headerClass {
+  .ant-page-header {
+    background-color: $white;
+  }
+  .ant-page-header-heading {
+    display: flex;
+    flex-direction: row-reverse;
+    float: left;
+  }
+  .ant-page-header-heading-extra {
+    margin-right: 15px;
+  }
+}
+.drawerClass {
+  .ant-drawer-header {
+    display: none;
+  }
+  .ant-drawer-body {
+    padding: 0px;
+  }
+}

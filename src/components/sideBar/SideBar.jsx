@@ -1,28 +1,18 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
+import "./sideBar.scss";
 const { Sider } = Layout;
-const SideBar = () => {
+
+const SideBar = ({ items }) => {
+  const location = useLocation();
   return (
-    <Sider className="sideBar" width={"100%"}>
+    <Sider theme="light" className="sideBarContainer" width={"100%"}>
       <Menu
-        theme="dark"
         mode="inline"
-        defaultSelectedKeys={["4"]}
-        items={[
-          UserOutlined,
-          VideoCameraOutlined,
-          UploadOutlined,
-          UserOutlined,
-        ].map((icon, index) => ({
-          key: String(index + 1),
-          icon: React.createElement(icon),
-          label: `nav ${index + 1}`,
-        }))}
+        defaultOpenKeys={["home", "counts"]}
+        selectedKeys={[location.pathname]}
+        items={items}
       />
     </Sider>
   );
