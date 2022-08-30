@@ -1,6 +1,10 @@
 import React, { lazy } from "react";
 import { Navigate } from "react-router-dom";
-import { HomeOutlined, DollarCircleOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  DollarCircleOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 export const PrivateRoute = ({ children }) => {
   const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
@@ -91,6 +95,42 @@ export const routes = ({ generalDictionary }) => [
           </PrivateRoute>
         ),
         text: generalDictionary.EXPENSES,
+        disabled: false,
+        isHidden: false,
+      },
+    ],
+  },
+  {
+    path: "",
+    name: "profile",
+    icon: <UserOutlined />,
+    text: generalDictionary.PROFILE,
+    disabled: false,
+    isHidden: false,
+    children: [
+      {
+        path: "/profile",
+        name: "/profile",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <></>
+          </PrivateRoute>
+        ),
+        text: generalDictionary.PROFILE,
+        disabled: false,
+        isHidden: false,
+      },
+      {
+        path: "/profile/logout",
+        name: "/profile/logout",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <></>
+          </PrivateRoute>
+        ),
+        text: generalDictionary.LOG_OUT,
         disabled: false,
         isHidden: false,
       },
