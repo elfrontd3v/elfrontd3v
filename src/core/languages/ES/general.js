@@ -4,18 +4,17 @@ export const generalDictionary = {
   ACCEPT: "Aceptar",
   CANCEL: "Cancelar",
   ACTIONS: "Acciones",
+  SEARCH: "Buscar",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
+  WELCOME_BACK: "Bienvenido de nuevo",
   EMAIL: "Correo",
   PASSWORD: "Contraseña",
-  NOT_HAVE_ACCOUNT: "Aun no tienes una cuenta? Regístrate aquí",
 
-  SEARCH: "Buscar",
   TYPE_SOMETHING: "Escribe algo",
   TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
   TYPE_YOUR_EMAIL: "Escribe tu correo",
-  COUNTS: "Cuentas",
 
   BACK_TO_HOME: "Volver al home",
   NOT_FOUND_PAGE:
@@ -33,6 +32,7 @@ export const generalDictionary = {
   //SIDEBAR
   HOME: "Principal",
   DASHBOARD: "Dashboard",
+  COUNTS: "Cuentas",
   SHOP: "Tienda",
   EARNINGS: "Ingresos",
   EXPENSES: "Gastos",
