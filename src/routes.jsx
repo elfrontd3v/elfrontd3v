@@ -27,6 +27,8 @@ const Expenses = lazy(() =>
   import("./pages/counts/expenses/components/Expenses")
 );
 
+const LogOut = lazy(() => import("./pages/profile/logOut/components/LogOut"));
+
 export const routes = ({ generalDictionary }) => [
   {
     path: "",
@@ -127,7 +129,7 @@ export const routes = ({ generalDictionary }) => [
         icon: null,
         element: (
           <PrivateRoute>
-            <></>
+            <LogOut />
           </PrivateRoute>
         ),
         text: generalDictionary.LOG_OUT,
