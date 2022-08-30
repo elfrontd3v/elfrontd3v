@@ -35,7 +35,7 @@ const App = () => {
             xl={authState.uid ? 20 : 24}
             xxl={authState.uid ? 21 : 24}
           >
-            <Content>
+            <Content className={authState?.uid ? "contentClass" : "fullHeight"}>
               <Suspense fallback={<></>}>
                 <Routes>{routesList}</Routes>
               </Suspense>

@@ -1,12 +1,13 @@
 @import "../../assets/theme.scss";
 
+.ant-page-header.headerClass {
+  border-bottom: inset;
+  padding: 10px 15px;
+}
 .headerClass {
   position: fixed;
   z-index: 1;
   width: "100%";
-  .ant-page-header {
-    transition: 0.3s;
-  }
   .ant-page-header-heading {
     display: flex;
     flex-direction: row-reverse;

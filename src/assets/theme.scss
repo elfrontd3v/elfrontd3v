@@ -1,11 +1,24 @@
+//gradient colors
+$success: #52c41a;
+$gradientSuccess: #95de64;
+$danger: #ff4d4f;
+$gradientDanger: #ffa39e;
+$warning: #faad14;
+$gradientWarning: #ffd666;
+$primary: #1890ff;
+$gradientPrimary: #69c0ff;
+$dark: #000000;
+$gradientDark: #262626;
+
+//grays scale
 $white: #ffffff;
-$white-2: #fafafa;
-
-$title-1: #333333;
-
-$colors: (
-  success: #8ed100,
-  danger: #ff422a,
-  warning: #f19a00,
-  primary: #1890ff,
-);
+$gray-1: #fafafa;
+$gray-2: #f0f0f0;
+$gray-3: #d9d9d9;
+$gray-4: #bfbfbf;
+$gray-5: #8c8c8c;
+$gray-6: #595959;
+$gray-7: #434343;
+$gray-8: #262626;
+$gray-9: #1f1f1f;
+$black: #000000;
