@@ -12,6 +12,38 @@ export const generalDictionary = {
   EMAIL: "Correo",
   PASSWORD: "Contraseña",
 
+  //SIDEBAR
+  HOME: "Principal",
+  DASHBOARD: "Dashboard",
+  COUNTS: "Cuentas",
+  EARNINGS: "Ingresos",
+  EXPENSES: "Gastos",
+  PROFILE: "Perfil",
+  LOG_OUT: "Cerrar sesión",
+
+  //EARNINGS
+  NUMBER_OF_EARNINGS: "Numero ingresos",
+  TOTAL_EARNINGS: "Ingresos totales",
+  MAX_EARNING: "Ingreso más alto",
+  MIN_EARNING: "Ingreso más bajo",
+
+  SETTINGS: "Configuración",
+  SHOP: "Tienda",
+  FRIENDS: "Amigos",
+  PERIODICITY: "Periodicidad",
+  SELECT_PERIODICITY: "Selecciona un periodo",
+  DAILY: "Diario",
+  MONTHLY: "Mensual",
+  ANNUAL: "Anual",
+  YEAR_VALUE: "Valor anual",
+  DAY_VALUE: "Valor diario",
+  MONTH_VALUE: "Valor mensual",
+  SAVING: "Guardando...",
+
+  PROVIDERS: "Proveedores",
+  TODO_LIST: "Lista de tareas",
+  TODOS: "Tareas",
+  SEE_DETAIL: "Ver detalle",
   TYPE_SOMETHING: "Escribe algo",
   TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
   TYPE_YOUR_EMAIL: "Escribe tu correo",
@@ -28,33 +60,6 @@ export const generalDictionary = {
   LANGUAGE: "Lenguaje",
   SPANISH: "Español",
   ENGLISH: "Ingles",
-
-  //SIDEBAR
-  HOME: "Principal",
-  DASHBOARD: "Dashboard",
-  COUNTS: "Cuentas",
-  SHOP: "Tienda",
-  EARNINGS: "Ingresos",
-  EXPENSES: "Gastos",
-  FRIENDS: "Amigos",
-  PROFILE: "Perfil",
-  SETTINGS: "Configuración",
-  LOG_OUT: "Cerrar sesión",
-
-  PERIODICITY: "Periodicidad",
-  SELECT_PERIODICITY: "Selecciona un periodo",
-  DAILY: "Diario",
-  MONTHLY: "Mensual",
-  ANNUAL: "Anual",
-  YEAR_VALUE: "Valor anual",
-  DAY_VALUE: "Valor diario",
-  MONTH_VALUE: "Valor mensual",
-  SAVING: "Guardando...",
-
-  PROVIDERS: "Proveedores",
-  TODO_LIST: "Lista de tareas",
-  TODOS: "Tareas",
-  SEE_DETAIL: "Ver detalle",
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",

@@ -19,7 +19,6 @@ const GraphicsCard = ({ color, icon, title, data }) => {
         </Col>
       </Row>
       <Divider className="dividerClass" />
-      Inserte gráfica aquí o algo...
     </Card>
   );
 };

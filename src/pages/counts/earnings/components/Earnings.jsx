@@ -1,53 +1,84 @@
 import React from "react";
-import { Card, Col, Row } from "antd";
-import GraphicsCard from "../../../../components/graphicsCard/GraphicsCard";
-import {
-  ContainerOutlined,
-  ExclamationCircleOutlined,
-  DollarOutlined,
-  CheckCircleOutlined,
-} from "@ant-design/icons";
+import { Button, Card, Input, Space, Table } from "antd";
+import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import HeaderSection from "../../../../components/headerSection/HeaderSection";
+import useEarnings from "../hooks/useEarnings";
+import EarningsCards from "./EarningsCards";
+import CreateEarning from "./CreateEarning";
+import "./earnings.scss";
+
 const Earnings = () => {
+  const {
+    generalDictionary,
+    loading,
+    earningsList,
+    columns,
+    graphicsData,
+    filter,
+    modal,
+  } = useEarnings();
+
   return (
     <>
-      <HeaderSection title={"Earnings"} />
+      <HeaderSection
+        title={generalDictionary.EARNINGS}
+        buttons={[
+          <Input
+            addonBefore={
+              <Space>
+                <SearchOutlined />
+                {generalDictionary.SEARCH}
+              </Space>
+            }
+            type={"text"}
+            placeholder={generalDictionary.TYPE_SOMETHING}
+            value={filter.search.searchValue}
+            onChange={(event) => filter.searchFilter(event.target.value)}
+          />,
+          <Button
+            key="1"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={modal.handleOpenModal}
+          >
+            {generalDictionary.ADD_EARNING}
+          </Button>,
+        ]}
+      />
+
       <Card>
-        <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
-            <GraphicsCard
-              color={"dark"}
-              icon={<ContainerOutlined />}
-              title={"Numero ingresos"}
-              data={6}
-            />
-          </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
-            <GraphicsCard
-              color={"primary"}
-              icon={<ExclamationCircleOutlined />}
-              title={"Ingresos totales"}
-              data={4523288}
-            />
-          </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
-            <GraphicsCard
-              color={"success"}
-              icon={<DollarOutlined />}
-              title={"Ingreso más alto"}
-              data={2500000}
-            />
-          </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
-            <GraphicsCard
-              color={"error"}
-              icon={<CheckCircleOutlined />}
-              title={"Ingreso más bajo"}
-              data={500000}
-            />
-          </Col>
-        </Row>
+        <EarningsCards
+          generalDictionary={generalDictionary}
+          graphicsData={graphicsData}
+        />
+
+        <Table
+          className="earningsTable"
+          loading={loading}
+          dataSource={earningsList}
+          columns={columns}
+          id="earnings-table"
+          rowKey={(earnings) => earnings.id}
+          bordered
+          pagination={{
+            defaultPageSize: 5,
+            total: earningsList.length,
+            showSizeChanger: true,
+            pageSizeOptions: [5, 10, 15, 50],
+          }}
+          scroll={{
+            x: 1000,
+          }}
+        />
       </Card>
+
+      <CreateEarning
+        isVisible={modal.modalVisible}
+        expenseToEdit={modal.earningToEdit}
+        handleCancel={modal.handleCancel}
+        handleCreate={modal.handleCreate}
+        loadingModal={modal.loadingModal}
+      />
     </>
   );
 };
