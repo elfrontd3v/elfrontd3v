@@ -280,8 +280,9 @@ const useEarnings = () => {
       elipsis: false,
       render: (earning) => {
         const { ModalAlertMessageFunction } = ModalAlertMessage({
+          okText: generalDictionary.DELETE,
           title: generalDictionary.DELETE,
-          description: generalDictionary.SURE_DELETE,
+          description: generalDictionary.SURE_DELETE_EARNING,
           okParams: earning.id,
           okHandle: deleteEarningHandle,
         });

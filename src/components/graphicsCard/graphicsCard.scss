@@ -37,6 +37,16 @@
     box-shadow: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 14%),
       0rem 0.4375rem 0.625rem -0.3125rem rgba(255, 3, 3, 0.4);
   }
+  &.warning {
+    background: linear-gradient(195deg, $gradientWarning, $warning);
+    box-shadow: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 14%),
+      0rem 0.4375rem 0.625rem -0.3125rem rgba(255, 251, 0, 0.4);
+  }
+  &.alternative {
+    background: linear-gradient(195deg, $gradientAlternative, $alternative);
+    box-shadow: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 14%),
+      0rem 0.4375rem 0.625rem -0.3125rem rgba(163, 3, 255, 0.4);
+  }
   .ant-card-body {
     padding: 10px;
   }
@@ -46,7 +56,9 @@
     text-align: right;
   }
   .ant-statistic-content-value {
+    font-size: 20px;
     font-weight: bold;
+    font-family: "IBM Plex Mono", monospace;
   }
 }
 .dividerClass {

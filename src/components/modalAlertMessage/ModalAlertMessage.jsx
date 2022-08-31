@@ -5,8 +5,10 @@ import { Modal } from "antd";
 const { confirm } = Modal;
 
 const ModalAlertMessage = ({
+  okText,
   okParams,
   okHandle,
+  cancelText,
   cancelParams,
   cancelHandle,
   title,
@@ -15,6 +17,8 @@ const ModalAlertMessage = ({
 }) => {
   const ModalAlertMessageFunction = () => {
     confirm({
+      okText: okText ? okText : "Ok",
+      cancelText: cancelText ? cancelText : "Cancelar",
       title: title ? title : "",
       icon: icon ? icon : <ExclamationCircleOutlined />,
       content: description ? description : "",
