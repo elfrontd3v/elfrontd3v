@@ -70,7 +70,7 @@ const Earnings = () => {
             pageSizeOptions: [5, 10, 15, 50],
           }}
           scroll={{
-            x: 1000,
+            x: true,
           }}
         />
       </Card>
