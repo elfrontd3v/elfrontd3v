@@ -70,30 +70,30 @@ const CreateEarning = ({
         size={"large"}
       >
         <Row>
-          <Col span={22} offset={1}>
+          <Col span={24}>
             <Form
               initialValues={initialValues}
-              labelCol={{ span: 10 }}
-              wrapperCol={{ span: 14 }}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 15 }}
               onFinish={(values) =>
                 handleCreate(values, initialValues ? initialValues : null)
               }
             >
               <Form.Item
                 name={"name"}
-                label={generalDictionary.EARNING_NAME}
+                label={generalDictionary.NAME}
                 rules={rules.nameRules}
                 hasFeedback
               >
                 <Input
                   disabled={isVisible.visualize}
                   type={"text"}
-                  placeholder={generalDictionary.TYPE_EARNING_NAME}
+                  placeholder={generalDictionary.NAME}
                 />
               </Form.Item>
               <Form.Item
                 name={"value"}
-                label={generalDictionary.EARNING_VALUE}
+                label={generalDictionary.VALUE}
                 rules={rules.valueRules}
                 hasFeedback
               >
@@ -108,12 +108,12 @@ const CreateEarning = ({
               </Form.Item>
               <Form.Item
                 name={"periodicity"}
-                label={generalDictionary.EARNING_PERIODICITY}
+                label={generalDictionary.PERIODICITY}
                 rules={rules.periodicityRules}
                 hasFeedback
               >
                 <Select
-                  placeholder={generalDictionary.SELECT_PERIODICITY}
+                  placeholder={generalDictionary.PERIODICITY}
                   disabled={isVisible.visualize}
                 >
                   <Select.Option value={"monthValue"}>

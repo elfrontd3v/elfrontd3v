@@ -7,10 +7,7 @@ const GraphicsCard = ({ color, icon, title, data }) => {
     <Card className="graphicsCardContainer">
       <Row>
         <Col span={7}>
-          <Card
-            className={`iconCardContainer ${color ? color : ""}`}
-            style={{}}
-          >
+          <Card className={`iconCardContainer ${color ? color : ""}`}>
             {icon}
           </Card>
         </Col>

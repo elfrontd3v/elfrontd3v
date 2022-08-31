@@ -23,25 +23,13 @@ const Earnings = () => {
       <HeaderSection
         title={generalDictionary.EARNINGS}
         buttons={[
-          <Input
-            addonBefore={
-              <Space>
-                <SearchOutlined />
-                {generalDictionary.SEARCH}
-              </Space>
-            }
-            type={"text"}
-            placeholder={generalDictionary.TYPE_SOMETHING}
-            value={filter.search.searchValue}
-            onChange={(event) => filter.searchFilter(event.target.value)}
-          />,
           <Button
             key="1"
             type="primary"
             icon={<PlusOutlined />}
             onClick={modal.handleOpenModal}
           >
-            {generalDictionary.ADD_EARNING}
+            {generalDictionary.ADD}
           </Button>,
         ]}
       />
@@ -52,12 +40,27 @@ const Earnings = () => {
           graphicsData={graphicsData}
         />
 
+        <Input
+          type={"text"}
+          className="earningsSearch"
+          placeholder={generalDictionary.SEARCH}
+          value={filter.search.searchValue}
+          onChange={(event) => filter.searchFilter(event.target.value)}
+          addonBefore={
+            <Space>
+              <SearchOutlined />
+              {generalDictionary.SEARCH}
+            </Space>
+          }
+        />
+
         <Table
           className="earningsTable"
+          id="earnings-table"
           loading={loading}
           dataSource={earningsList}
           columns={columns}
-          id="earnings-table"
+          title={() => generalDictionary.EARNINGS_LIST}
           rowKey={(earnings) => earnings.id}
           bordered
           pagination={{
