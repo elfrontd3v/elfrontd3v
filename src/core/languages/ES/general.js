@@ -5,6 +5,13 @@ export const generalDictionary = {
   CANCEL: "Cancelar",
   ACTIONS: "Acciones",
   SEARCH: "Buscar",
+  NAME: "Nombre",
+  VALUE: "Valor",
+  SEE_DETAIL: "Ver detalle",
+  EDIT: "Editar",
+  DELETE: "Eliminar",
+  SAVING: "Guardando...",
+  ADD: "Agregar",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
@@ -22,14 +29,13 @@ export const generalDictionary = {
   LOG_OUT: "Cerrar sesión",
 
   //EARNINGS
+  EARNING: "Ingreso",
+  EARNINGS_LIST: "Lista de ingresos",
+  ADD_EARNING: "Agregar ingreso",
   NUMBER_OF_EARNINGS: "Numero ingresos",
   TOTAL_EARNINGS: "Ingresos totales",
   MAX_EARNING: "Ingreso más alto",
   MIN_EARNING: "Ingreso más bajo",
-
-  SETTINGS: "Configuración",
-  SHOP: "Tienda",
-  FRIENDS: "Amigos",
   PERIODICITY: "Periodicidad",
   SELECT_PERIODICITY: "Selecciona un periodo",
   DAILY: "Diario",
@@ -38,21 +44,21 @@ export const generalDictionary = {
   YEAR_VALUE: "Valor anual",
   DAY_VALUE: "Valor diario",
   MONTH_VALUE: "Valor mensual",
-  SAVING: "Guardando...",
+  SURE_DELETE: "Esta seguro que quiere eliminar este ingreso",
 
+  SETTINGS: "Configuración",
+  SHOP: "Tienda",
+  FRIENDS: "Amigos",
   PROVIDERS: "Proveedores",
   TODO_LIST: "Lista de tareas",
   TODOS: "Tareas",
-  SEE_DETAIL: "Ver detalle",
   TYPE_SOMETHING: "Escribe algo",
   TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
   TYPE_YOUR_EMAIL: "Escribe tu correo",
-
   BACK_TO_HOME: "Volver al home",
   NOT_FOUND_PAGE:
     "La pagina a la que tratas de acceder no existe o está en mantenimiento",
   EDIT_PROFILE: "Editar perfil",
-
   CONFIG: "Configuración",
   STYLE: "Estilo",
   DARK_MODE: "Modo oscuro",

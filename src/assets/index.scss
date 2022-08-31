@@ -1,5 +1,9 @@
 @import "./theme.scss";
 
+body {
+  font-family: "IBM Plex Mono", monospace;
+}
+
 .contentClass {
   min-height: calc(100vh - 64px);
 }

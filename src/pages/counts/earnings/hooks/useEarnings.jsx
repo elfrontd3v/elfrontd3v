@@ -186,7 +186,7 @@ const useEarnings = () => {
 
   const columns = [
     {
-      title: generalDictionary.EARNING_NAME,
+      title: generalDictionary.NAME,
       dataIndex: "name",
       key: "name",
       elipsis: false,
@@ -233,7 +233,7 @@ const useEarnings = () => {
       ],
     },
     {
-      title: generalDictionary.EARNING_VALUE,
+      title: generalDictionary.VALUE,
       dataIndex: "value",
       key: "value",
       elipsis: false,
@@ -275,6 +275,8 @@ const useEarnings = () => {
       elipsis: false,
       render: (earning) => {
         const { ModalAlertMessageFunction } = ModalAlertMessage({
+          title: generalDictionary.DELETE,
+          description: generalDictionary.SURE_DELETE,
           okParams: earning.id,
           okHandle: deleteEarningHandle,
         });
@@ -290,7 +292,7 @@ const useEarnings = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.EDIT_EARNING}>
+            <Tooltip title={generalDictionary.EDIT}>
               <Tag color={"green"}>
                 <EditOutlined
                   onClick={() => {
@@ -300,7 +302,7 @@ const useEarnings = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.DELETE_EARNING}>
+            <Tooltip title={generalDictionary.DELETE}>
               <Tag color={"red"}>
                 <DeleteOutlined onClick={ModalAlertMessageFunction} />
               </Tag>
