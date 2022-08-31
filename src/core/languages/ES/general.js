@@ -44,7 +44,17 @@ export const generalDictionary = {
   YEAR_VALUE: "Valor anual",
   DAY_VALUE: "Valor diario",
   MONTH_VALUE: "Valor mensual",
-  SURE_DELETE: "Esta seguro que quiere eliminar este ingreso",
+  SURE_DELETE_EARNING: "Esta seguro que quiere eliminar este ingreso",
+
+  //EXPENSES
+  EXPENSE: "Gasto",
+  EXPENSES_LIST: "Lista de gastos",
+  ADD_EXPENSE: "Agregar gasto",
+  NUMBER_OF_EXPENSES: "Numero gastos",
+  TOTAL_EXPENSES: "Gastos totales",
+  MAX_EXPENSE: "Gasto más alto",
+  MIN_EXPENSE: "Gasto más bajo",
+  SURE_DELETE_EXPENSE: "Esta seguro que quiere eliminar este gasto",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",
