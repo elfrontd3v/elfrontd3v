@@ -1,7 +1,331 @@
-import React from "react";
+import { useContext, useEffect, useState } from "react";
+import { message, Space, Tag, Tooltip } from "antd";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  InfoCircleTwoTone,
+} from "@ant-design/icons";
 
+import { AuthContext, ThemeContext } from "../../../../core/context";
+import { v4 as uuid } from "uuid";
+import EarningClass from "../../../../core/class/EarningClass";
+import EarningService from "../../../../api/EarningsService";
+import { PeriodicityValue } from "../../../../helpers/utils/constants/constants";
+import { numThousand } from "../../../../helpers/utils/validateFormat";
+import ModalAlertMessage from "../../../../components/modalAlertMessage/ModalAlertMessage";
 const useEarnings = () => {
-  return <div>useEarnings</div>;
+  const [authState] = useContext(AuthContext);
+  const [themeState] = useContext(ThemeContext);
+  const { generalDictionary } = themeState;
+  const [earningsList, setEarningsList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState({
+    searchValue: "",
+    auxEarningList: [],
+  });
+  const [graphicsData, setGraphicsData] = useState({
+    totalEarnings: 0,
+    totalEarningsValue: 0,
+    maxEarning: 0,
+    minEarning: 0,
+  });
+
+  const [loadingModal, setLoadingModal] = useState(false);
+  const [modalVisible, setModalVisible] = useState({
+    state: false,
+    visualize: false,
+  });
+  const [earningToEdit, setEarningToEdit] = useState({
+    ...new EarningClass(null).state,
+  });
+  let earningId = uuid();
+
+  useEffect(() => {
+    if (authState?.uid) {
+      getAllEarnings();
+    }
+  }, [authState?.uid]);
+
+  const getAllEarnings = () => {
+    setLoading(true);
+    EarningService.getAllEarningsByUid(authState.uid)
+      .then((response) => {
+        const responseData = [];
+        response?.forEach((doc) => {
+          responseData.push(doc.data());
+        });
+        getGraphicsData(responseData);
+        setEarningsList(responseData);
+        setSearch({ ...search, auxEarningList: responseData });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  };
+
+  const getGraphicsData = (earningsResponse) => {
+    const count = earningsResponse.length;
+    let total = 0;
+    let max = 0;
+    let min = earningsResponse.length > 0 ? earningsResponse[0].monthValue : 0;
+    earningsResponse?.forEach((earning) => {
+      total = parseFloat(+total + +earning.monthValue);
+      if (parseFloat(earning.monthValue) > max) {
+        max = earning.monthValue;
+      }
+      if (parseFloat(earning.monthValue) < min) {
+        min = earning.monthValue;
+      }
+    });
+    setGraphicsData({
+      totalEarnings: count,
+      totalEarningsValue: total,
+      maxEarning: max,
+      minEarning: min,
+    });
+  };
+
+  const searchFilter = (searchValue) => {
+    let resultSearch = [];
+    setSearch({ ...search, searchValue: searchValue });
+    search.auxEarningList.forEach((earning) => {
+      if (
+        earning.name
+          .toString()
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+      ) {
+        resultSearch.push(earning);
+      }
+    });
+    setEarningsList(resultSearch);
+  };
+
+  const handleOpenModal = () => {
+    setSearch({ ...search, searchValue: "" });
+    setEarningsList(search.auxEarningList);
+    setModalVisible({ state: true, visualize: false });
+    setEarningToEdit({ ...new EarningClass(null).state });
+  };
+
+  const handleCancel = () => {
+    earningId = uuid();
+    setModalVisible({ state: false, visualize: false });
+    setEarningToEdit({ ...new EarningClass(null).state });
+  };
+
+  const deleteEarningHandle = (id) => {
+    EarningService.deleteEarning(id)
+      .then((response) => {
+        if (response) {
+          message.success(generalDictionary.ENDPOINT_DELETE);
+          getAllEarnings();
+        } else {
+          message.warning(generalDictionary.ENDPOINT_WARNING);
+        }
+      })
+      .catch((error) => {
+        message.error(generalDictionary.ENDPOINT_ERROR);
+        console.log(error);
+      });
+  };
+
+  const handleCreate = (values, oldValues) => {
+    setLoadingModal(true);
+    const auxPayload = createPayload(values);
+    let payload;
+    if (oldValues && oldValues.id) {
+      payload = new EarningClass({ ...oldValues, ...auxPayload }).state;
+    } else {
+      payload = new EarningClass({
+        ...auxPayload,
+        id: earningId,
+        uid: authState.uid,
+      }).state;
+    }
+
+    EarningService.insertEarning(payload)
+      .then((response) => {
+        if (response && response.id) {
+          handleCancel();
+          getAllEarnings();
+          message.success(
+            oldValues
+              ? generalDictionary.ENDPOINT_UPDATE_OK
+              : generalDictionary.ENDPOINT_INSERT_OK
+          );
+        } else {
+          message.warning(generalDictionary.ENDPOINT_WARNING);
+        }
+        setLoadingModal(false);
+      })
+      .catch((error) => {
+        setLoadingModal(false);
+        console.log("error:", error);
+        message.error(generalDictionary.ENDPOINT_ERROR);
+      });
+  };
+
+  const createPayload = (values) => {
+    const periodicity = values.periodicity;
+    const valuePerDay = parseFloat(
+      values.value / PeriodicityValue[periodicity]
+    );
+    return {
+      name: values.name,
+      periodicity: periodicity,
+      periodicityValue: PeriodicityValue[periodicity],
+      value: values.value,
+      dayValue: valuePerDay.toFixed(0),
+      monthValue: (valuePerDay * PeriodicityValue.monthValue).toFixed(0),
+      yearValue: (valuePerDay * PeriodicityValue.yearValue).toFixed(0),
+    };
+  };
+
+  const columns = [
+    {
+      title: generalDictionary.EARNING_NAME,
+      dataIndex: "name",
+      key: "name",
+      elipsis: false,
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      showSorterTooltip: false,
+    },
+    {
+      title: generalDictionary.PERIODICITY,
+      dataIndex: "periodicity",
+      key: "periodicity",
+      elipsis: false,
+      render: (periodicity) => {
+        let periodicityValue;
+        switch (periodicity) {
+          case "dayValue":
+            periodicityValue = generalDictionary.DAILY;
+            break;
+          case "monthValue":
+            periodicityValue = generalDictionary.MONTHLY;
+            break;
+          case "yearValue":
+            periodicityValue = generalDictionary.ANNUAL;
+            break;
+          default:
+            periodicityValue = periodicity;
+            break;
+        }
+        return <span>{periodicityValue}</span>;
+      },
+      onFilter: (value, record) => record.periodicity.indexOf(value) === 0,
+      filters: [
+        {
+          text: generalDictionary.DAILY,
+          value: "dayValue",
+        },
+        {
+          text: generalDictionary.MONTHLY,
+          value: "monthValue",
+        },
+        {
+          text: generalDictionary.ANNUAL,
+          value: "yearValue",
+        },
+      ],
+    },
+    {
+      title: generalDictionary.EARNING_VALUE,
+      dataIndex: "value",
+      key: "value",
+      elipsis: false,
+      render: (value) => <span>{" $ " + numThousand(value)}</span>,
+      sorter: (a, b) => a.value - b.value,
+      showSorterTooltip: false,
+    },
+    {
+      title: generalDictionary.MONTH_VALUE,
+      dataIndex: "monthValue",
+      key: "monthValue",
+      elipsis: false,
+      render: (monthValue) => <span>{" $ " + numThousand(monthValue)}</span>,
+      sorter: (a, b) => a.monthValue - b.monthValue,
+      showSorterTooltip: false,
+    },
+    {
+      title: generalDictionary.DAY_VALUE,
+      dataIndex: "dayValue",
+      key: "dayValue",
+      elipsis: false,
+      render: (dayValue) => <span>{" $ " + numThousand(dayValue)}</span>,
+      sorter: (a, b) => a.dayValue - b.dayValue,
+      showSorterTooltip: false,
+    },
+    {
+      title: generalDictionary.YEAR_VALUE,
+      dataIndex: "yearValue",
+      key: "yearValue",
+      elipsis: false,
+      render: (yearValue) => <span>{" $ " + numThousand(yearValue)}</span>,
+      sorter: (a, b) => a.yearValue - b.yearValue,
+      showSorterTooltip: false,
+    },
+    {
+      title: generalDictionary.ACTIONS,
+      key: "action",
+      width: "10%",
+      elipsis: false,
+      render: (earning) => {
+        const { ModalAlertMessageFunction } = ModalAlertMessage({
+          okParams: earning.id,
+          okHandle: deleteEarningHandle,
+        });
+        return (
+          <Space size="small">
+            <Tooltip title={generalDictionary.SEE_DETAIL}>
+              <Tag color={"blue"}>
+                <InfoCircleTwoTone
+                  onClick={() => {
+                    setEarningToEdit({ ...new EarningClass(earning).state });
+                    setModalVisible({ state: true, visualize: true });
+                  }}
+                />
+              </Tag>
+            </Tooltip>
+            <Tooltip title={generalDictionary.EDIT_EARNING}>
+              <Tag color={"green"}>
+                <EditOutlined
+                  onClick={() => {
+                    setEarningToEdit({ ...new EarningClass(earning).state });
+                    setModalVisible({ state: true, visualize: false });
+                  }}
+                />
+              </Tag>
+            </Tooltip>
+            <Tooltip title={generalDictionary.DELETE_EARNING}>
+              <Tag color={"red"}>
+                <DeleteOutlined onClick={ModalAlertMessageFunction} />
+              </Tag>
+            </Tooltip>
+          </Space>
+        );
+      },
+    },
+  ];
+  return {
+    generalDictionary,
+    loading,
+    earningsList,
+    columns,
+    graphicsData,
+    filter: { search, searchFilter },
+    modal: {
+      modalVisible,
+      earningToEdit,
+      loadingModal,
+      handleCancel,
+      handleCreate,
+      handleOpenModal,
+    },
+  };
 };
 
 export default useEarnings;
