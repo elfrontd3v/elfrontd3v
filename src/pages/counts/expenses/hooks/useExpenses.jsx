@@ -289,6 +289,7 @@ const useExpenses = () => {
       ellipsis: true,
       render: (expense) => {
         const { ModalAlertMessageFunction } = ModalAlertMessage({
+          okText: generalDictionary.DELETE,
           title: generalDictionary.DELETE,
           description: generalDictionary.SURE_DELETE_EXPENSE,
           okParams: expense.id,

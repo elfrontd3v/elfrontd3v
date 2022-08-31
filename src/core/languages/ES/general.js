@@ -25,6 +25,7 @@ export const generalDictionary = {
   COUNTS: "Cuentas",
   EARNINGS: "Ingresos",
   EXPENSES: "Gastos",
+  LOANS: "Prestamos",
   PROFILE: "Perfil",
   LOG_OUT: "Cerrar sesión",
 
@@ -55,6 +56,14 @@ export const generalDictionary = {
   MAX_EXPENSE: "Gasto más alto",
   MIN_EXPENSE: "Gasto más bajo",
   SURE_DELETE_EXPENSE: "Esta seguro que quiere eliminar este gasto",
+
+  //LOANS
+  LOAN: "Préstamo",
+  LOAN_LIST: "Lista de prestamos",
+  NUMBER_OF_LOANS: "Numero de prestamos",
+  ACTUAL_BENEFIT: "Beneficio real",
+  PENDING_DEBT: "Deuda pendiente",
+  NEXT_PAYMENT_VALUE: "Valor proximo pago",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",
