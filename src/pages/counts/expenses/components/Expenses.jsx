@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Card, Input, Space, Table } from "antd";
+import { Button, Card, Input, Space } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import HeaderSection from "../../../../components/headerSection/HeaderSection";
 import useExpenses from "../hooks/useExpenses";
 import ExpensesCards from "./ExpensesCards";
 import CreateExpense from "./CreateExpense";
 import "./expenses.scss";
+import DataTable from "../../../../components/dataTable/DataTable";
 
 const Expenses = () => {
   const {
@@ -52,24 +53,12 @@ const Expenses = () => {
           }
         />
 
-        <Table
-          className="expensesTable"
+        <DataTable
           id="expenses-table"
           loading={loading}
           dataSource={expensesList}
           columns={columns}
-          title={() => generalDictionary.EXPENSES_LIST}
-          rowKey={(earnings) => earnings.id}
-          bordered
-          pagination={{
-            defaultPageSize: 5,
-            total: expensesList.length,
-            showSizeChanger: true,
-            pageSizeOptions: [5, 10, 15, 50],
-          }}
-          scroll={{
-            x: true,
-          }}
+          title={generalDictionary.EXPENSES_LIST}
         />
       </Card>
 
