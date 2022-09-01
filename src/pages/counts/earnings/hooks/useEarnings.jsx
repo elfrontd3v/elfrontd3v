@@ -9,7 +9,7 @@ import {
 import { AuthContext, ThemeContext } from "core/context";
 import { v4 as uuid } from "uuid";
 import EarningClass from "core/class/EarningClass";
-import EarningService from "api/EarningsService";
+import EarningService from "api/counts/EarningsService";
 import { PeriodicityValue } from "helpers/utils/constants/constants";
 import { numThousand } from "helpers/utils/validateFormat";
 import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
