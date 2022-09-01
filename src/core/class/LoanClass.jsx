@@ -8,6 +8,7 @@ class LoanClass extends React.Component {
       uid: loan?.uid ? loan.uid : "",
       name: loan?.name ? loan.name : "",
       initialValue: loan?.initialValue ? loan.initialValue : 0,
+      interestsPercent: loan?.interestsPercent ? loan.interestsPercent : 0,
       interests: loan?.interests ? loan.interests : 0,
       value: loan?.value ? loan.value : 0,
       initialDate: loan?.initialDate ? loan.initialDate : new Date(),

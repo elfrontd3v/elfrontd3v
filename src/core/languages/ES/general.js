@@ -64,6 +64,7 @@ export const generalDictionary = {
   ACTUAL_BENEFIT: "Beneficio real",
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
+  SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",

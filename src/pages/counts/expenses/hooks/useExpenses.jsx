@@ -307,7 +307,7 @@ const useExpenses = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.EDIT_EXPENSE}>
+            <Tooltip title={generalDictionary.EDIT}>
               <Tag color={"green"}>
                 <EditOutlined
                   onClick={() => {
@@ -317,7 +317,7 @@ const useExpenses = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.DELETE_EXPENSE}>
+            <Tooltip title={generalDictionary.DELETE}>
               <Tag color={"red"}>
                 <DeleteOutlined onClick={ModalAlertMessageFunction} />
               </Tag>
