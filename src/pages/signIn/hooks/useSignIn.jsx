@@ -46,7 +46,7 @@ const useSignIn = () => {
       .catch((error) => {
         validateErrorMessage(error.message);
         setIsLoading(false);
-        console.log("error", error);
+        console.error("error", error);
       });
   };
 
@@ -59,7 +59,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -72,7 +72,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -85,7 +85,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -98,7 +98,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };

@@ -7,7 +7,6 @@ import LoansCards from "./LoansCards";
 
 const Loans = () => {
   const { generalDictionary, loan } = useLoans();
-  console.log("new loan", loan);
   return (
     <>
       <HeaderSection

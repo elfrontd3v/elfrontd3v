@@ -9,7 +9,6 @@ const LogOut = () => {
 
   useEffect(() => {
     if (authState?.uid) {
-      console.log("cerrando sesión");
       signOutFirebase().then(() => {
         sessionStorage.removeItem("storage");
         authDispatch({ type: "LOG_OUT" });

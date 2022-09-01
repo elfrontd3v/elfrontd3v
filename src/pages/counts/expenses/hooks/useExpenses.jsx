@@ -61,7 +61,7 @@ const useExpenses = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         setLoading(false);
       });
   };
@@ -149,7 +149,7 @@ const useExpenses = () => {
       })
       .catch((error) => {
         setLoadingModal(false);
-        console.log("error:", error);
+        console.error("error:", error);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
@@ -182,7 +182,7 @@ const useExpenses = () => {
       })
       .catch((error) => {
         message.error(generalDictionary.ENDPOINT_ERROR);
-        console.log(error);
+        console.error(error);
       });
   };
 

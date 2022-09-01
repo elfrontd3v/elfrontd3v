@@ -28,7 +28,7 @@ const useApp = () => {
         })
         .catch((error) => {
           setAuthLoading(false);
-          console.log("error", error);
+          console.error("error", error);
         });
     } else {
       setAuthLoading(false);

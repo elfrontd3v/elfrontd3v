@@ -60,7 +60,7 @@ const useEarnings = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         setLoading(false);
       });
   };
@@ -128,7 +128,7 @@ const useEarnings = () => {
       })
       .catch((error) => {
         message.error(generalDictionary.ENDPOINT_ERROR);
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -163,7 +163,7 @@ const useEarnings = () => {
       })
       .catch((error) => {
         setLoadingModal(false);
-        console.log("error:", error);
+        console.error("error:", error);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
