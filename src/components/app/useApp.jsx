@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
-import AuthService from "../../api/AuthService";
-import { AuthContext, ThemeContext } from "../../core/context";
-import { routes } from "../../routes";
+import AuthService from "api/AuthService";
+import { AuthContext, ThemeContext } from "core/context";
+import { routes } from "routes";
 
 const useApp = () => {
   const [authState, authDispatch] = useContext(AuthContext);
@@ -28,7 +28,7 @@ const useApp = () => {
         })
         .catch((error) => {
           setAuthLoading(false);
-          console.log("error", error);
+          console.error("error", error);
         });
     } else {
       setAuthLoading(false);

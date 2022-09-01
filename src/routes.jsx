@@ -15,20 +15,20 @@ export const PublicRoute = ({ children }) => {
   return sessionInfo ? <Navigate to={"/home"} /> : children;
 };
 
-const SignIn = lazy(() => import("./pages/signIn/components/SignIn"));
-const Home = lazy(() => import("./pages/home/home/components/Home"));
+const SignIn = lazy(() => import("pages/signIn/components/SignIn"));
+const Home = lazy(() => import("pages/home/home/components/Home"));
 const Dashboard = lazy(() =>
-  import("./pages/home/dashboard/components/Dashboard")
+  import("pages/home/dashboard/components/Dashboard")
 );
 const Earnings = lazy(() =>
-  import("./pages/counts/earnings/components/Earnings")
+  import("pages/counts/earnings/components/Earnings")
 );
 const Expenses = lazy(() =>
-  import("./pages/counts/expenses/components/Expenses")
+  import("pages/counts/expenses/components/Expenses")
 );
-const Loans = lazy(() => import("./pages/counts/loans/components/Loans"));
+const Loans = lazy(() => import("pages/counts/loans/components/Loans"));
 
-const LogOut = lazy(() => import("./pages/profile/logOut/components/LogOut"));
+const LogOut = lazy(() => import("pages/profile/logOut/components/LogOut"));
 
 export const routes = ({ generalDictionary }) => [
   {

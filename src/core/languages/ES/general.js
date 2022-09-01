@@ -60,10 +60,11 @@ export const generalDictionary = {
   //LOANS
   LOAN: "Préstamo",
   LOAN_LIST: "Lista de prestamos",
-  NUMBER_OF_LOANS: "Numero de prestamos",
+  NUMBER_OF_LOANS: "Numero prestamos",
   ACTUAL_BENEFIT: "Beneficio real",
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
+  SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",

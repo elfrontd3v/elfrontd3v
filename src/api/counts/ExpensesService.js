@@ -9,7 +9,7 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-import { fireStore } from "./firebase/Config";
+import { fireStore } from "../firebase/Config";
 
 const ExpensesService = {
   getAllExpenses: async () => {

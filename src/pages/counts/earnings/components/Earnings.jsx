@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Card, Input, Space, Table } from "antd";
+import { Button, Card, Input, Space } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
-import HeaderSection from "../../../../components/headerSection/HeaderSection";
+import HeaderSection from "components/headerSection/HeaderSection";
 import useEarnings from "../hooks/useEarnings";
 import EarningsCards from "./EarningsCards";
 import CreateEarning from "./CreateEarning";
 import "./earnings.scss";
+import DataTable from "components/dataTable/DataTable";
 
 const Earnings = () => {
   const {
@@ -54,24 +55,12 @@ const Earnings = () => {
           }
         />
 
-        <Table
-          className="earningsTable"
+        <DataTable
           id="earnings-table"
           loading={loading}
           dataSource={earningsList}
           columns={columns}
-          title={() => generalDictionary.EARNINGS_LIST}
-          rowKey={(earnings) => earnings.id}
-          bordered
-          pagination={{
-            defaultPageSize: 5,
-            total: earningsList.length,
-            showSizeChanger: true,
-            pageSizeOptions: [5, 10, 15, 50],
-          }}
-          scroll={{
-            x: true,
-          }}
+          title={generalDictionary.EARNINGS_LIST}
         />
       </Card>
 

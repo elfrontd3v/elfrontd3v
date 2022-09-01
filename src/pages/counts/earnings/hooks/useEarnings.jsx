@@ -6,13 +6,13 @@ import {
   InfoCircleTwoTone,
 } from "@ant-design/icons";
 
-import { AuthContext, ThemeContext } from "../../../../core/context";
+import { AuthContext, ThemeContext } from "core/context";
 import { v4 as uuid } from "uuid";
-import EarningClass from "../../../../core/class/EarningClass";
-import EarningService from "../../../../api/EarningsService";
-import { PeriodicityValue } from "../../../../helpers/utils/constants/constants";
-import { numThousand } from "../../../../helpers/utils/validateFormat";
-import ModalAlertMessage from "../../../../components/modalAlertMessage/ModalAlertMessage";
+import EarningClass from "core/class/EarningClass";
+import EarningService from "api/counts/EarningsService";
+import { PeriodicityValue } from "helpers/utils/constants/constants";
+import { numThousand } from "helpers/utils/validateFormat";
+import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
 const useEarnings = () => {
   const [authState] = useContext(AuthContext);
   const [themeState] = useContext(ThemeContext);
@@ -60,7 +60,7 @@ const useEarnings = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         setLoading(false);
       });
   };
@@ -128,7 +128,7 @@ const useEarnings = () => {
       })
       .catch((error) => {
         message.error(generalDictionary.ENDPOINT_ERROR);
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -163,7 +163,7 @@ const useEarnings = () => {
       })
       .catch((error) => {
         setLoadingModal(false);
-        console.log("error:", error);
+        console.error("error:", error);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };

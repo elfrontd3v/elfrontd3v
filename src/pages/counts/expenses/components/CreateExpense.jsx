@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../../../../core/context";
-import {
-  numThousand,
-  parserNumber,
-} from "../../../../helpers/utils/validateFormat";
+import { ThemeContext } from "core/context";
+import { numThousand, parserNumber } from "helpers/utils/validateFormat";
 import {
   Button,
   Col,

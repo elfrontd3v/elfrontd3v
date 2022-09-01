@@ -8,12 +8,12 @@ import {
 import { message, Space, Tag, Tooltip } from "antd";
 
 import { v4 as uuid } from "uuid";
-import ExpenseClass from "../../../../core/class/ExpenseClass";
-import { AuthContext, ThemeContext } from "../../../../core/context";
-import ExpensesService from "../../../../api/ExpensesService";
-import { PeriodicityValue } from "../../../../helpers/utils/constants/constants";
-import { numThousand } from "../../../../helpers/utils/validateFormat";
-import ModalAlertMessage from "../../../../components/modalAlertMessage/ModalAlertMessage";
+import ExpenseClass from "core/class/ExpenseClass";
+import { AuthContext, ThemeContext } from "core/context";
+import ExpensesService from "api/counts/ExpensesService";
+import { PeriodicityValue } from "helpers/utils/constants/constants";
+import { numThousand } from "helpers/utils/validateFormat";
+import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
 
 const useExpenses = () => {
   const [authState] = useContext(AuthContext);
@@ -61,7 +61,7 @@ const useExpenses = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         setLoading(false);
       });
   };
@@ -149,7 +149,7 @@ const useExpenses = () => {
       })
       .catch((error) => {
         setLoadingModal(false);
-        console.log("error:", error);
+        console.error("error:", error);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
@@ -182,7 +182,7 @@ const useExpenses = () => {
       })
       .catch((error) => {
         message.error(generalDictionary.ENDPOINT_ERROR);
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -307,7 +307,7 @@ const useExpenses = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.EDIT_EXPENSE}>
+            <Tooltip title={generalDictionary.EDIT}>
               <Tag color={"green"}>
                 <EditOutlined
                   onClick={() => {
@@ -317,7 +317,7 @@ const useExpenses = () => {
                 />
               </Tag>
             </Tooltip>
-            <Tooltip title={generalDictionary.DELETE_EXPENSE}>
+            <Tooltip title={generalDictionary.DELETE}>
               <Tag color={"red"}>
                 <DeleteOutlined onClick={ModalAlertMessageFunction} />
               </Tag>

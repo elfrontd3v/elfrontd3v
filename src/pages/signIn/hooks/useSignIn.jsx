@@ -5,12 +5,12 @@ import {
   gitHubSignInFirebase,
   googleSignInFirebase,
   signInFirebase,
-} from "../../../api/firebase/Auth";
+} from "api/firebase/Auth";
 
 import { message } from "antd";
-import { AuthContext, ThemeContext } from "../../../core/context";
-import UserClass from "../../../core/class/UserClass";
-import AuthService from "../../../api/AuthService";
+import { AuthContext, ThemeContext } from "core/context";
+import UserClass from "core/class/UserClass";
+import AuthService from "api/AuthService";
 
 const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +46,7 @@ const useSignIn = () => {
       .catch((error) => {
         validateErrorMessage(error.message);
         setIsLoading(false);
-        console.log("error", error);
+        console.error("error", error);
       });
   };
 
@@ -59,7 +59,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -72,7 +72,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -85,7 +85,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
@@ -98,7 +98,7 @@ const useSignIn = () => {
       })
       .catch((error) => {
         validateErrorMessage(error.message);
-        console.log(error.message);
+        console.error(error.message);
         setIsLoading(false);
       });
   };
