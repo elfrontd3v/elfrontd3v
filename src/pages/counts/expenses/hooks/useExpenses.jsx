@@ -8,12 +8,12 @@ import {
 import { message, Space, Tag, Tooltip } from "antd";
 
 import { v4 as uuid } from "uuid";
-import ExpenseClass from "../../../../core/class/ExpenseClass";
-import { AuthContext, ThemeContext } from "../../../../core/context";
-import ExpensesService from "../../../../api/ExpensesService";
-import { PeriodicityValue } from "../../../../helpers/utils/constants/constants";
-import { numThousand } from "../../../../helpers/utils/validateFormat";
-import ModalAlertMessage from "../../../../components/modalAlertMessage/ModalAlertMessage";
+import ExpenseClass from "core/class/ExpenseClass";
+import { AuthContext, ThemeContext } from "core/context";
+import ExpensesService from "api/ExpensesService";
+import { PeriodicityValue } from "helpers/utils/constants/constants";
+import { numThousand } from "helpers/utils/validateFormat";
+import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
 
 const useExpenses = () => {
   const [authState] = useContext(AuthContext);

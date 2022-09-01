@@ -1,6 +1,6 @@
 import { Card } from "antd";
 import React from "react";
-import HeaderSection from "../../../../components/headerSection/HeaderSection";
+import HeaderSection from "components/headerSection/HeaderSection";
 import useLoans from "../hooks/useLoans";
 import LoansCards from "./LoansCards";
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import LoanClass from "../../../../core/class/LoanClass";
-import { ThemeContext } from "../../../../core/context";
+import LoanClass from "core/class/LoanClass";
+import { ThemeContext } from "core/context";
 
 const useLoans = () => {
   const [themeState] = useContext(ThemeContext);

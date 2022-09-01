@@ -6,8 +6,8 @@ import {
   PieChartOutlined,
   LineChartOutlined,
 } from "@ant-design/icons";
-import GraphicsCard from "../../../../components/graphicsCard/GraphicsCard";
-import { numThousand } from "../../../../helpers/utils/validateFormat";
+import GraphicsCard from "components/graphicsCard/GraphicsCard";
+import { numThousand } from "helpers/utils/validateFormat";
 
 const LoansCards = ({ graphicsData, generalDictionary }) => {
   return (
