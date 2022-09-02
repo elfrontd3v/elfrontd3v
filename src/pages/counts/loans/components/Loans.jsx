@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Input, Space } from "antd";
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Card } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import HeaderSection from "components/headerSection/HeaderSection";
 import useLoans from "../hooks/useLoans";
 import LoansCards from "./LoansCards";
@@ -8,8 +8,7 @@ import DataTable from "components/dataTable/DataTable";
 import "./loans.scss";
 
 const Loans = () => {
-  const { generalDictionary, loading, loansList, columns, filter, modal } =
-    useLoans();
+  const { generalDictionary, loading, loansList, columns, modal } = useLoans();
   return (
     <>
       <HeaderSection
@@ -25,27 +24,17 @@ const Loans = () => {
           </Button>,
         ]}
       />
+
+      <LoansCards generalDictionary={generalDictionary} />
+
       <Card>
-        <LoansCards generalDictionary={generalDictionary} />
-        <Input
-          type={"text"}
-          className="loansSearch"
-          placeholder={generalDictionary.SEARCH}
-          value={filter.search.searchValue}
-          onChange={(event) => filter.searchFilter(event.target.value)}
-          addonBefore={
-            <Space>
-              <SearchOutlined />
-              {generalDictionary.SEARCH}
-            </Space>
-          }
-        />
         <DataTable
           id="expenses-table"
           loading={loading}
           dataSource={loansList}
           columns={columns}
-          title={generalDictionary.EXPENSES_LIST}
+          title={generalDictionary.LOANS_LIST}
+          color={"alternative"}
         />
       </Card>
     </>

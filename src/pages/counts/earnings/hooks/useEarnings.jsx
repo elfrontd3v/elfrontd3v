@@ -19,10 +19,6 @@ const useEarnings = () => {
   const { generalDictionary } = themeState;
   const [earningsList, setEarningsList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState({
-    searchValue: "",
-    auxEarningList: [],
-  });
   const [graphicsData, setGraphicsData] = useState({
     totalEarnings: 0,
     totalEarningsValue: 0,
@@ -56,7 +52,7 @@ const useEarnings = () => {
         });
         getGraphicsData(responseData);
         setEarningsList(responseData);
-        setSearch({ ...search, auxEarningList: responseData });
+
         setLoading(false);
       })
       .catch((error) => {
@@ -87,25 +83,7 @@ const useEarnings = () => {
     });
   };
 
-  const searchFilter = (searchValue) => {
-    let resultSearch = [];
-    setSearch({ ...search, searchValue: searchValue });
-    search.auxEarningList.forEach((earning) => {
-      if (
-        earning.name
-          .toString()
-          .toLowerCase()
-          .includes(searchValue.toLowerCase())
-      ) {
-        resultSearch.push(earning);
-      }
-    });
-    setEarningsList(resultSearch);
-  };
-
   const handleOpenModal = () => {
-    setSearch({ ...search, searchValue: "" });
-    setEarningsList(search.auxEarningList);
     setModalVisible({ state: true, visualize: false });
     setEarningToEdit({ ...new EarningClass(null).state });
   };
@@ -324,7 +302,6 @@ const useEarnings = () => {
     earningsList,
     columns,
     graphicsData,
-    filter: { search, searchFilter },
     modal: {
       modalVisible,
       earningToEdit,

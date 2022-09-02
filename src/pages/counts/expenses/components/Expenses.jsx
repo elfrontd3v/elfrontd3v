@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Input, Space } from "antd";
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Card } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import DataTable from "components/dataTable/DataTable";
 import HeaderSection from "components/headerSection/HeaderSection";
 import useExpenses from "../hooks/useExpenses";
@@ -15,7 +15,7 @@ const Expenses = () => {
     expensesList,
     columns,
     graphicsData,
-    filter,
+
     modal,
   } = useExpenses();
   return (
@@ -33,32 +33,19 @@ const Expenses = () => {
           </Button>,
         ]}
       />
+
+      <ExpensesCards
+        generalDictionary={generalDictionary}
+        graphicsData={graphicsData}
+      />
       <Card>
-        <ExpensesCards
-          generalDictionary={generalDictionary}
-          graphicsData={graphicsData}
-        />
-
-        <Input
-          type={"text"}
-          className="expensesSearch"
-          placeholder={generalDictionary.SEARCH}
-          value={filter.search.searchValue}
-          onChange={(event) => filter.searchFilter(event.target.value)}
-          addonBefore={
-            <Space>
-              <SearchOutlined />
-              {generalDictionary.SEARCH}
-            </Space>
-          }
-        />
-
         <DataTable
           id="expenses-table"
           loading={loading}
           dataSource={expensesList}
           columns={columns}
           title={generalDictionary.EXPENSES_LIST}
+          color={"error"}
         />
       </Card>
 
