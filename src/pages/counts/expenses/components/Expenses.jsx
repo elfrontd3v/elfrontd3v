@@ -15,7 +15,6 @@ const Expenses = () => {
     expensesList,
     columns,
     graphicsData,
-
     modal,
   } = useExpenses();
   return (
