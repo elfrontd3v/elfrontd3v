@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Input, Space } from "antd";
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Card } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import HeaderSection from "components/headerSection/HeaderSection";
 import useEarnings from "../hooks/useEarnings";
 import EarningsCards from "./EarningsCards";
@@ -15,7 +15,6 @@ const Earnings = () => {
     earningsList,
     columns,
     graphicsData,
-    filter,
     modal,
   } = useEarnings();
 
@@ -35,32 +34,19 @@ const Earnings = () => {
         ]}
       />
 
-      <Card>
-        <EarningsCards
-          generalDictionary={generalDictionary}
-          graphicsData={graphicsData}
-        />
+      <EarningsCards
+        generalDictionary={generalDictionary}
+        graphicsData={graphicsData}
+      />
 
-        <Input
-          type={"text"}
-          className="earningsSearch"
-          placeholder={generalDictionary.SEARCH}
-          value={filter.search.searchValue}
-          onChange={(event) => filter.searchFilter(event.target.value)}
-          addonBefore={
-            <Space>
-              <SearchOutlined />
-              {generalDictionary.SEARCH}
-            </Space>
-          }
-        />
-
+      <Card style={{ marginTop: "15px" }}>
         <DataTable
           id="earnings-table"
           loading={loading}
           dataSource={earningsList}
           columns={columns}
           title={generalDictionary.EARNINGS_LIST}
+          color={"success"}
         />
       </Card>
 

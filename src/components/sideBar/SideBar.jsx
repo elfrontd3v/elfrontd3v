@@ -7,7 +7,12 @@ const { Sider } = Layout;
 const SideBar = ({ items }) => {
   const location = useLocation();
   return (
-    <Sider theme="light" className="sideBarContainer" width={"100%"}>
+    <Sider
+      theme="light"
+      className="sideBarContainer"
+      width={"100%"}
+      style={{ position: "fixed" }}
+    >
       <Menu
         mode="inline"
         defaultOpenKeys={["home", "counts", "profile"]}

@@ -15,13 +15,8 @@ const useLoans = () => {
   const [authState] = useContext(AuthContext);
   const [themeState] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
-
   const [loansList, setLoansList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState({
-    searchValue: "",
-    auxLoansList: [],
-  });
 
   const [loadingModal, setLoadingModal] = useState(false);
   const [modalVisible, setModalVisible] = useState({
@@ -48,26 +43,12 @@ const useLoans = () => {
           responseData.push(doc.data());
         });
         setLoansList(responseData);
-        setSearch({ ...search, auxLoansList: responseData });
         setLoading(false);
       })
       .catch((error) => {
         console.error(error);
         setLoading(false);
       });
-  };
-
-  const searchFilter = (searchValue) => {
-    let resultSearch = [];
-    setSearch({ ...search, searchValue: searchValue });
-    search.auxLoansList.forEach((loan) => {
-      if (
-        loan.name.toString().toLowerCase().includes(searchValue.toLowerCase())
-      ) {
-        resultSearch.push(loan);
-      }
-    });
-    setLoansList(resultSearch);
   };
 
   const handleCancel = () => {
@@ -77,8 +58,6 @@ const useLoans = () => {
   };
 
   const handleOpenModal = () => {
-    setSearch({ ...search, searchValue: "" });
-    setLoansList(search.auxLoansList);
     setModalVisible({ state: true, visualize: false });
     setLoanToEdit({ ...new LoanClass(null).state });
   };
@@ -204,7 +183,6 @@ const useLoans = () => {
     loading,
     loansList,
     columns,
-    filter: { search, searchFilter },
     modal: {
       modalVisible,
       loanToEdit,

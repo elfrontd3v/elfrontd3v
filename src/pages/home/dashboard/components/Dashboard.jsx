@@ -1,7 +1,12 @@
+import HeaderSection from "components/headerSection/HeaderSection";
 import React from "react";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <HeaderSection title={"Dashboard"} />
+    </>
+  );
 };
 
 export default Dashboard;
