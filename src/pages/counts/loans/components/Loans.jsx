@@ -6,6 +6,7 @@ import useLoans from "../hooks/useLoans";
 import LoansCards from "./LoansCards";
 import DataTable from "components/dataTable/DataTable";
 import "./loans.scss";
+import CreateLoan from "./CreateLoan";
 
 const Loans = () => {
   const { generalDictionary, loading, loansList, columns, modal } = useLoans();
@@ -37,6 +38,14 @@ const Loans = () => {
           color={"alternative"}
         />
       </Card>
+
+      <CreateLoan
+        isVisible={modal.modalVisible}
+        expenseToEdit={modal.loanToEdit}
+        handleCancel={modal.handleCancel}
+        handleCreate={modal.handleCreate}
+        loadingModal={modal.loadingModal}
+      />
     </>
   );
 };

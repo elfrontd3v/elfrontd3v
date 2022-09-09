@@ -12,6 +12,9 @@ export const generalDictionary = {
   DELETE: "Eliminar",
   SAVING: "Guardando...",
   ADD: "Agregar",
+  INITIAL_DATE: "Fecha inicial",
+  FINAL_DATE: "Fecha final",
+  NEXT_PAYMENT_DATE: "Proxima fecha de pago",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
@@ -59,6 +62,7 @@ export const generalDictionary = {
 
   //LOANS
   LOAN: "Préstamo",
+  ADD_LOAN: "Agregar préstamo",
   LOANS_LIST: "Lista de prestamos",
   NUMBER_OF_LOANS: "Numero prestamos",
   ACTUAL_BENEFIT: "Beneficio real",
@@ -96,6 +100,7 @@ export const generalDictionary = {
   VALIDATE_NAME: "Introduce un nombre valido",
   VALIDATE_VALUE: "Introduce un valor valido",
   VALIDATE_PERIODICITY: "Selecciona un periodo valido",
+  VALIDATE_DATE: "Introduce una fecha valida",
 
   //ENDPOINTS_RESPONSES
   ENDPOINT_INSERT_OK: "Se agrego correctamente",

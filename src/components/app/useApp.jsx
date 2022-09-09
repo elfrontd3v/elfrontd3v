@@ -3,12 +3,14 @@ import { Route, useNavigate } from "react-router-dom";
 import AuthService from "api/AuthService";
 import { AuthContext, ThemeContext } from "core/context";
 import { routes } from "routes";
+import es_ES from "antd/es/locale/es_ES";
 
 const useApp = () => {
   const [authState, authDispatch] = useContext(AuthContext);
   const [themeState, themeDispatch] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
   const [authLoading, setAuthLoading] = useState(false);
+  const [configProvider] = useState({ locale: es_ES, direction: "ltr" });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,7 +92,7 @@ const useApp = () => {
   const items = generateList(routes({ generalDictionary }));
   const routesList = getRoutes(routes({ generalDictionary }));
 
-  return { authState, authLoading, items, routesList };
+  return { authState, authLoading, items, routesList, configProvider };
 };
 
 export default useApp;

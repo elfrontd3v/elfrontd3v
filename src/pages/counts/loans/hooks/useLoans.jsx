@@ -63,7 +63,8 @@ const useLoans = () => {
   };
 
   const handleCreate = (values, oldValues) => {
-    setLoadingModal(true);
+    setLoadingModal(false);
+
     const auxPayload = new LoanClass(values).state;
     let payload;
     if (oldValues && oldValues.id) {
@@ -75,7 +76,9 @@ const useLoans = () => {
         uid: authState.uid,
       }).state;
     }
-    console.log(payload);
+    console.log("values:", values);
+    console.log("oldValues:", oldValues);
+    console.log("payload", payload);
     //servicio de insertar
   };
 
