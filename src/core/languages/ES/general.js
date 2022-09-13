@@ -11,6 +11,7 @@ export const generalDictionary = {
   EDIT: "Editar",
   DELETE: "Eliminar",
   SAVING: "Guardando...",
+  LOADING: "Cargando...",
   ADD: "Agregar",
   INITIAL_DATE: "Fecha inicial",
   FINAL_DATE: "Fecha final",
@@ -30,6 +31,7 @@ export const generalDictionary = {
   EXPENSES: "Gastos",
   LOANS: "Prestamos",
   PROFILE: "Perfil",
+  TASKS: "Tareas",
   LOG_OUT: "Cerrar sesión",
 
   //EARNINGS
@@ -69,6 +71,15 @@ export const generalDictionary = {
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
   SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
+
+  //TASK
+  TASK: "Tarea",
+  TODO: "Por hacer",
+  DOING: "En curso",
+  DONE: "Finalizado",
+  ADD_LIST: "Agregar lista",
+  ADD_TITLE: "Agrega un titulo",
+  ADD_TASK: "Agrega una tarea",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",

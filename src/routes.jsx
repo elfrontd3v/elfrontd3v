@@ -29,6 +29,7 @@ const Expenses = lazy(() =>
 const Loans = lazy(() => import("pages/counts/loans/components/Loans"));
 
 const Profile = lazy(() => import("pages/profile/profile/components/Profile"));
+const Tasks = lazy(() => import("pages/profile/tasks/components/Tasks"));
 const LogOut = lazy(() => import("pages/profile/logOut/components/LogOut"));
 
 export const routes = ({ generalDictionary }) => [
@@ -135,6 +136,19 @@ export const routes = ({ generalDictionary }) => [
           </PrivateRoute>
         ),
         text: generalDictionary.PROFILE,
+        disabled: false,
+        isHidden: false,
+      },
+      {
+        path: "/profile/task",
+        name: "/profile/task",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <Tasks />
+          </PrivateRoute>
+        ),
+        text: generalDictionary.TASKS,
         disabled: false,
         isHidden: false,
       },
