@@ -11,7 +11,11 @@ export const generalDictionary = {
   EDIT: "Editar",
   DELETE: "Eliminar",
   SAVING: "Guardando...",
+  LOADING: "Cargando...",
   ADD: "Agregar",
+  INITIAL_DATE: "Fecha inicial",
+  FINAL_DATE: "Fecha final",
+  NEXT_PAYMENT_DATE: "Proxima fecha de pago",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
@@ -27,6 +31,7 @@ export const generalDictionary = {
   EXPENSES: "Gastos",
   LOANS: "Prestamos",
   PROFILE: "Perfil",
+  TASKS: "Tareas",
   LOG_OUT: "Cerrar sesión",
 
   //EARNINGS
@@ -59,12 +64,22 @@ export const generalDictionary = {
 
   //LOANS
   LOAN: "Préstamo",
+  ADD_LOAN: "Agregar préstamo",
   LOANS_LIST: "Lista de prestamos",
   NUMBER_OF_LOANS: "Numero prestamos",
   ACTUAL_BENEFIT: "Beneficio real",
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
   SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
+
+  //TASK
+  TASK: "Tarea",
+  TODO: "Por hacer",
+  DOING: "En curso",
+  DONE: "Finalizado",
+  ADD_LIST: "Agregar lista",
+  ADD_TITLE: "Agrega un titulo",
+  ADD_TASK: "Agrega una tarea",
 
   SETTINGS: "Configuración",
   SHOP: "Tienda",
@@ -96,6 +111,7 @@ export const generalDictionary = {
   VALIDATE_NAME: "Introduce un nombre valido",
   VALIDATE_VALUE: "Introduce un valor valido",
   VALIDATE_PERIODICITY: "Selecciona un periodo valido",
+  VALIDATE_DATE: "Introduce una fecha valida",
 
   //ENDPOINTS_RESPONSES
   ENDPOINT_INSERT_OK: "Se agrego correctamente",

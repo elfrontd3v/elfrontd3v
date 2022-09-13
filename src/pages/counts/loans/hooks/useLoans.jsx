@@ -5,7 +5,7 @@ import {
   DeleteOutlined,
   InfoCircleTwoTone,
 } from "@ant-design/icons";
-import LoansServices from "api/counts/LoansServices";
+import LoansService from "api/counts/LoansService";
 import { v4 as uuid } from "uuid";
 import { AuthContext, ThemeContext } from "core/context";
 import LoanClass from "core/class/LoanClass";
@@ -36,7 +36,7 @@ const useLoans = () => {
 
   const getAllLoans = () => {
     setLoading(true);
-    LoansServices.getAllLoansByUid(authState.uid)
+    LoansService.getAllLoansByUid(authState.uid)
       .then((response) => {
         const responseData = [];
         response.forEach((doc) => {
@@ -63,7 +63,8 @@ const useLoans = () => {
   };
 
   const handleCreate = (values, oldValues) => {
-    setLoadingModal(true);
+    setLoadingModal(false);
+
     const auxPayload = new LoanClass(values).state;
     let payload;
     if (oldValues && oldValues.id) {
@@ -75,12 +76,14 @@ const useLoans = () => {
         uid: authState.uid,
       }).state;
     }
-    console.log(payload);
+    console.log("values:", values);
+    console.log("oldValues:", oldValues);
+    console.log("payload", payload);
     //servicio de insertar
   };
 
   const deleteLoanHandle = (id) => {
-    LoansServices.deleteLoan(id)
+    LoansService.deleteLoan(id)
       .then((response) => {
         if (response) {
           message.success(generalDictionary.ENDPOINT_DELETE);

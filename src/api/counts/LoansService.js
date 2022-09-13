@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import { fireStore } from "../firebase/Config";
 
-const LoansServices = {
+const LoansService = {
   getAllLoans: async () => {
     const response = await getDocs(collection(fireStore, "loans"));
     return response;
@@ -34,4 +34,4 @@ const LoansServices = {
   },
 };
 
-export default LoansServices;
+export default LoansService;
