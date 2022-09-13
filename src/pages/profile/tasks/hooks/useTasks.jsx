@@ -54,13 +54,11 @@ const useTasks = () => {
           getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
-          setLoading(false);
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        setLoading(false);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
@@ -71,19 +69,18 @@ const useTasks = () => {
       title: title,
       state: true,
     }).state;
+
     TasksService.insertTask(listId, payload)
       .then((response) => {
         if (response && response.id) {
           getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
-          setLoading(false);
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        setLoading(false);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
