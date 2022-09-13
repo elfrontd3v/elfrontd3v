@@ -10,6 +10,8 @@ const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
     if (inputValue !== "") {
       type === "CARD" ? addHandle(listId, inputValue) : addHandle(inputValue);
     }
+    setAddCollapse(false);
+    setInputValue("");
   };
 
   const cancelHandleButton = () => {

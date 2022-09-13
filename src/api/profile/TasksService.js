@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
   query,
   setDoc,
   updateDoc,
@@ -18,7 +19,11 @@ const TasksService = {
   },
   getAllTasksByUid: async (uid) => {
     const docRef = collection(fireStore, "tasks");
-    const consult = query(docRef, where("uid", "==", uid));
+    const consult = query(
+      docRef,
+      where("uid", "==", uid),
+      orderBy("date", "asc")
+    );
     const response = getDocs(consult);
     return response;
   },

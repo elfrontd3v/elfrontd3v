@@ -20,12 +20,12 @@ const useTasks = () => {
 
   useEffect(() => {
     if (authState?.uid) {
+      setLoading(true);
       getAllTasksByUid();
     }
   }, [authState]);
 
   const getAllTasksByUid = () => {
-    setLoading(true);
     TasksService.getAllTasksByUid(authState.uid)
       .then((response) => {
         const responseData = [];
@@ -42,13 +42,12 @@ const useTasks = () => {
   };
 
   const addTasksList = (title) => {
-    setLoading(true);
     const payload = new TasksListClass({
       id: newListId,
       uid: authState.uid,
       title: title,
+      date: Date.now(),
     }).state;
-
     TasksService.insertTasksList(payload)
       .then((response) => {
         if (response && response.id) {
@@ -67,7 +66,6 @@ const useTasks = () => {
   };
 
   const addTask = (listId, title) => {
-    setLoading(true);
     const payload = new TaskClass({
       id: newTaskId,
       title: title,
