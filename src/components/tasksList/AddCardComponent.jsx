@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-
+const { TextArea } = Input;
 const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
   const [addCollapse, setAddCollapse] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -21,9 +21,10 @@ const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
     <>
       {addCollapse ? (
         <div className="addTitleForm">
-          <Input
+          <TextArea
             className="inputTitle"
             size="large"
+            autoSize={true}
             value={inputValue}
             placeholder={
               type === "LIST"
