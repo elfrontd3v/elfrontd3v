@@ -4,7 +4,13 @@ import { MenuOutlined } from "@ant-design/icons";
 import AddCardComponent from "./AddCardComponent";
 import "./tasksList.scss";
 
-const TasksList = ({ title, tasksList, generalDictionary }) => {
+const TasksList = ({
+  title,
+  tasksList,
+  generalDictionary,
+  addTask,
+  listId,
+}) => {
   return (
     <>
       <Card
@@ -17,10 +23,17 @@ const TasksList = ({ title, tasksList, generalDictionary }) => {
       >
         {tasksList?.length > 0 &&
           tasksList?.map((task) => (
-            <Card className="singleTask">{task.title}</Card>
+            <Card className="singleTask" key={task.id}>
+              {task.title}
+            </Card>
           ))}
 
-        <AddCardComponent generalDictionary={generalDictionary} type={"CARD"} />
+        <AddCardComponent
+          generalDictionary={generalDictionary}
+          type={"CARD"}
+          addHandle={addTask}
+          listId={listId}
+        />
       </Card>
     </>
   );

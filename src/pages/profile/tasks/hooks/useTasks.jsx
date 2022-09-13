@@ -3,6 +3,10 @@ import { AuthContext, ThemeContext } from "core/context";
 import { useEffect } from "react";
 import TasksService from "api/profile/TasksService";
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
+import TasksListClass from "core/class/TaskListClass";
+import { message } from "antd";
+import TaskClass from "core/class/TaskClass";
 
 const useTasks = () => {
   const [authState] = useContext(AuthContext);
@@ -11,6 +15,8 @@ const useTasks = () => {
 
   const [tasksData, setTaskData] = useState([]);
   const [loading, setLoading] = useState(false);
+  let newListId = uuid();
+  let newTaskId = uuid();
 
   useEffect(() => {
     if (authState?.uid) {
@@ -26,7 +32,6 @@ const useTasks = () => {
         response.forEach(async (doc) => {
           responseData.push(doc.data());
         });
-        console.log("responseData", responseData);
         setTaskData(responseData);
         setLoading(false);
       })
@@ -36,7 +41,56 @@ const useTasks = () => {
       });
   };
 
-  return { tasksData, generalDictionary, loading };
+  const addTasksList = (title) => {
+    setLoading(true);
+    const payload = new TasksListClass({
+      id: newListId,
+      uid: authState.uid,
+      title: title,
+    }).state;
+
+    TasksService.insertTasksList(payload)
+      .then((response) => {
+        if (response && response.id) {
+          getAllTasksByUid();
+          message.success(generalDictionary.ENDPOINT_INSERT_OK);
+        } else {
+          setLoading(false);
+          message.warning(generalDictionary.ENDPOINT_WARNING);
+        }
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        setLoading(false);
+        message.error(generalDictionary.ENDPOINT_ERROR);
+      });
+  };
+
+  const addTask = (listId, title) => {
+    setLoading(true);
+    const payload = new TaskClass({
+      id: newTaskId,
+      title: title,
+      state: true,
+    }).state;
+    TasksService.insertTask(listId, payload)
+      .then((response) => {
+        if (response && response.id) {
+          getAllTasksByUid();
+          message.success(generalDictionary.ENDPOINT_INSERT_OK);
+        } else {
+          setLoading(false);
+          message.warning(generalDictionary.ENDPOINT_WARNING);
+        }
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        setLoading(false);
+        message.error(generalDictionary.ENDPOINT_ERROR);
+      });
+  };
+
+  return { tasksData, generalDictionary, loading, addTasksList, addTask };
 };
 
 export default useTasks;

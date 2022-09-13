@@ -1,10 +1,22 @@
-import { Button, Input } from "antd";
 import React, { useState } from "react";
+import { Button, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-const AddCardComponent = ({ generalDictionary, type }) => {
+const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
   const [addCollapse, setAddCollapse] = useState(false);
   const [inputValue, setInputValue] = useState("");
+
+  const addHandleButton = () => {
+    if (inputValue !== "") {
+      type === "CARD" ? addHandle(listId, inputValue) : addHandle(inputValue);
+    }
+  };
+
+  const cancelHandleButton = () => {
+    setAddCollapse(false);
+    setInputValue("");
+  };
+
   return (
     <>
       {addCollapse ? (
@@ -19,14 +31,16 @@ const AddCardComponent = ({ generalDictionary, type }) => {
                 : generalDictionary.ADD_TASK
             }
             onChange={(event) => setInputValue(event.target.value)}
-            onBlur={() => setAddCollapse(false)}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                addHandleButton();
+              }
+            }}
+            onBlur={cancelHandleButton}
             autoFocus={true}
           />
           <Button
-            onMouseDown={() => {
-              setAddCollapse(true);
-              console.log("agregando..");
-            }}
+            onMouseDown={addHandleButton}
             type={"primary"}
             className="addButtonConfirm"
           >
@@ -34,7 +48,7 @@ const AddCardComponent = ({ generalDictionary, type }) => {
           </Button>
           <Button
             className="addButtonCancel"
-            onMouseDown={() => setAddCollapse(false)}
+            onMouseDown={cancelHandleButton}
             type={"danger"}
           >
             {generalDictionary.CANCEL}
