@@ -16,8 +16,7 @@ const Tasks = () => {
         {tasksData?.map((list) => (
           <Col key={list.id} xs={24} sm={24} md={12} lg={8} xl={8} xxl={6}>
             <TasksList
-              title={list.title}
-              tasksList={list.tasksList}
+              list={list}
               generalDictionary={generalDictionary}
               addTask={addTask}
               listId={list.id}

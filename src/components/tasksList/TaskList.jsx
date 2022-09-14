@@ -1,23 +1,44 @@
 import React from "react";
-import { Button, Card, Menu } from "antd";
+import { Button, Card, Input, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import AddCardComponent from "./AddCardComponent";
-import "./tasksList.scss";
 import { useState } from "react";
+import SingleTask from "./SingleTask";
+import "./tasksList.scss";
 
-const TasksList = ({
-  title,
-  tasksList,
-  generalDictionary,
-  addTask,
-  listId,
-}) => {
+const { TextArea } = Input;
+
+const TasksList = ({ list, generalDictionary, addTask, listId }) => {
   const [menuVisible, setMenuVisible] = useState(true);
+  const [showInputEdit, setShowInputEdit] = useState(false);
+  const [titleListValue, setTitleListValue] = useState(list.title);
+
+  const addHandleButton = (e) => {
+    setShowInputEdit(false);
+  };
+
   return (
     <>
       <Card
         className="tasksListContainer"
-        title={title ? title : ""}
+        title={
+          showInputEdit ? (
+            <TextArea
+              autoSize
+              value={titleListValue}
+              autoFocus={true}
+              onBlur={() => setShowInputEdit(false)}
+              onChange={(event) => setTitleListValue(event.target.value)}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  addHandleButton();
+                }
+              }}
+            />
+          ) : (
+            <span onClick={() => setShowInputEdit(true)}>{titleListValue}</span>
+          )
+        }
         extra={
           <>
             <Button type="text" onClick={() => setMenuVisible(!menuVisible)}>
@@ -32,11 +53,9 @@ const TasksList = ({
           </>
         }
       >
-        {tasksList?.length > 0 &&
-          tasksList?.map((task) => (
-            <Card className="singleTask" key={task.id}>
-              {task.title}
-            </Card>
+        {list.tasksList?.length > 0 &&
+          list.tasksList?.map((task) => (
+            <SingleTask task={task} key={task.id} />
           ))}
 
         <AddCardComponent

@@ -42,3 +42,13 @@
     text-align: center;
   }
 }
+
+.taskContainer {
+  .ant-col {
+    min-height: 32px;
+  }
+  .spanText {
+    width: 100%;
+    vertical-align: sub;
+  }
+}
