@@ -13,13 +13,10 @@ const useTasks = () => {
   const { generalDictionary } = themeState;
 
   const [tasksData, setTaskData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (authState?.uid && tasksState?.list) {
-      setLoading(true);
       setTaskData(tasksState.list);
-      setLoading(false);
     }
   }, [authState, tasksState]);
 
@@ -64,7 +61,7 @@ const useTasks = () => {
       });
   };
 
-  return { tasksData, generalDictionary, loading, addTasksList, addTask };
+  return { tasksData, generalDictionary, addTasksList, addTask };
 };
 
 export default useTasks;
