@@ -68,7 +68,12 @@ const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
       >
         {list.tasksList?.length > 0 &&
           list.tasksList?.map((task) => (
-            <SingleTask task={task} key={task.id} />
+            <SingleTask
+              key={task.id}
+              task={task}
+              addTask={addTask}
+              listId={list.id}
+            />
           ))}
 
         <AddCardComponent

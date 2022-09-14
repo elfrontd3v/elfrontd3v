@@ -43,13 +43,17 @@ const useTasks = () => {
       });
   };
 
-  const addTask = (listId, title) => {
+  const addTask = (listId, newTask) => {
     const payload = new TaskClass({
-      id: uuid(),
-      title: title,
-      state: true,
+      id: newTask.id ? newTask.id : uuid(),
+      title: newTask.title ? newTask.title : "",
+      state: newTask.state ? newTask.state : true,
+      date: newTask.date ? newTask.date : Date.now(),
     }).state;
-    TasksService.insertTask(listId, payload)
+
+    const tasksArray = createTasksArray(listId, payload.id);
+    tasksArray.push(payload);
+    TasksService.insertTask(listId, tasksArray)
       .then((response) => {
         if (response && response.id) {
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
@@ -61,6 +65,16 @@ const useTasks = () => {
         console.error("error:", error);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
+  };
+
+  const createTasksArray = (listId, taskId) => {
+    let aux = [];
+    tasksState.list.forEach((list) => {
+      if (list.id === listId) {
+        aux = list.tasksList.filter((taskAux) => taskAux.id !== taskId);
+      }
+    });
+    return aux;
   };
 
   return { tasksData, generalDictionary, addTasksList, addTask };

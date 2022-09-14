@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Input, Row } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import TaskClass from "core/class/TaskClass";
 
 const { TextArea } = Input;
 
-const SingleTask = ({ task }) => {
+const SingleTask = ({ task, addTask, listId }) => {
   const [showDeleteTaskIcon, setShowDeleteTaskIcon] = useState(false);
   const [showInputEdit, setShowInputEdit] = useState(false);
   const [titleTaskValue, setTitleTaskValue] = useState(task.title);
 
   const addHandleButton = (e) => {
+    addTask(listId, new TaskClass({ ...task, title: titleTaskValue }).state);
     setShowInputEdit(false);
   };
   return (

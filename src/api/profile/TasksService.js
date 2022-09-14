@@ -1,4 +1,4 @@
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { fireStore } from "../firebase/Config";
 
 const TasksService = {
@@ -8,11 +8,11 @@ const TasksService = {
     const consult = await getDoc(docRef);
     return consult.data();
   },
-  insertTask: async (listId, task) => {
+  insertTask: async (listId, tasksArray) => {
     const docRef = doc(fireStore, `tasks/${listId}`);
-    await updateDoc(docRef, { tasksList: arrayUnion(task) });
-    const consult = await getDoc(docRef);
-    return consult.data();
+    await updateDoc(docRef, { tasksList: tasksArray });
+    const result = await getDoc(docRef);
+    return result.data();
   },
 };
 
