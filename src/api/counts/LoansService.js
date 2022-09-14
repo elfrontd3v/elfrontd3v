@@ -11,10 +11,6 @@ import {
 import { fireStore } from "../firebase/Config";
 
 const LoansService = {
-  getAllLoans: async () => {
-    const response = await getDocs(collection(fireStore, "loans"));
-    return response;
-  },
   getAllLoansByUid: async (uid) => {
     const docRef = collection(fireStore, "loans");
     const consult = query(docRef, where("uid", "==", uid));

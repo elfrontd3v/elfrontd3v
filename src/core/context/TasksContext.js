@@ -48,8 +48,6 @@ export const TasksProvider = ({ children }) => {
         tasksList.push(doc.data());
       });
 
-      console.log("tasksList", tasksList);
-
       tasksDispatch({
         type: "SET_LIST",
         payload: tasksList,
