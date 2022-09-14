@@ -20,13 +20,15 @@ const useTasks = () => {
     }
   }, [authState, tasksState]);
 
-  const addTasksList = (title) => {
+  const addTasksList = (newList) => {
     const payload = new TasksListClass({
-      id: uuid(),
-      uid: authState.uid,
-      title: title,
-      date: Date.now(),
+      id: newList.id ? newList.id : uuid(),
+      uid: newList.uid ? newList.uid : authState.uid,
+      title: newList.title,
+      date: newList.date ? newList.date : Date.now(),
+      tasksList: newList?.tasksList?.length > 0 ? newList.tasksList : [],
     }).state;
+
     TasksService.insertTasksList(payload)
       .then((response) => {
         if (response && response.id) {

@@ -5,15 +5,28 @@ import AddCardComponent from "./AddCardComponent";
 import { useState } from "react";
 import SingleTask from "./SingleTask";
 import "./tasksList.scss";
+import TasksListClass from "core/class/TaskListClass";
 
 const { TextArea } = Input;
 
-const TasksList = ({ list, generalDictionary, addTask, listId }) => {
+const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
   const [menuVisible, setMenuVisible] = useState(true);
   const [showInputEdit, setShowInputEdit] = useState(false);
   const [titleListValue, setTitleListValue] = useState(list.title);
 
-  const addHandleButton = (e) => {
+  const addHandleButton = () => {
+    if (titleListValue !== "") {
+      addTasksList(
+        new TasksListClass({ ...list, title: titleListValue }).state
+      );
+    } else {
+      setTitleListValue(list.title);
+    }
+    setShowInputEdit(false);
+  };
+
+  const cancelHandle = () => {
+    setTitleListValue(list.title);
     setShowInputEdit(false);
   };
 
@@ -27,7 +40,7 @@ const TasksList = ({ list, generalDictionary, addTask, listId }) => {
               autoSize
               value={titleListValue}
               autoFocus={true}
-              onBlur={() => setShowInputEdit(false)}
+              onBlur={() => cancelHandle()}
               onChange={(event) => setTitleListValue(event.target.value)}
               onKeyPress={(event) => {
                 if (event.key === "Enter") {
@@ -62,7 +75,7 @@ const TasksList = ({ list, generalDictionary, addTask, listId }) => {
           generalDictionary={generalDictionary}
           type={"CARD"}
           addHandle={addTask}
-          listId={listId}
+          listId={list.id}
         />
       </Card>
     </>

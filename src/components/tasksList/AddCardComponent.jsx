@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import TaskClass from "core/class/TaskClass";
+import TasksListClass from "core/class/TaskListClass";
 const { TextArea } = Input;
 const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
   const [addCollapse, setAddCollapse] = useState(false);
@@ -8,7 +10,9 @@ const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
 
   const addHandleButton = () => {
     if (inputValue !== "") {
-      type === "CARD" ? addHandle(listId, inputValue) : addHandle(inputValue);
+      type === "CARD"
+        ? addHandle(listId, new TaskClass({ title: inputValue }).state)
+        : addHandle(new TasksListClass({ title: inputValue }).state);
     }
     setAddCollapse(false);
     setInputValue("");

@@ -18,8 +18,8 @@ const Tasks = () => {
             <TasksList
               list={list}
               generalDictionary={generalDictionary}
+              addTasksList={addTasksList}
               addTask={addTask}
-              listId={list.id}
             />
           </Col>
         ))}
