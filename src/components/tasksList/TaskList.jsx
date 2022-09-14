@@ -27,14 +27,8 @@ const TasksList = ({
               mode="inline"
               hidden={menuVisible}
               className={"menuTasksList"}
-            >
-              <Menu.Item
-                onClick={() => setMenuVisible(true)}
-                onBlur={() => setMenuVisible(true)}
-              >
-                Eliminar
-              </Menu.Item>
-            </Menu>
+              items={[]}
+            />
           </>
         }
       >

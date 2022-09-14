@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { AuthContext, ThemeContext } from "core/context";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext, TasksContext, ThemeContext } from "core/context";
 import TasksService from "api/profile/TasksService";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
 import TasksListClass from "core/class/TaskListClass";
-import { message } from "antd";
 import TaskClass from "core/class/TaskClass";
+import { message } from "antd";
+import { v4 as uuid } from "uuid";
 
 const useTasks = () => {
   const [authState] = useContext(AuthContext);
+  const [tasksState] = useContext(TasksContext);
   const [themeState] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
 
@@ -17,27 +16,12 @@ const useTasks = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (authState?.uid) {
+    if (authState?.uid && tasksState?.list) {
       setLoading(true);
-      getAllTasksByUid();
+      setTaskData(tasksState.list);
+      setLoading(false);
     }
-  }, [authState]);
-
-  const getAllTasksByUid = () => {
-    TasksService.getAllTasksByUid(authState.uid)
-      .then((response) => {
-        const responseData = [];
-        response.forEach(async (doc) => {
-          responseData.push(doc.data());
-        });
-        setTaskData(responseData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  };
+  }, [authState, tasksState]);
 
   const addTasksList = (title) => {
     const payload = new TasksListClass({
@@ -49,7 +33,6 @@ const useTasks = () => {
     TasksService.insertTasksList(payload)
       .then((response) => {
         if (response && response.id) {
-          getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
           message.warning(generalDictionary.ENDPOINT_WARNING);
@@ -67,11 +50,9 @@ const useTasks = () => {
       title: title,
       state: true,
     }).state;
-
     TasksService.insertTask(listId, payload)
       .then((response) => {
         if (response && response.id) {
-          getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
           message.warning(generalDictionary.ENDPOINT_WARNING);

@@ -9,6 +9,7 @@ import "./tasks.scss";
 const Tasks = () => {
   const { tasksData, generalDictionary, loading, addTasksList, addTask } =
     useTasks();
+
   return (
     <>
       <HeaderSection title={generalDictionary.TASKS} />
