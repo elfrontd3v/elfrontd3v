@@ -15,8 +15,6 @@ const useTasks = () => {
 
   const [tasksData, setTaskData] = useState([]);
   const [loading, setLoading] = useState(false);
-  let newListId = uuid();
-  let newTaskId = uuid();
 
   useEffect(() => {
     if (authState?.uid) {
@@ -43,7 +41,7 @@ const useTasks = () => {
 
   const addTasksList = (title) => {
     const payload = new TasksListClass({
-      id: newListId,
+      id: uuid(),
       uid: authState.uid,
       title: title,
       date: Date.now(),
@@ -65,7 +63,7 @@ const useTasks = () => {
 
   const addTask = (listId, title) => {
     const payload = new TaskClass({
-      id: newTaskId,
+      id: uuid(),
       title: title,
       state: true,
     }).state;

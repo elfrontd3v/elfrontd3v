@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Card } from "antd";
+import { Button, Card, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import AddCardComponent from "./AddCardComponent";
 import "./tasksList.scss";
+import { useState } from "react";
 
 const TasksList = ({
   title,
@@ -11,14 +12,30 @@ const TasksList = ({
   addTask,
   listId,
 }) => {
+  const [menuVisible, setMenuVisible] = useState(true);
   return (
     <>
       <Card
+        className="tasksListContainer"
         title={title ? title : ""}
         extra={
-          <Button type="text">
-            <MenuOutlined />
-          </Button>
+          <>
+            <Button type="text" onClick={() => setMenuVisible(!menuVisible)}>
+              <MenuOutlined />
+            </Button>
+            <Menu
+              mode="inline"
+              hidden={menuVisible}
+              className={"menuTasksList"}
+            >
+              <Menu.Item
+                onClick={() => setMenuVisible(true)}
+                onBlur={() => setMenuVisible(true)}
+              >
+                Eliminar
+              </Menu.Item>
+            </Menu>
+          </>
         }
       >
         {tasksList?.length > 0 &&
