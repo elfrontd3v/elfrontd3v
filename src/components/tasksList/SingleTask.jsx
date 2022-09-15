@@ -5,14 +5,21 @@ import TaskClass from "core/class/TaskClass";
 
 const { TextArea } = Input;
 
-const SingleTask = ({ task, addTask, listId }) => {
+const SingleTask = ({ task, TaskMethods, listId }) => {
   const [showDeleteTaskIcon, setShowDeleteTaskIcon] = useState(false);
   const [showInputEdit, setShowInputEdit] = useState(false);
   const [titleTaskValue, setTitleTaskValue] = useState(task.title);
 
-  const addHandleButton = (e) => {
-    addTask(listId, new TaskClass({ ...task, title: titleTaskValue }).state);
+  const addHandleButton = () => {
+    TaskMethods.addTask(
+      listId,
+      new TaskClass({ ...task, title: titleTaskValue }).state
+    );
     setShowInputEdit(false);
+  };
+
+  const deleteHandle = () => {
+    TaskMethods.deleteTask(listId, task.id);
   };
   return (
     <>
@@ -44,7 +51,7 @@ const SingleTask = ({ task, addTask, listId }) => {
 
           <Col span={3}>
             {showDeleteTaskIcon && (
-              <Button type="text" size="small" onClick={() => {}}>
+              <Button type="text" size="small" onClick={deleteHandle}>
                 <DeleteOutlined />
               </Button>
             )}

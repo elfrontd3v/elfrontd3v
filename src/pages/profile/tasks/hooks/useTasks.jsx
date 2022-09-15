@@ -32,7 +32,42 @@ const useTasks = () => {
     TasksService.insertTasksList(payload)
       .then((response) => {
         if (response && response.id) {
-          message.success(generalDictionary.ENDPOINT_INSERT_OK);
+          message.success(
+            newList.id
+              ? generalDictionary.ENDPOINT_UPDATE_OK
+              : generalDictionary.ENDPOINT_INSERT_OK
+          );
+        } else {
+          message.warning(generalDictionary.ENDPOINT_WARNING);
+        }
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        message.error(generalDictionary.ENDPOINT_ERROR);
+      });
+  };
+
+  const deleteTasksList = (listId) => {
+    TasksService.deleteTasksListById(listId)
+      .then((response) => {
+        if (response) {
+          message.success(generalDictionary.ENDPOINT_DELETE);
+        } else {
+          message.success(generalDictionary.ENDPOINT_WARNING);
+        }
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        message.error(generalDictionary.ENDPOINT_ERROR);
+      });
+  };
+
+  const deleteTask = (listId, newTasKId) => {
+    const tasksArray = createTasksArray(listId, newTasKId);
+    TasksService.insertTask(listId, tasksArray)
+      .then((response) => {
+        if (response && response.id) {
+          message.success(generalDictionary.ENDPOINT_DELETE);
         } else {
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
@@ -53,10 +88,15 @@ const useTasks = () => {
 
     const tasksArray = createTasksArray(listId, payload.id);
     tasksArray.push(payload);
+    tasksArray.sort((a, b) => a.date - b.date);
     TasksService.insertTask(listId, tasksArray)
       .then((response) => {
         if (response && response.id) {
-          message.success(generalDictionary.ENDPOINT_INSERT_OK);
+          message.success(
+            newTask.id
+              ? generalDictionary.ENDPOINT_UPDATE_OK
+              : generalDictionary.ENDPOINT_INSERT_OK
+          );
         } else {
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
@@ -77,7 +117,12 @@ const useTasks = () => {
     return aux;
   };
 
-  return { tasksData, generalDictionary, addTasksList, addTask };
+  return {
+    tasksData,
+    generalDictionary,
+    ListMethods: { addTasksList, deleteTasksList },
+    TaskMethods: { addTask, deleteTask },
+  };
 };
 
 export default useTasks;

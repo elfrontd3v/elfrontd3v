@@ -7,7 +7,7 @@ import useTasks from "../hooks/useTasks";
 import "./tasks.scss";
 
 const Tasks = () => {
-  const { tasksData, generalDictionary, addTasksList, addTask } = useTasks();
+  const { tasksData, generalDictionary, ListMethods, TaskMethods } = useTasks();
 
   return (
     <>
@@ -18,8 +18,8 @@ const Tasks = () => {
             <TasksList
               list={list}
               generalDictionary={generalDictionary}
-              addTasksList={addTasksList}
-              addTask={addTask}
+              ListMethods={ListMethods}
+              TaskMethods={TaskMethods}
             />
           </Col>
         ))}
@@ -27,7 +27,7 @@ const Tasks = () => {
           <AddCardComponent
             generalDictionary={generalDictionary}
             type={"LIST"}
-            addHandle={addTasksList}
+            addHandle={ListMethods.addTasksList}
           />
         </Col>
       </Row>

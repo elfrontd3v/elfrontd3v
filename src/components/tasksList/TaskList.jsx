@@ -1,22 +1,20 @@
-import React from "react";
-import { Button, Card, Input, Menu } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import { Button, Card, Input } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 import AddCardComponent from "./AddCardComponent";
-import { useState } from "react";
 import SingleTask from "./SingleTask";
-import "./tasksList.scss";
 import TasksListClass from "core/class/TaskListClass";
+import "./tasksList.scss";
 
 const { TextArea } = Input;
 
-const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
-  const [menuVisible, setMenuVisible] = useState(true);
+const TasksList = ({ list, generalDictionary, ListMethods, TaskMethods }) => {
   const [showInputEdit, setShowInputEdit] = useState(false);
   const [titleListValue, setTitleListValue] = useState(list.title);
 
   const addHandleButton = () => {
     if (titleListValue !== "") {
-      addTasksList(
+      ListMethods.addTasksList(
         new TasksListClass({ ...list, title: titleListValue }).state
       );
     } else {
@@ -28,6 +26,10 @@ const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
   const cancelHandle = () => {
     setTitleListValue(list.title);
     setShowInputEdit(false);
+  };
+
+  const handleDelete = () => {
+    ListMethods.deleteTasksList(list.id);
   };
 
   return (
@@ -54,15 +56,9 @@ const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
         }
         extra={
           <>
-            <Button type="text" onClick={() => setMenuVisible(!menuVisible)}>
-              <MenuOutlined />
+            <Button type="text" onClick={handleDelete}>
+              <DeleteOutlined />
             </Button>
-            <Menu
-              mode="inline"
-              hidden={menuVisible}
-              className={"menuTasksList"}
-              items={[]}
-            />
           </>
         }
       >
@@ -71,7 +67,7 @@ const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
             <SingleTask
               key={task.id}
               task={task}
-              addTask={addTask}
+              TaskMethods={TaskMethods}
               listId={list.id}
             />
           ))}
@@ -79,7 +75,7 @@ const TasksList = ({ list, generalDictionary, addTasksList, addTask }) => {
         <AddCardComponent
           generalDictionary={generalDictionary}
           type={"CARD"}
-          addHandle={addTask}
+          addHandle={TaskMethods.addTask}
           listId={list.id}
         />
       </Card>
