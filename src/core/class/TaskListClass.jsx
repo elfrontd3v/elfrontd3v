@@ -8,6 +8,7 @@ class TasksListClass extends React.Component {
       uid: list.uid ? list.uid : "",
       title: list.title ? list.title : "",
       tasksList: list.tasksList ? list.tasksList : [],
+      date: list.date ? list.date : Date.now(),
     };
   }
 }

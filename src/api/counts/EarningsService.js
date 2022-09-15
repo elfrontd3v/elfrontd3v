@@ -12,10 +12,6 @@ import {
 import { fireStore } from "../firebase/Config";
 
 const EarningService = {
-  getAllEarnings: async () => {
-    const response = await getDocs(collection(fireStore, "earnings"));
-    return response;
-  },
   getAllEarningsByUid: async (uid) => {
     const docRef = collection(fireStore, "earnings");
     const consult = query(

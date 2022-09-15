@@ -12,10 +12,6 @@ import {
 import { fireStore } from "../firebase/Config";
 
 const ExpensesService = {
-  getAllExpenses: async () => {
-    const response = await getDocs(collection(fireStore, "expenses"));
-    return response;
-  },
   getAllExpensesByUid: async (uid) => {
     const docRef = collection(fireStore, "expenses");
     const consult = query(

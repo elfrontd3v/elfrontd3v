@@ -1,96 +1,83 @@
-import { useContext } from "react";
-import { AuthContext, ThemeContext } from "core/context";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext, TasksContext, ThemeContext } from "core/context";
 import TasksService from "api/profile/TasksService";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
 import TasksListClass from "core/class/TaskListClass";
-import { message } from "antd";
 import TaskClass from "core/class/TaskClass";
+import { message } from "antd";
+import { v4 as uuid } from "uuid";
 
 const useTasks = () => {
   const [authState] = useContext(AuthContext);
+  const [tasksState] = useContext(TasksContext);
   const [themeState] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
 
   const [tasksData, setTaskData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  let newListId = uuid();
-  let newTaskId = uuid();
 
   useEffect(() => {
-    if (authState?.uid) {
-      getAllTasksByUid();
+    if (authState?.uid && tasksState?.list) {
+      setTaskData(tasksState.list);
     }
-  }, [authState]);
+  }, [authState, tasksState]);
 
-  const getAllTasksByUid = () => {
-    setLoading(true);
-    TasksService.getAllTasksByUid(authState.uid)
-      .then((response) => {
-        const responseData = [];
-        response.forEach(async (doc) => {
-          responseData.push(doc.data());
-        });
-        setTaskData(responseData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  };
-
-  const addTasksList = (title) => {
-    setLoading(true);
+  const addTasksList = (newList) => {
     const payload = new TasksListClass({
-      id: newListId,
-      uid: authState.uid,
-      title: title,
+      id: newList.id ? newList.id : uuid(),
+      uid: newList.uid ? newList.uid : authState.uid,
+      title: newList.title,
+      date: newList.date ? newList.date : Date.now(),
+      tasksList: newList?.tasksList?.length > 0 ? newList.tasksList : [],
     }).state;
 
     TasksService.insertTasksList(payload)
       .then((response) => {
         if (response && response.id) {
-          getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
-          setLoading(false);
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        setLoading(false);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
 
-  const addTask = (listId, title) => {
-    setLoading(true);
+  const addTask = (listId, newTask) => {
     const payload = new TaskClass({
-      id: newTaskId,
-      title: title,
-      state: true,
+      id: newTask.id ? newTask.id : uuid(),
+      title: newTask.title ? newTask.title : "",
+      state: newTask.state ? newTask.state : true,
+      date: newTask.date ? newTask.date : Date.now(),
     }).state;
-    TasksService.insertTask(listId, payload)
+
+    const tasksArray = createTasksArray(listId, payload.id);
+    tasksArray.push(payload);
+    TasksService.insertTask(listId, tasksArray)
       .then((response) => {
         if (response && response.id) {
-          getAllTasksByUid();
           message.success(generalDictionary.ENDPOINT_INSERT_OK);
         } else {
-          setLoading(false);
           message.warning(generalDictionary.ENDPOINT_WARNING);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        setLoading(false);
         message.error(generalDictionary.ENDPOINT_ERROR);
       });
   };
 
-  return { tasksData, generalDictionary, loading, addTasksList, addTask };
+  const createTasksArray = (listId, taskId) => {
+    let aux = [];
+    tasksState.list.forEach((list) => {
+      if (list.id === listId) {
+        aux = list.tasksList.filter((taskAux) => taskAux.id !== taskId);
+      }
+    });
+    return aux;
+  };
+
+  return { tasksData, generalDictionary, addTasksList, addTask };
 };
 
 export default useTasks;
