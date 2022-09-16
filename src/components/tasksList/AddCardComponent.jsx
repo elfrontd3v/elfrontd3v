@@ -11,7 +11,10 @@ const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
   const addHandleButton = () => {
     if (inputValue !== "") {
       type === "CARD"
-        ? addHandle(listId, new TaskClass({ title: inputValue }).state)
+        ? addHandle(
+            listId,
+            new TaskClass({ title: inputValue, status: true }).state
+          )
         : addHandle(new TasksListClass({ title: inputValue }).state);
     }
     setAddCollapse(false);

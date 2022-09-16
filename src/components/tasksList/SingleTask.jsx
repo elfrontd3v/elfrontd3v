@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Input, Row } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Input, Row, Tooltip, Typography } from "antd";
+import { DeleteOutlined, CheckSquareOutlined } from "@ant-design/icons";
 import TaskClass from "core/class/TaskClass";
 
 const { TextArea } = Input;
+const { Text } = Typography;
 
 const SingleTask = ({ task, TaskMethods, listId }) => {
-  const [showDeleteTaskIcon, setShowDeleteTaskIcon] = useState(false);
+  const [showActions, setShowActions] = useState(false);
   const [showInputEdit, setShowInputEdit] = useState(false);
   const [titleTaskValue, setTitleTaskValue] = useState(task.title);
+  const [statusTask, setStatusTask] = useState(task.status);
 
-  const addHandleButton = () => {
+  const addHandleButton = (status) => {
+    setStatusTask(status);
     TaskMethods.addTask(
       listId,
-      new TaskClass({ ...task, title: titleTaskValue }).state
+      new TaskClass({ ...task, title: titleTaskValue, status: status }).state
     );
     setShowInputEdit(false);
   };
@@ -21,13 +24,14 @@ const SingleTask = ({ task, TaskMethods, listId }) => {
   const deleteHandle = () => {
     TaskMethods.deleteTask(listId, task.id);
   };
+
   return (
     <>
       <Card
         className="singleTask"
         key={task.id}
-        onMouseEnter={() => setShowDeleteTaskIcon(true)}
-        onMouseLeave={() => setShowDeleteTaskIcon(false)}
+        onMouseEnter={() => setShowActions(true)}
+        onMouseLeave={() => setShowActions(false)}
       >
         <Row gutter={[8, 8]} className="taskContainer">
           <Col span={21} onClick={() => setShowInputEdit(true)}>
@@ -40,20 +44,38 @@ const SingleTask = ({ task, TaskMethods, listId }) => {
                 onChange={(event) => setTitleTaskValue(event.target.value)}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
-                    addHandleButton();
+                    addHandleButton(true);
                   }
                 }}
               />
             ) : (
-              <span className="spanText">{titleTaskValue}</span>
+              <Text className="spanText" delete={!statusTask}>
+                {titleTaskValue}
+              </Text>
             )}
           </Col>
 
           <Col span={3}>
-            {showDeleteTaskIcon && (
-              <Button type="text" size="small" onClick={deleteHandle}>
-                <DeleteOutlined />
-              </Button>
+            {showActions && (
+              <>
+                <Tooltip
+                  placement="right"
+                  title={statusTask ? "Marcar como terminada" : "Desmarcar"}
+                >
+                  <Button
+                    type="text"
+                    size="small"
+                    onClick={() => addHandleButton(!statusTask)}
+                  >
+                    <CheckSquareOutlined />
+                  </Button>
+                </Tooltip>
+                <Tooltip placement="right" title={"Eliminar"}>
+                  <Button type="text" size="small" onClick={deleteHandle}>
+                    <DeleteOutlined />
+                  </Button>
+                </Tooltip>
+              </>
             )}
           </Col>
         </Row>

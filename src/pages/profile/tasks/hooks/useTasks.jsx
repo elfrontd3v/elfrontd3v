@@ -82,13 +82,16 @@ const useTasks = () => {
     const payload = new TaskClass({
       id: newTask.id ? newTask.id : uuid(),
       title: newTask.title ? newTask.title : "",
-      state: newTask.state ? newTask.state : true,
+      status: newTask.status ? newTask.status : false,
       date: newTask.date ? newTask.date : Date.now(),
     }).state;
 
     const tasksArray = createTasksArray(listId, payload.id);
+
     tasksArray.push(payload);
     tasksArray.sort((a, b) => a.date - b.date);
+    tasksArray.sort((a, b) => b.status - a.status);
+
     TasksService.insertTask(listId, tasksArray)
       .then((response) => {
         if (response && response.id) {
