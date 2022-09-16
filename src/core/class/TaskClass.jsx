@@ -6,7 +6,7 @@ class TaskClass extends React.Component {
     this.state = {
       id: task.id ? task.id : "",
       title: task.title ? task.title : "",
-      state: task.state ? task.state : true,
+      status: task.status ? task.status : false,
       date: task.date ? task.date : Date.now(),
     };
   }
