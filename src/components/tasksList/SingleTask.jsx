@@ -32,6 +32,7 @@ const SingleTask = ({ task, TaskMethods, listId }) => {
         key={task.id}
         onMouseEnter={() => setShowActions(true)}
         onMouseLeave={() => setShowActions(false)}
+        onBlur={() => setShowActions(false)}
       >
         <Row gutter={[8, 8]} className="taskContainer">
           <Col span={21} onClick={() => setShowInputEdit(true)}>
