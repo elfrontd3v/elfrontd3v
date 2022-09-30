@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "antd";
+import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import HeaderSection from "components/headerSection/HeaderSection";
 import useEarnings from "../hooks/useEarnings";
@@ -39,16 +39,14 @@ const Earnings = () => {
         graphicsData={graphicsData}
       />
 
-      <Card style={{ marginTop: "15px" }}>
-        <DataTable
-          id="earnings-table"
-          loading={loading}
-          dataSource={earningsList}
-          columns={columns}
-          title={generalDictionary.EARNINGS_LIST}
-          color={"success"}
-        />
-      </Card>
+      <DataTable
+        id="earnings-table"
+        loading={loading}
+        dataSource={earningsList}
+        columns={columns}
+        title={generalDictionary.EARNINGS_LIST}
+        color={"success"}
+      />
 
       <CreateEarning
         isVisible={modal.modalVisible}

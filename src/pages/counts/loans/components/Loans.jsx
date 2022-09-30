@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "antd";
+import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import HeaderSection from "components/headerSection/HeaderSection";
 import useLoans from "../hooks/useLoans";
@@ -28,16 +28,14 @@ const Loans = () => {
 
       <LoansCards generalDictionary={generalDictionary} />
 
-      <Card>
-        <DataTable
-          id="expenses-table"
-          loading={loading}
-          dataSource={loansList}
-          columns={columns}
-          title={generalDictionary.LOANS_LIST}
-          color={"alternative"}
-        />
-      </Card>
+      <DataTable
+        id="expenses-table"
+        loading={loading}
+        dataSource={loansList}
+        columns={columns}
+        title={generalDictionary.LOANS_LIST}
+        color={"alternative"}
+      />
 
       <CreateLoan
         isVisible={modal.modalVisible}
