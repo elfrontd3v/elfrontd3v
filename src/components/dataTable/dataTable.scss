@@ -1,5 +1,10 @@
 @import "assets/theme.scss";
 
+.dataTableContainer {
+  margin-top: 15px;
+  border-radius: 15px;
+}
+
 .dataTable {
   margin-top: 10px;
   .ant-table-title {
@@ -15,7 +20,8 @@
 }
 .cardTitle {
   border-radius: 30px;
-  margin-top: -30px;
+  margin-top: -35px;
+  margin-bottom: 15px;
   font-size: 18px;
   border: none;
   color: $white;

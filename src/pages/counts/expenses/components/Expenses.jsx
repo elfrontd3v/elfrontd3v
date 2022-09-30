@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "antd";
+import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import DataTable from "components/dataTable/DataTable";
 import HeaderSection from "components/headerSection/HeaderSection";
@@ -37,16 +37,15 @@ const Expenses = () => {
         generalDictionary={generalDictionary}
         graphicsData={graphicsData}
       />
-      <Card>
-        <DataTable
-          id="expenses-table"
-          loading={loading}
-          dataSource={expensesList}
-          columns={columns}
-          title={generalDictionary.EXPENSES_LIST}
-          color={"error"}
-        />
-      </Card>
+
+      <DataTable
+        id="expenses-table"
+        loading={loading}
+        dataSource={expensesList}
+        columns={columns}
+        title={generalDictionary.EXPENSES_LIST}
+        color={"error"}
+      />
 
       <CreateExpense
         isVisible={modal.modalVisible}
