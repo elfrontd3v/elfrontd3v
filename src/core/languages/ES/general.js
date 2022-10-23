@@ -71,6 +71,10 @@ export const generalDictionary = {
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
   SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
+  FIXED_INTEREST: "Interés Fijo",
+  PERCENTAGE_INTEREST: "Interés porcentual",
+  PERCENTS: "Porcentaje",
+  INTERESTS: "Intereses",
 
   //TASK
   TASK: "Tarea",
