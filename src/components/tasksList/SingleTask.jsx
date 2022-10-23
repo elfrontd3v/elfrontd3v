@@ -19,6 +19,7 @@ const SingleTask = ({ task, TaskMethods, listId }) => {
       new TaskClass({ ...task, title: titleTaskValue, status: status }).state
     );
     setShowInputEdit(false);
+    setShowActions(false);
   };
 
   const deleteHandle = () => {
@@ -66,13 +67,13 @@ const SingleTask = ({ task, TaskMethods, listId }) => {
                   <Button
                     type="text"
                     size="small"
-                    onClick={() => addHandleButton(!statusTask)}
+                    onMouseDown={() => addHandleButton(!statusTask)}
                   >
                     <CheckSquareOutlined />
                   </Button>
                 </Tooltip>
                 <Tooltip placement="right" title={"Eliminar"}>
-                  <Button type="text" size="small" onClick={deleteHandle}>
+                  <Button type="text" size="small" onMouseDown={deleteHandle}>
                     <DeleteOutlined />
                   </Button>
                 </Tooltip>

@@ -24,7 +24,8 @@ const useSignIn = () => {
     AuthService.getUserDetail(userPayload.state)
       .then((user) => {
         message.success(
-          `Bienvenido ${user.rol} ${user.name ? user.name : user.email}`
+          `Bienvenido ${user.rol} ${user.name ? user.name : user.email}`,
+          0.5
         );
         sessionStorage.setItem(
           "storage",
@@ -105,20 +106,23 @@ const useSignIn = () => {
 
   const validateErrorMessage = (error) => {
     if (error === "Firebase: Error (auth/email-already-in-use).") {
-      message.error(generalDictionary.EMAIL_NOT_AVAILABLE);
+      message.error(generalDictionary.EMAIL_NOT_AVAILABLE, 0.5);
     } else if (
       error ===
       "Firebase: Error (auth/account-exists-with-different-credential)."
     ) {
-      message.error(generalDictionary.EMAIL_REGISTER_WITH_DIFFERENT_METHOD);
+      message.error(
+        generalDictionary.EMAIL_REGISTER_WITH_DIFFERENT_METHOD,
+        0.5
+      );
     } else if (error === "Firebase: Error (auth/popup-closed-by-user).") {
-      message.error(generalDictionary.CLOSED_POPUP);
+      message.error(generalDictionary.CLOSED_POPUP, 0.5);
     } else if (error.message === "Firebase: Error (auth/user-not-found).") {
-      message.error(generalDictionary.USER_OR_PASSWORD_INCORRECT);
+      message.error(generalDictionary.USER_OR_PASSWORD_INCORRECT, 0.5);
     } else if (error.message === "Firebase: Error (auth/wrong-password).") {
-      message.error(generalDictionary.PASSWORD_INCORRECT);
+      message.error(generalDictionary.PASSWORD_INCORRECT, 0.5);
     } else {
-      message.error(generalDictionary.LOGIN_ERROR);
+      message.error(generalDictionary.LOGIN_ERROR, 0.5);
     }
   };
 

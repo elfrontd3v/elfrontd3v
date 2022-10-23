@@ -1,6 +1,23 @@
-import { Button, Col, DatePicker, Form, Input, Modal, Row, Spin } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Modal,
+  Radio,
+  Row,
+  Select,
+  Slider,
+  Space,
+  Spin,
+} from "antd";
 import { ThemeContext } from "core/context";
+import { numThousand, parserNumber } from "helpers/utils/validateFormat";
 import React, { useContext } from "react";
+import { useState } from "react";
+import "./loans.scss";
 
 const CreateLoan = ({
   isVisible,
@@ -11,6 +28,9 @@ const CreateLoan = ({
 }) => {
   const [themeState] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
+  const [value, setValue] = useState(0);
+  const [interestsType, setInterestsType] = useState("");
+  const [interestsValue, setInterestsValue] = useState(0);
   const initialValues = expenseToEdit.id ? expenseToEdit : null;
   const rules = {
     nameRules: [
@@ -96,9 +116,95 @@ const CreateLoan = ({
                 />
               </Form.Item>
               <Form.Item
-                wrapperCol={24}
-                style={{ textAlign: "center", marginTop: "10px" }}
+                name={"initialValue"}
+                label={generalDictionary.VALUE}
+                rules={rules.valueRules}
+                hasFeedback
               >
+                <InputNumber
+                  onChange={(e) => setValue(e)}
+                  disabled={isVisible.visualize}
+                  prefix="$"
+                  style={{ width: "100%" }}
+                  controls={false}
+                  formatter={(value) => numThousand(value)}
+                  parser={(value) => parserNumber(value)}
+                />
+              </Form.Item>
+              <Form.Item
+                name={"periodicity"}
+                label={generalDictionary.PERIODICITY}
+                rules={rules.periodicityRules}
+                hasFeedback
+              >
+                <Select
+                  placeholder={generalDictionary.PERIODICITY}
+                  disabled={isVisible.visualize}
+                >
+                  <Select.Option value={"monthValue"}>
+                    {generalDictionary.MONTHLY}
+                  </Select.Option>
+                  <Select.Option value={"dayValue"}>
+                    {generalDictionary.DAILY}
+                  </Select.Option>
+                  <Select.Option value={"yearValue"}>
+                    {generalDictionary.ANNUAL}
+                  </Select.Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                name={"interestsType"}
+                wrapperCol={24}
+                className={"loansFormCenter"}
+                rules={rules.periodicityRules}
+                hasFeedback
+              >
+                <Radio.Group onChange={(e) => setInterestsType(e.target.value)}>
+                  <Space direction="horizontal">
+                    <Radio value={"VAL"}>
+                      {generalDictionary.FIXED_INTEREST}
+                    </Radio>
+                    <Radio value={"PER"}>
+                      {generalDictionary.PERCENTAGE_INTEREST}
+                    </Radio>
+                  </Space>
+                </Radio.Group>
+              </Form.Item>
+              {interestsType === "PER" && (
+                <Form.Item
+                  name={"interestsPercent"}
+                  label={generalDictionary.PERCENTS}
+                >
+                  <Slider
+                    onChange={(e) => setInterestsValue(value * (e / 100))}
+                    min={1}
+                    max={20}
+                    tooltip={{ open: true }}
+                    marks={{
+                      5: "5 %",
+                      10: "10 %",
+                      15: "15 %",
+                    }}
+                  />
+                </Form.Item>
+              )}
+              <Form.Item
+                name={"interests"}
+                label={generalDictionary.INTERESTS}
+                rules={rules.valueRules}
+                hasFeedback
+              >
+                <InputNumber
+                  disabled={isVisible.visualize || interestsType !== "VAL"}
+                  prefix="$"
+                  style={{ width: "100%" }}
+                  controls={false}
+                  formatter={() => numThousand(interestsValue)}
+                  parser={(value) => parserNumber(value)}
+                  value={interestsValue}
+                />
+              </Form.Item>
+              <Form.Item wrapperCol={24} className={"loansFormCenter"}>
                 {!isVisible.visualize && (
                   <Button
                     type={"primary"}
