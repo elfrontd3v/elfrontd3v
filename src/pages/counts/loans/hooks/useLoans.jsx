@@ -86,14 +86,14 @@ const useLoans = () => {
     LoansService.deleteLoan(id)
       .then((response) => {
         if (response) {
-          message.success(generalDictionary.ENDPOINT_DELETE);
+          message.success(generalDictionary.ENDPOINT_DELETE, 0.5);
           getAllLoans();
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
         console.error(error);
       });
   };

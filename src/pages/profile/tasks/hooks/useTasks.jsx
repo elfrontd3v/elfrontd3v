@@ -35,15 +35,16 @@ const useTasks = () => {
           message.success(
             newList.id
               ? generalDictionary.ENDPOINT_UPDATE_OK
-              : generalDictionary.ENDPOINT_INSERT_OK
+              : generalDictionary.ENDPOINT_INSERT_OK,
+            0.5
           );
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
       });
   };
 
@@ -51,14 +52,14 @@ const useTasks = () => {
     TasksService.deleteTasksListById(listId)
       .then((response) => {
         if (response) {
-          message.success(generalDictionary.ENDPOINT_DELETE);
+          message.success(generalDictionary.ENDPOINT_DELETE, 0.5);
         } else {
-          message.success(generalDictionary.ENDPOINT_WARNING);
+          message.success(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
       });
   };
 
@@ -67,14 +68,14 @@ const useTasks = () => {
     TasksService.insertTask(listId, tasksArray)
       .then((response) => {
         if (response && response.id) {
-          message.success(generalDictionary.ENDPOINT_DELETE);
+          message.success(generalDictionary.ENDPOINT_DELETE, 0.5);
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
       });
   };
 
@@ -98,15 +99,16 @@ const useTasks = () => {
           message.success(
             newTask.id
               ? generalDictionary.ENDPOINT_UPDATE_OK
-              : generalDictionary.ENDPOINT_INSERT_OK
+              : generalDictionary.ENDPOINT_INSERT_OK,
+            0.5
           );
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
         console.error("error:", error);
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
       });
   };
 

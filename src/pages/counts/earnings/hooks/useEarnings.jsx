@@ -98,14 +98,14 @@ const useEarnings = () => {
     EarningService.deleteEarning(id)
       .then((response) => {
         if (response) {
-          message.success(generalDictionary.ENDPOINT_DELETE);
+          message.success(generalDictionary.ENDPOINT_DELETE, 0.5);
           getAllEarnings();
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
       })
       .catch((error) => {
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
         console.error(error);
       });
   };
@@ -132,17 +132,18 @@ const useEarnings = () => {
           message.success(
             oldValues
               ? generalDictionary.ENDPOINT_UPDATE_OK
-              : generalDictionary.ENDPOINT_INSERT_OK
+              : generalDictionary.ENDPOINT_INSERT_OK,
+            0.5
           );
         } else {
-          message.warning(generalDictionary.ENDPOINT_WARNING);
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
         }
         setLoadingModal(false);
       })
       .catch((error) => {
         setLoadingModal(false);
         console.error("error:", error);
-        message.error(generalDictionary.ENDPOINT_ERROR);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
       });
   };
 
