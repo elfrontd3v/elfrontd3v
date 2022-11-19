@@ -18,31 +18,31 @@ const LoansCards = ({ graphicsData, generalDictionary }) => {
             color={"dark"}
             icon={<ContainerOutlined />}
             title={generalDictionary.NUMBER_OF_LOANS}
-            data={graphicsData?.totalEarnings}
+            data={graphicsData?.totalLoans}
           />
         </Col>
         <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
           <GraphicsCard
             color={"alternative"}
             icon={<BarChartOutlined />}
-            title={generalDictionary.PENDING_DEBT}
-            data={" $ " + numThousand(graphicsData?.totalEarningsValue)}
+            title={generalDictionary.TOTAL_VALUE}
+            data={" $ " + numThousand(graphicsData?.totalValue)}
           />
         </Col>
         <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
           <GraphicsCard
             color={"success"}
             icon={<PieChartOutlined />}
-            title={generalDictionary.ACTUAL_BENEFIT}
-            data={" $ " + numThousand(graphicsData?.maxEarning)}
+            title={generalDictionary.TOTAL_INTERESTS}
+            data={" $ " + numThousand(graphicsData?.totalInterests)}
           />
         </Col>
         <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={6}>
           <GraphicsCard
             color={"primary"}
             icon={<LineChartOutlined />}
-            title={generalDictionary.NEXT_PAYMENT_VALUE}
-            data={" $ " + numThousand(graphicsData?.minEarning)}
+            title={generalDictionary.MAX_INTERESTS}
+            data={" $ " + numThousand(graphicsData?.maxInterests)}
           />
         </Col>
       </Row>

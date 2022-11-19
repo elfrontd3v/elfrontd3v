@@ -18,7 +18,12 @@ const useLoans = () => {
   const { generalDictionary } = themeState;
   const [loansList, setLoansList] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [graphicsData, setGraphicsData] = useState({
+    totalLoans: 0,
+    totalValue: 0,
+    totalInterests: 0,
+    maxInterests: 0,
+  });
   const [loadingModal, setLoadingModal] = useState(false);
   const [modalVisible, setModalVisible] = useState({
     state: false,
@@ -43,6 +48,7 @@ const useLoans = () => {
         response.forEach((doc) => {
           responseData.push(doc.data());
         });
+        getGraphicsData(responseData);
         setLoansList(responseData);
         setLoading(false);
       })
@@ -50,6 +56,28 @@ const useLoans = () => {
         console.error(error);
         setLoading(false);
       });
+  };
+
+  const getGraphicsData = (responseData) => {
+    const count = responseData.length;
+    let totalValue = 0;
+    let totalInterests = 0;
+    let maxInterests = 0;
+
+    responseData.forEach((loan) => {
+      totalValue = parseFloat(+totalValue + +loan.value);
+      totalInterests = parseFloat(+totalInterests + +loan.interests);
+      if (parseFloat(loan.interests) > maxInterests) {
+        maxInterests = loan.interests;
+      }
+    });
+
+    setGraphicsData({
+      totalLoans: count,
+      totalValue: totalValue,
+      totalInterests: totalInterests,
+      maxInterests: maxInterests,
+    });
   };
 
   const handleCancel = () => {
@@ -259,6 +287,7 @@ const useLoans = () => {
     loading,
     loansList,
     columns,
+    graphicsData,
     modal: {
       modalVisible,
       loanToEdit,
