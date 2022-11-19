@@ -9,7 +9,14 @@ import "./loans.scss";
 import CreateLoan from "./CreateLoan";
 
 const Loans = () => {
-  const { generalDictionary, loading, loansList, columns, modal } = useLoans();
+  const {
+    generalDictionary,
+    loading,
+    loansList,
+    columns,
+    graphicsData,
+    modal,
+  } = useLoans();
   return (
     <>
       <HeaderSection
@@ -26,7 +33,10 @@ const Loans = () => {
         ]}
       />
 
-      <LoansCards generalDictionary={generalDictionary} />
+      <LoansCards
+        generalDictionary={generalDictionary}
+        graphicsData={graphicsData}
+      />
 
       <DataTable
         id="expenses-table"
