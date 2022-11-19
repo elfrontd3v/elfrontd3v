@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import { AuthContext, ThemeContext } from "core/context";
 import LoanClass from "core/class/LoanClass";
 import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
+import { numThousand } from "helpers/utils/validateFormat";
 
 const useLoans = () => {
   const [authState] = useContext(AuthContext);
@@ -151,6 +152,9 @@ const useLoans = () => {
           case "yearValue":
             periodicityValue = generalDictionary.ANNUAL;
             break;
+          case "none":
+            periodicityValue = generalDictionary.NONE;
+            break;
           default:
             periodicityValue = periodicity;
             break;
@@ -171,7 +175,18 @@ const useLoans = () => {
           text: generalDictionary.ANNUAL,
           value: "yearValue",
         },
+        {
+          text: generalDictionary.NONE,
+          value: "none",
+        },
       ],
+    },
+    {
+      title: generalDictionary.DESCRIPTION,
+      dataIndex: "description",
+      key: "description",
+      align: "center",
+      ellipsis: true,
     },
     {
       title: generalDictionary.VALUE,
@@ -179,6 +194,9 @@ const useLoans = () => {
       key: "value",
       align: "center",
       ellipsis: true,
+      render: (value) => <span>{" $ " + numThousand(value)}</span>,
+      sorter: (a, b) => a.value - b.value,
+      showSorterTooltip: false,
     },
     {
       title: generalDictionary.INTERESTS,
@@ -186,6 +204,9 @@ const useLoans = () => {
       key: "interests",
       align: "center",
       ellipsis: true,
+      render: (interests) => <span>{" $ " + numThousand(interests)}</span>,
+      sorter: (a, b) => a.interests - b.interests,
+      showSorterTooltip: false,
     },
     {
       title: generalDictionary.ACTIONS,

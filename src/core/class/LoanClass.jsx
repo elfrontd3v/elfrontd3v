@@ -14,6 +14,7 @@ class LoanClass extends React.Component {
         ? moment(loan.initialDate).format("L")
         : moment().format("L"),
       periodicity: loan?.periodicity ? loan.periodicity : "",
+      description: loan?.description ? loan.description : "",
     };
   }
 }
