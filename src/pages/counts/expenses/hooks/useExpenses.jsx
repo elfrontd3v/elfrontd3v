@@ -21,10 +21,7 @@ const useExpenses = () => {
   const { generalDictionary } = themeState;
   const [expensesList, setExpensesList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState({
-    searchValue: "",
-    auxExpensesList: [],
-  });
+
   const [graphicsData, setGraphicsData] = useState({
     totalExpenses: 0,
     totalExpensesValue: 0,
@@ -57,7 +54,6 @@ const useExpenses = () => {
         });
         getGraphicsData(responseData);
         setExpensesList(responseData);
-        setSearch({ ...search, auxExpensesList: responseData });
         setLoading(false);
       })
       .catch((error) => {
@@ -88,22 +84,6 @@ const useExpenses = () => {
     });
   };
 
-  const searchFilter = (searchValue) => {
-    let resultSearch = [];
-    setSearch({ ...search, searchValue: searchValue });
-    search.auxExpensesList.forEach((expense) => {
-      if (
-        expense.name
-          .toString()
-          .toLowerCase()
-          .includes(searchValue.toLowerCase())
-      ) {
-        resultSearch.push(expense);
-      }
-    });
-    setExpensesList(resultSearch);
-  };
-
   const handleCancel = () => {
     expenseId = uuid();
     setModalVisible({ state: false, visualize: false });
@@ -111,8 +91,6 @@ const useExpenses = () => {
   };
 
   const handleOpenModal = () => {
-    setSearch({ ...search, searchValue: "" });
-    setExpensesList(search.auxExpensesList);
     setModalVisible({ state: true, visualize: false });
     setExpenseToEdit({ ...new ExpenseClass(null).state });
   };
@@ -335,7 +313,6 @@ const useExpenses = () => {
     expensesList,
     columns,
     graphicsData,
-    filter: { search, searchFilter },
     modal: {
       modalVisible,
       expenseToEdit,

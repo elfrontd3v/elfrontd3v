@@ -39,7 +39,7 @@ const Loans = () => {
 
       <CreateLoan
         isVisible={modal.modalVisible}
-        expenseToEdit={modal.loanToEdit}
+        loanToEdit={modal.loanToEdit}
         handleCancel={modal.handleCancel}
         handleCreate={modal.handleCreate}
         loadingModal={modal.loadingModal}
