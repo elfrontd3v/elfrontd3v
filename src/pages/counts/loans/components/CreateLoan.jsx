@@ -6,32 +6,28 @@ import {
   Input,
   InputNumber,
   Modal,
-  Radio,
   Row,
   Select,
-  Slider,
-  Space,
   Spin,
 } from "antd";
 import { ThemeContext } from "core/context";
 import { numThousand, parserNumber } from "helpers/utils/validateFormat";
+import moment from "moment";
 import React, { useContext } from "react";
-import { useState } from "react";
 import "./loans.scss";
 
 const CreateLoan = ({
   isVisible,
-  expenseToEdit,
+  loanToEdit,
   handleCancel,
   handleCreate,
   loadingModal,
 }) => {
   const [themeState] = useContext(ThemeContext);
   const { generalDictionary } = themeState;
-  const [value, setValue] = useState(0);
-  const [interestsType, setInterestsType] = useState("");
-  const [interestsValue, setInterestsValue] = useState(0);
-  const initialValues = expenseToEdit.id ? expenseToEdit : null;
+  const initialValues = loanToEdit.id
+    ? { ...loanToEdit, initialDate: moment(loanToEdit.initialDate) }
+    : null;
   const rules = {
     nameRules: [
       {
@@ -116,13 +112,12 @@ const CreateLoan = ({
                 />
               </Form.Item>
               <Form.Item
-                name={"initialValue"}
+                name={"value"}
                 label={generalDictionary.VALUE}
                 rules={rules.valueRules}
                 hasFeedback
               >
                 <InputNumber
-                  onChange={(e) => setValue(e)}
                   disabled={isVisible.visualize}
                   prefix="$"
                   style={{ width: "100%" }}
@@ -153,55 +148,18 @@ const CreateLoan = ({
                 </Select>
               </Form.Item>
               <Form.Item
-                name={"interestsType"}
-                wrapperCol={24}
-                className={"loansFormCenter"}
-                rules={rules.periodicityRules}
-                hasFeedback
-              >
-                <Radio.Group onChange={(e) => setInterestsType(e.target.value)}>
-                  <Space direction="horizontal">
-                    <Radio value={"VAL"}>
-                      {generalDictionary.FIXED_INTEREST}
-                    </Radio>
-                    <Radio value={"PER"}>
-                      {generalDictionary.PERCENTAGE_INTEREST}
-                    </Radio>
-                  </Space>
-                </Radio.Group>
-              </Form.Item>
-              {interestsType === "PER" && (
-                <Form.Item
-                  name={"interestsPercent"}
-                  label={generalDictionary.PERCENTS}
-                >
-                  <Slider
-                    onChange={(e) => setInterestsValue(value * (e / 100))}
-                    min={1}
-                    max={20}
-                    tooltip={{ open: true }}
-                    marks={{
-                      5: "5 %",
-                      10: "10 %",
-                      15: "15 %",
-                    }}
-                  />
-                </Form.Item>
-              )}
-              <Form.Item
                 name={"interests"}
                 label={generalDictionary.INTERESTS}
                 rules={rules.valueRules}
                 hasFeedback
               >
                 <InputNumber
-                  disabled={isVisible.visualize || interestsType !== "VAL"}
+                  disabled={isVisible.visualize}
                   prefix="$"
                   style={{ width: "100%" }}
                   controls={false}
-                  formatter={() => numThousand(interestsValue)}
+                  formatter={(value) => numThousand(value)}
                   parser={(value) => parserNumber(value)}
-                  value={interestsValue}
                 />
               </Form.Item>
               <Form.Item wrapperCol={24} className={"loansFormCenter"}>

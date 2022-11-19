@@ -63,23 +63,40 @@ const useLoans = () => {
   };
 
   const handleCreate = (values, oldValues) => {
-    setLoadingModal(false);
-
-    const auxPayload = new LoanClass(values).state;
+    setLoadingModal(true);
     let payload;
     if (oldValues && oldValues.id) {
-      payload = new LoanClass({ ...oldValues, ...auxPayload }).state;
+      payload = new LoanClass({ ...oldValues, ...values }).state;
     } else {
       payload = new LoanClass({
-        ...auxPayload,
+        ...values,
         id: loanId,
         uid: authState.uid,
       }).state;
     }
-    console.log("values:", values);
-    console.log("oldValues:", oldValues);
-    console.log("payload", payload);
-    //servicio de insertar
+
+    LoansService.insertLoan(payload)
+      .then((response) => {
+        if (response && response.id) {
+          handleCancel();
+          getAllLoans();
+
+          message.success(
+            oldValues
+              ? generalDictionary.ENDPOINT_UPDATE_OK
+              : generalDictionary.ENDPOINT_INSERT_OK,
+            0.5
+          );
+        } else {
+          message.warning(generalDictionary.ENDPOINT_WARNING, 0.5);
+        }
+        setLoadingModal(false);
+      })
+      .catch((error) => {
+        setLoadingModal(false);
+        console.error("error:", error);
+        message.error(generalDictionary.ENDPOINT_ERROR, 0.5);
+      });
   };
 
   const deleteLoanHandle = (id) => {
@@ -108,28 +125,63 @@ const useLoans = () => {
       showSorterTooltip: false,
     },
     {
-      title: "Valor",
+      title: generalDictionary.DATE,
+      dataIndex: "initialDate",
+      key: "initialDate",
+      align: "center",
+      ellipsis: true,
+      responsive: ["sm"],
+    },
+    {
+      title: generalDictionary.PERIODICITY,
+      dataIndex: "periodicity",
+      key: "periodicity",
+      align: "center",
+      ellipsis: true,
+      responsive: ["sm"],
+      render: (periodicity) => {
+        let periodicityValue;
+        switch (periodicity) {
+          case "dayValue":
+            periodicityValue = generalDictionary.DAILY;
+            break;
+          case "monthValue":
+            periodicityValue = generalDictionary.MONTHLY;
+            break;
+          case "yearValue":
+            periodicityValue = generalDictionary.ANNUAL;
+            break;
+          default:
+            periodicityValue = periodicity;
+            break;
+        }
+        return <span>{periodicityValue}</span>;
+      },
+      onFilter: (value, record) => record.periodicity.indexOf(value) === 0,
+      filters: [
+        {
+          text: generalDictionary.DAILY,
+          value: "dayValue",
+        },
+        {
+          text: generalDictionary.MONTHLY,
+          value: "monthValue",
+        },
+        {
+          text: generalDictionary.ANNUAL,
+          value: "yearValue",
+        },
+      ],
+    },
+    {
+      title: generalDictionary.VALUE,
       dataIndex: "value",
       key: "value",
       align: "center",
       ellipsis: true,
     },
     {
-      title: "Valor inicial",
-      dataIndex: "initialValue",
-      key: "initialValue",
-      align: "center",
-      ellipsis: true,
-    },
-    {
-      title: "Porcentaje",
-      dataIndex: "interestsPercent",
-      key: "interestsPercent",
-      align: "center",
-      ellipsis: true,
-    },
-    {
-      title: "Valor porcentaje",
+      title: generalDictionary.INTERESTS,
       dataIndex: "interests",
       key: "interests",
       align: "center",

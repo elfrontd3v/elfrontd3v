@@ -13,6 +13,7 @@ export const generalDictionary = {
   SAVING: "Guardando...",
   LOADING: "Cargando...",
   ADD: "Agregar",
+  DATE: "Fecha",
   INITIAL_DATE: "Fecha inicial",
   FINAL_DATE: "Fecha final",
   NEXT_PAYMENT_DATE: "Proxima fecha de pago",
@@ -71,10 +72,9 @@ export const generalDictionary = {
   PENDING_DEBT: "Deuda pendiente",
   NEXT_PAYMENT_VALUE: "Valor proximo pago",
   SURE_DELETE_LOAN: "Estas seguro que quieres eliminar este préstamo",
+  INTERESTS: "Intereses",
   FIXED_INTEREST: "Interés Fijo",
   PERCENTAGE_INTEREST: "Interés porcentual",
-  PERCENTS: "Porcentaje",
-  INTERESTS: "Intereses",
 
   //TASK
   TASK: "Tarea",
