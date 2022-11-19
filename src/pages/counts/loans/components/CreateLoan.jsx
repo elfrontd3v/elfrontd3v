@@ -10,24 +10,23 @@ import {
   Select,
   Spin,
 } from "antd";
-import { ThemeContext } from "core/context";
 import { numThousand, parserNumber } from "helpers/utils/validateFormat";
 import moment from "moment";
-import React, { useContext } from "react";
+import React from "react";
 import "./loans.scss";
 
 const CreateLoan = ({
+  generalDictionary,
   isVisible,
   loanToEdit,
   handleCancel,
   handleCreate,
   loadingModal,
 }) => {
-  const [themeState] = useContext(ThemeContext);
-  const { generalDictionary } = themeState;
   const initialValues = loanToEdit.id
     ? { ...loanToEdit, initialDate: moment(loanToEdit.initialDate) }
     : null;
+
   const rules = {
     nameRules: [
       {
@@ -48,6 +47,15 @@ const CreateLoan = ({
         message: generalDictionary.VALIDATE_VALUE,
       },
     ],
+    interestsRules: [
+      {
+        transform: (value) => parseFloat(value),
+        type: "number",
+        min: 0,
+        max: 999999999999,
+        message: generalDictionary.VALIDATE_VALUE,
+      },
+    ],
     periodicityRules: [
       {
         required: true,
@@ -60,7 +68,16 @@ const CreateLoan = ({
         message: generalDictionary.VALIDATE_DATE,
       },
     ],
+    descriptionRules: [
+      {
+        type: "string",
+        min: 0,
+        max: 300,
+        message: generalDictionary.VALIDATE_DESCRIPTION,
+      },
+    ],
   };
+
   return (
     <Modal
       closable={false}
@@ -145,12 +162,15 @@ const CreateLoan = ({
                   <Select.Option value={"yearValue"}>
                     {generalDictionary.ANNUAL}
                   </Select.Option>
+                  <Select.Option value={"none"}>
+                    {generalDictionary.NONE}
+                  </Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item
                 name={"interests"}
                 label={generalDictionary.INTERESTS}
-                rules={rules.valueRules}
+                rules={rules.interestsRules}
                 hasFeedback
               >
                 <InputNumber
@@ -160,6 +180,18 @@ const CreateLoan = ({
                   controls={false}
                   formatter={(value) => numThousand(value)}
                   parser={(value) => parserNumber(value)}
+                />
+              </Form.Item>
+              <Form.Item
+                name={"description"}
+                label={generalDictionary.DESCRIPTION}
+                rules={rules.descriptionRules}
+                hasFeedback
+              >
+                <Input.TextArea
+                  disabled={isVisible.visualize}
+                  type={"text"}
+                  placeholder={generalDictionary.DESCRIPTION}
                 />
               </Form.Item>
               <Form.Item wrapperCol={24} className={"loansFormCenter"}>

@@ -38,6 +38,7 @@ const Loans = () => {
       />
 
       <CreateLoan
+        generalDictionary={generalDictionary}
         isVisible={modal.modalVisible}
         loanToEdit={modal.loanToEdit}
         handleCancel={modal.handleCancel}
