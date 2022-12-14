@@ -15,7 +15,7 @@ const SideBar = ({ items }) => {
     >
       <Menu
         mode="inline"
-        defaultOpenKeys={["home", "counts", "profile"]}
+        defaultOpenKeys={["home", "counts", "profile", "admin"]}
         selectedKeys={[location.pathname]}
         items={items}
       />

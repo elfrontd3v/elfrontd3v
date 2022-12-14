@@ -2,7 +2,15 @@ import { Card, Table } from "antd";
 import React from "react";
 import "./dataTable.scss";
 
-const DataTable = ({ loading, dataSource, columns, title, id, color }) => {
+const DataTable = ({
+  loading,
+  dataSource,
+  columns,
+  title,
+  id,
+  color,
+  rowKey,
+}) => {
   return (
     <>
       <Card className={"dataTableContainer"}>
@@ -15,7 +23,7 @@ const DataTable = ({ loading, dataSource, columns, title, id, color }) => {
           loading={loading ? loading : false}
           dataSource={dataSource}
           columns={columns}
-          rowKey={(element) => element.id}
+          rowKey={(element) => element[rowKey ? rowKey : "id"]}
           bordered
           pagination={{
             defaultPageSize: 10,

@@ -4,8 +4,8 @@ import {
   HomeOutlined,
   DollarCircleOutlined,
   UserOutlined,
+  CoffeeOutlined,
 } from "@ant-design/icons";
-
 export const PrivateRoute = ({ children }) => {
   const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
   return sessionInfo ? children : <Navigate to={"/"} />;
@@ -31,6 +31,7 @@ const Loans = lazy(() => import("pages/counts/loans/components/Loans"));
 const Profile = lazy(() => import("pages/profile/profile/components/Profile"));
 const Tasks = lazy(() => import("pages/profile/tasks/components/Tasks"));
 const LogOut = lazy(() => import("pages/profile/logOut/components/LogOut"));
+const Users = lazy(() => import("pages/admin/users/components/Users"));
 
 export const routes = ({ generalDictionary }) => [
   {
@@ -162,6 +163,29 @@ export const routes = ({ generalDictionary }) => [
           </PrivateRoute>
         ),
         text: generalDictionary.LOG_OUT,
+        disabled: false,
+        isHidden: false,
+      },
+    ],
+  },
+  {
+    path: "",
+    name: "admin",
+    icon: <CoffeeOutlined />,
+    text: generalDictionary.ADMIN,
+    disabled: false,
+    isHidden: false,
+    children: [
+      {
+        path: "/users",
+        name: "/users",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <Users />
+          </PrivateRoute>
+        ),
+        text: generalDictionary.USERS,
         disabled: false,
         isHidden: false,
       },
