@@ -19,11 +19,13 @@ export const generalDictionary = {
   INITIAL_DATE: "Fecha inicial",
   FINAL_DATE: "Fecha final",
   NEXT_PAYMENT_DATE: "Proxima fecha de pago",
+  EMAIL: "Correo",
+  ROL: "Rol",
+  PROVIDER: "Proveedor",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
   WELCOME_BACK: "Bienvenido de nuevo",
-  EMAIL: "Correo",
   PASSWORD: "Contraseña",
 
   //SIDEBAR
@@ -107,6 +109,11 @@ export const generalDictionary = {
   LANGUAGE: "Lenguaje",
   SPANISH: "Español",
   ENGLISH: "Ingles",
+
+  //ADMIN
+  ADMIN: "Admin",
+  USERS: "Usuarios",
+  USER_LIST: "Lista de usuarios",
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",
