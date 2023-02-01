@@ -22,6 +22,26 @@ export const generalDictionary = {
   EMAIL: "Correo",
   ROL: "Rol",
   PROVIDER: "Proveedor",
+  SETTINGS: "Configuración",
+  SHOP: "Tienda",
+  FRIENDS: "Amigos",
+  PROVIDERS: "Proveedores",
+  TODO_LIST: "Lista de tareas",
+  TODOS: "Tareas",
+  TYPE_SOMETHING: "Escribe algo",
+  TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
+  TYPE_YOUR_EMAIL: "Escribe tu correo",
+  BACK_TO_HOME: "Volver al home",
+  NOT_FOUND_PAGE:
+    "La pagina a la que tratas de acceder no existe o está en mantenimiento",
+  EDIT_PROFILE: "Editar perfil",
+  CONFIG: "Configuración",
+  STYLE: "Estilo",
+  DARK_MODE: "Modo oscuro",
+  LIGHT_MODE: "Modo claro",
+  LANGUAGE: "Lenguaje",
+  SPANISH: "Español",
+  ENGLISH: "Ingles",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
@@ -89,31 +109,15 @@ export const generalDictionary = {
   ADD_TITLE: "Agrega un titulo",
   ADD_TASK: "Agrega una tarea",
 
-  SETTINGS: "Configuración",
-  SHOP: "Tienda",
-  FRIENDS: "Amigos",
-  PROVIDERS: "Proveedores",
-  TODO_LIST: "Lista de tareas",
-  TODOS: "Tareas",
-  TYPE_SOMETHING: "Escribe algo",
-  TYPE_YOUR_PASSWORD: "Escribe tu contraseña",
-  TYPE_YOUR_EMAIL: "Escribe tu correo",
-  BACK_TO_HOME: "Volver al home",
-  NOT_FOUND_PAGE:
-    "La pagina a la que tratas de acceder no existe o está en mantenimiento",
-  EDIT_PROFILE: "Editar perfil",
-  CONFIG: "Configuración",
-  STYLE: "Estilo",
-  DARK_MODE: "Modo oscuro",
-  LIGHT_MODE: "Modo claro",
-  LANGUAGE: "Lenguaje",
-  SPANISH: "Español",
-  ENGLISH: "Ingles",
-
   //ADMIN
   ADMIN: "Admin",
   USERS: "Usuarios",
   USER_LIST: "Lista de usuarios",
+
+  //DASHBOARD
+  EARNINGS_TEXT: "Visualiza tus ingresos",
+  EXPENSES_TEXT: "Visualiza tus gastos",
+  LOANS_TEXT: "Visualiza tus prestamos",
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",
