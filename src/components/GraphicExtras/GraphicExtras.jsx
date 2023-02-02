@@ -19,7 +19,6 @@ export const LoadingAvatar = () => {
 };
 
 export const TittleGraph = ({ title, tooltip }) => {
-  console.log(tooltip);
   return (
     <div className="title-class">
       <span>{title}</span>
