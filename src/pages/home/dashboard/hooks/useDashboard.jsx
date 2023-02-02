@@ -44,7 +44,7 @@ const useDashboard = () => {
         });
         setEarnings({
           name: responseData.map((element) => element.name),
-          value: responseData.map((element) => element.value),
+          value: responseData.map((element) => element.monthValue),
           loading: false,
         });
       })
@@ -63,7 +63,7 @@ const useDashboard = () => {
         });
         setExpenses({
           name: responseData.map((element) => element.name),
-          value: responseData.map((element) => element.value),
+          value: responseData.map((element) => element.monthValue),
           loading: false,
         });
       })

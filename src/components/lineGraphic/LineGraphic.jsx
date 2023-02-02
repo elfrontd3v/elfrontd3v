@@ -8,6 +8,7 @@ import {
   PointElement,
   LineElement,
   Title,
+  Filler,
   Tooltip,
   Legend,
 } from "chart.js";
@@ -25,7 +26,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 const LineGraphic = ({ title, labels, values, loading, color, tooltip }) => {
@@ -35,8 +37,18 @@ const LineGraphic = ({ title, labels, values, loading, color, tooltip }) => {
       {
         label: title,
         data: values,
+        fill: "start",
+        borderWidth: 2,
+        pointBorderWidth: 2,
+        pointBorderColor: "white",
         borderColor: color.borderColor,
-        backgroundColor: color.backgroundColor,
+        backgroundColor: (context) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+          gradient.addColorStop(0, color.backgroundColor);
+          gradient.addColorStop(1, "rgba(238,174,202,0)");
+          return gradient;
+        },
       },
     ],
   };
