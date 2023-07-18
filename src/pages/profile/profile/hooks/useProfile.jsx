@@ -1,9 +1,9 @@
 import { AuthContext, ThemeContext } from "core/context";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const useProfile = () => {
-  const [themeState, themeDispatch] = useContext(ThemeContext);
-  const [authContext, authDispatch] = useContext(AuthContext);
+  const [themeState] = useContext(ThemeContext);
+  const [authContext] = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
