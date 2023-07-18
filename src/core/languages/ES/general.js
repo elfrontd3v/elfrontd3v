@@ -45,8 +45,18 @@ export const generalDictionary = {
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
+  SIGN_UP: "Crear cuenta",
   WELCOME_BACK: "Bienvenido de nuevo",
+  HELLO_FRIEND: "Hola, amigo",
   PASSWORD: "Contraseña",
+  CREATE_ACCOUNT: "Crear cuenta",
+  FORGOT_PASSWORD: "Olvidaste tu contraseña?",
+  OR_USE_EMAIL: "Ó utiliza tu correo para registrarte",
+  USE_YOUR_ACCOUNT: "Ó utiliza tu cuenta",
+  ENTER_YOUR_PERSONAL:
+    "Ingrese sus datos personales y comience el viaje con nosotros",
+  TO_KEEP_CONNECTED:
+    "Para mantenerse conectado con nosotros por favor inicie sesión con su personal información",
 
   //SIDEBAR
   HOME: "Principal",
@@ -121,6 +131,7 @@ export const generalDictionary = {
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",
+  VALIDATE_NAME: "Introduce un nombre valido",
   VALIDATE_EMAIL: "Introduce un correo valido",
   VALIDATE_EMAIL_LENGTH: "El correo debe tener entre 5 y 50 caracteres",
   VALIDATE_PASSWORD: "Introduce una clave valida",

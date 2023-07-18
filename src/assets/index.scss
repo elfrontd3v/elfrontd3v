@@ -1,7 +1,8 @@
 @import "./theme.scss";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Montserrat:wght@400;500&family=Open+Sans:wght@500&family=Poppins:wght@500;600&display=swap");
 
 body {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Open Sans", sans-serif;
 }
 
 .contentClass {

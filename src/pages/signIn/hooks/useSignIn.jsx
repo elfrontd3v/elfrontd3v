@@ -14,6 +14,7 @@ import AuthService from "api/AuthService";
 
 const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [, authDispatch] = useContext(AuthContext);
   const [themeState, themeDispatch] = useContext(ThemeContext);
 
@@ -138,15 +139,27 @@ const useSignIn = () => {
     {
       required: true,
       min: 5,
+      type: "password",
       message: generalDictionary.VALIDATE_PASSWORD,
+    },
+  ];
+
+  const nameRules = [
+    {
+      required: true,
+      min: 3,
+      message: generalDictionary.VALIDATE_NAME,
     },
   ];
 
   return {
     emailRules,
     passwordRules,
+    nameRules,
     isLoading,
     generalDictionary,
+    toggle,
+    setToggle,
     signInHandler,
     signInGoogle,
     sigInFacebook,
