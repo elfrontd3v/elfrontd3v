@@ -14,8 +14,7 @@ export const PublicRoute = ({ children }) => {
   const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
   return sessionInfo ? <Navigate to={"/home"} /> : children;
 };
-
-const SignIn = lazy(() => import("pages/signIn/components/SignIn"));
+const LogIn = lazy(() => import("pages/signIn/components/LogIn"));
 const Home = lazy(() => import("pages/home/home/components/Home"));
 const Dashboard = lazy(() =>
   import("pages/home/dashboard/components/Dashboard")
@@ -201,7 +200,7 @@ export const routes = ({ generalDictionary }) => [
     children: null,
     element: (
       <PublicRoute>
-        <SignIn />
+        <LogIn />
       </PublicRoute>
     ),
   },

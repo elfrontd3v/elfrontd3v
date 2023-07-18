@@ -17,7 +17,7 @@ import { Card } from "antd";
 import {
   LoadingAvatar,
   TittleGraph,
-} from "components/GraphicExtras/GraphicExtras";
+} from "components/graphicExtras/GraphicExtras";
 
 ChartJS.register(
   CategoryScale,
