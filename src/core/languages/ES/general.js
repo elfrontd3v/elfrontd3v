@@ -136,7 +136,6 @@ export const generalDictionary = {
   VALIDATE_EMAIL_LENGTH: "El correo debe tener entre 5 y 50 caracteres",
   VALIDATE_PASSWORD: "Introduce una clave valida",
   VALIDATE_PASSWORD_LENGTH: "La clave debe tener entre 5 y 15 caracteres",
-  VALIDATE_NAME: "Introduce un nombre valido",
   VALIDATE_DESCRIPTION: "Introduce una descripción valida",
   VALIDATE_VALUE: "Introduce un valor valido",
   VALIDATE_PERIODICITY: "Selecciona un periodo valido",
