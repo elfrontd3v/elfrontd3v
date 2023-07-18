@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Skeleton, Tooltip } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import "./graphicExtras.scss";
+import "./graphicAddons.scss";
 
 export const LoadingAvatar = () => {
   return (
