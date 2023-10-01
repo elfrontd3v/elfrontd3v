@@ -20,7 +20,7 @@ const LogIn = () => {
   } = useSignIn();
 
   return (
-    <div style={{ textAlign: "-webkit-center" }}>
+    <div className={"center-webkit"}>
       <Spin tip={generalDictionary.SIGN_IN} spinning={isLoading} size="large">
         <div className="login-page">
           <div
@@ -30,9 +30,7 @@ const LogIn = () => {
           >
             <div className="sign-up">
               <Form
-                onFinish={(values) => {
-                  console.log("values", values);
-                }}
+                onFinish={() => {}}
                 initialValues={{ email: "", password: "", name: "" }}
               >
                 <h1 className="h1-login login-title">
@@ -55,6 +53,7 @@ const LogIn = () => {
                     className={"input-login"}
                     placeholder={generalDictionary.NAME}
                     id="signUpName"
+                    data-testid={"signUpName"}
                   />
                 </Form.Item>
                 <Form.Item name={"email"} rules={emailRules} hasFeedback>
@@ -62,6 +61,7 @@ const LogIn = () => {
                     className={"input-login"}
                     placeholder={generalDictionary.EMAIL}
                     id="signUpEmail"
+                    data-testid={"signUpEmail"}
                   />
                 </Form.Item>
                 <Form.Item name={"password"} rules={passwordRules} hasFeedback>
@@ -70,9 +70,14 @@ const LogIn = () => {
                     type="password"
                     placeholder={generalDictionary.PASSWORD}
                     id="signUpPassword"
+                    data-testid={"signUpPassword"}
                   />
                 </Form.Item>
-                <button className={"button-login"} type="submit">
+                <button
+                  className={"button-login"}
+                  type="submit"
+                  data-testid={"signUpButton"}
+                >
                   {generalDictionary.SIGN_UP}
                 </button>
                 <button
@@ -108,6 +113,7 @@ const LogIn = () => {
                     className={"input-login"}
                     placeholder={generalDictionary.EMAIL}
                     id="signInEmail"
+                    data-testid={"signInEmail"}
                   />
                 </Form.Item>
                 <Form.Item name={"password"} rules={passwordRules} hasFeedback>
@@ -116,13 +122,18 @@ const LogIn = () => {
                     type="password"
                     placeholder={generalDictionary.PASSWORD}
                     id="signInPassword"
+                    data-testid={"signInPassword"}
                   />
                 </Form.Item>
 
                 <a className="a-login" href="/">
                   {generalDictionary.FORGOT_PASSWORD}
                 </a>
-                <button className={"button-login"} type="submit">
+                <button
+                  className={"button-login"}
+                  type="submit"
+                  data-testid={"signInButton"}
+                >
                   {generalDictionary.SIGN_IN}
                 </button>
                 <button

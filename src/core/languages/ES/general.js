@@ -42,6 +42,9 @@ export const generalDictionary = {
   LANGUAGE: "Lenguaje",
   SPANISH: "Español",
   ENGLISH: "Ingles",
+  CALCULATOR: "Calculadora",
+  FAST: "Rápido",
+  SUBJECT: "Materia",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",

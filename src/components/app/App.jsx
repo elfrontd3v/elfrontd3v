@@ -30,7 +30,15 @@ const App = () => {
             }
           >
             {authState?.uid && (
-              <Col xs={0} sm={0} md={0} lg={5} xl={4} xxl={3}>
+              <Col
+                xs={0}
+                sm={0}
+                md={0}
+                lg={5}
+                xl={4}
+                xxl={3}
+                style={{ backgroundColor: "#fafafa" }}
+              >
                 <SideBar items={items} />
               </Col>
             )}
