@@ -33,7 +33,7 @@ const NavBar = ({ items }) => {
         closeIcon={false}
         onClick={() => setVisible(false)}
         onClose={() => setVisible(false)}
-        visible={visible}
+        open={visible}
       >
         <Menu
           mode="inline"

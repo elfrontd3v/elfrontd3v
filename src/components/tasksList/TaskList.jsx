@@ -3,7 +3,7 @@ import { Button, Card, Input } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import AddCardComponent from "./AddCardComponent";
 import SingleTask from "./SingleTask";
-import TasksListClass from "core/class/TaskListClass";
+import TasksListClass from "@/core/class/TaskListClass";
 import "./tasksList.scss";
 
 const { TextArea } = Input;

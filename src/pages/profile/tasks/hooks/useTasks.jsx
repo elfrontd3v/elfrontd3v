@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext, TasksContext, ThemeContext } from "core/context";
-import TasksService from "api/profile/TasksService";
-import TasksListClass from "core/class/TaskListClass";
-import TaskClass from "core/class/TaskClass";
+import { AuthContext, TasksContext, ThemeContext } from "@/core/context";
+import TasksService from "@/api/profile/TasksService";
+import TasksListClass from "@/core/class/TaskListClass";
+import TaskClass from "@/core/class/TaskClass";
 import { message } from "antd";
 import { v4 as uuid } from "uuid";
 

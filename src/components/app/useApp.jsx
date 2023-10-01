@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
-import AuthService from "api/AuthService";
-import { AuthContext, ThemeContext } from "core/context";
-import { routes } from "routes";
+import AuthService from "@/api/AuthService";
+import { AuthContext, ThemeContext } from "@/core/context";
+import { routes } from "@/routes";
 import es_ES from "antd/es/locale/es_ES";
 
 const useApp = () => {

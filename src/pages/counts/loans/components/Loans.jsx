@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import HeaderSection from "components/headerSection/HeaderSection";
+import HeaderSection from "@/components/headerSection/HeaderSection";
 import useLoans from "../hooks/useLoans";
 import LoansCards from "./LoansCards";
-import DataTable from "components/dataTable/DataTable";
+import DataTable from "@/components/dataTable/DataTable";
 import "./loans.scss";
 import CreateLoan from "./CreateLoan";
 

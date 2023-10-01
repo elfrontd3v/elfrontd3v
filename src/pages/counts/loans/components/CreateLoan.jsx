@@ -10,7 +10,7 @@ import {
   Select,
   Spin,
 } from "antd";
-import { numThousand, parserNumber } from "helpers/utils/validateFormat";
+import { numThousand, parserNumber } from "@/helpers/utils/validateFormat";
 import moment from "moment";
 import React from "react";
 import "./loans.scss";
@@ -84,7 +84,7 @@ const CreateLoan = ({
       destroyOnClose={true}
       maskClosable={false}
       title={generalDictionary.ADD_LOAN}
-      visible={isVisible.state}
+      open={isVisible.state}
       onCancel={handleCancel}
       footer={null}
     >

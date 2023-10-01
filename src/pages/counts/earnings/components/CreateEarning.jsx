@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "core/context";
-import { numThousand, parserNumber } from "helpers/utils/validateFormat";
+import { ThemeContext } from "@/core/context";
+import { numThousand, parserNumber } from "@/helpers/utils/validateFormat";
 import {
   Button,
   Col,
@@ -56,7 +56,7 @@ const CreateEarning = ({
       destroyOnClose={true}
       maskClosable={false}
       title={generalDictionary.ADD_EARNING}
-      visible={isVisible.state}
+      open={isVisible.state}
       onCancel={handleCancel}
       footer={null}
     >
