@@ -31,7 +31,6 @@ const NavBar = ({ items }) => {
         width={"240px"}
         placement={"left"}
         closeIcon={false}
-        onClick={() => setVisible(false)}
         onClose={() => setVisible(false)}
         open={visible}
       >
@@ -40,7 +39,11 @@ const NavBar = ({ items }) => {
           defaultOpenKeys={["home", "counts", "profile"]}
           selectedKeys={[location.pathname]}
           items={items}
-          onClick={() => setVisible(false)}
+          onClick={(item) => {
+            if (item && item.key) {
+              setVisible(false);
+            }
+          }}
         />
       </Drawer>
     </>
