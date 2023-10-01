@@ -5,10 +5,11 @@
   "type": "module",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-layout": "^7.17.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react-swc": "^3.4.0",
-    "antd": "^4.22.8",
+    "antd": "^5.9.4",
     "chart.js": "^4.4.0",
     "firebase": "^9.9.3",
     "moment": "^2.29.4",
