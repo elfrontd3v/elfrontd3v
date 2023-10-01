@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader } from "@ant-design/pro-layout";
+import { PageHeader } from "antd";
 import "./headerSection.scss";
 const HeaderSection = ({
   title,
@@ -17,6 +17,7 @@ const HeaderSection = ({
         backIcon={backIcon ? backIcon : false}
         onBack={backFunction ? backFunction : false}
         extra={buttons ? buttons : []}
+        ghost={false}
       />
     </>
   );
