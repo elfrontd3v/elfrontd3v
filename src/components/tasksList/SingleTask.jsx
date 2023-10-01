@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Input, Row, Tooltip, Typography } from "antd";
 import { DeleteOutlined, CheckSquareOutlined } from "@ant-design/icons";
-import TaskClass from "core/class/TaskClass";
+import TaskClass from "@/core/class/TaskClass";
 
 const { TextArea } = Input;
 const { Text } = Typography;

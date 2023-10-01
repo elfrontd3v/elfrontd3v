@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from "react";
-import UsersService from "api/users/UsersService";
-import { AuthContext, ThemeContext } from "core/context";
+import UsersService from "@/api/users/UsersService";
+import { AuthContext, ThemeContext } from "@/core/context";
 import { Tag } from "antd";
 
 const useUsers = () => {

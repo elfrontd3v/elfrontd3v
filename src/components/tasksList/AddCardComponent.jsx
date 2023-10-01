@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import TaskClass from "core/class/TaskClass";
-import TasksListClass from "core/class/TaskListClass";
+import TaskClass from "@/core/class/TaskClass";
+import TasksListClass from "@/core/class/TaskListClass";
 const { TextArea } = Input;
 const AddCardComponent = ({ generalDictionary, type, addHandle, listId }) => {
   const [addCollapse, setAddCollapse] = useState(false);

@@ -1,0 +1,1 @@
+import{h as e,i as c,k as r,l as i,n as t,o as n,p as l,q as d,y as f}from"./index-13de64b0.js";const p={getAllLoansByUid:async s=>{const a=e(n,"loans"),o=c(a,r("uid","==",s));return i(o)},insertLoan:async s=>{const a=t(n,`loans/${s.id}`);return await l(a,s),(await d(a)).data()},deleteLoan:async s=>{const a=t(n,`loans/${s}`);return await f(a),!0}};export{p as L};

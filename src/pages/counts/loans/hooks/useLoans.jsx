@@ -5,12 +5,12 @@ import {
   DeleteOutlined,
   InfoCircleTwoTone,
 } from "@ant-design/icons";
-import LoansService from "api/counts/LoansService";
+import LoansService from "@/api/counts/LoansService";
 import { v4 as uuid } from "uuid";
-import { AuthContext, ThemeContext } from "core/context";
-import LoanClass from "core/class/LoanClass";
-import ModalAlertMessage from "components/modalAlertMessage/ModalAlertMessage";
-import { numThousand } from "helpers/utils/validateFormat";
+import { AuthContext, ThemeContext } from "@/core/context";
+import LoanClass from "@/core/class/LoanClass";
+import ModalAlertMessage from "@/components/modalAlertMessage/ModalAlertMessage";
+import { numThousand } from "@/helpers/utils/validateFormat";
 
 const useLoans = () => {
   const [authState] = useContext(AuthContext);

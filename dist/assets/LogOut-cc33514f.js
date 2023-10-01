@@ -1,0 +1,1 @@
+import{r as e,A as r,bd as n,j as s}from"./index-13de64b0.js";import{b as i}from"./Auth-91c0aa9d.js";const g=()=>{const[t,o]=e.useContext(r),a=n();return e.useEffect(()=>{t!=null&&t.uid&&i().then(()=>{sessionStorage.removeItem("storage"),o({type:"LOG_OUT"}),a("/")})},[]),s.jsx(s.Fragment,{})};export{g as default};

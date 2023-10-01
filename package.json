@@ -1,12 +1,15 @@
 {
   "name": "elfrontd3v",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
+    "@vitejs/plugin-react-swc": "^3.4.0",
     "antd": "^4.22.8",
-    "chart.js": "^4.0.1",
+    "chart.js": "^4.4.0",
     "firebase": "^9.9.3",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -14,18 +17,16 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.8.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.54.5",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.16.0",
+    "sass": "^1.68.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +47,13 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
-    "istanbul-lib-instrument": "^5.2.1"
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "vite": "^4.4.9"
   }
 }
