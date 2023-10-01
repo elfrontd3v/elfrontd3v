@@ -10,7 +10,6 @@ const SideBar = ({ items }) => {
     <Sider
       theme="light"
       className="sideBarContainer"
-      width={"100%"}
       style={{ position: "fixed" }}
     >
       <Menu
