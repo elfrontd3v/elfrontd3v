@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
-import HeaderSection from "components/headerSection/HeaderSection";
-import AddCardComponent from "components/tasksList/AddCardComponent";
-import TasksList from "components/tasksList/TaskList";
+import HeaderSection from "@/components/headerSection/HeaderSection";
+import AddCardComponent from "@/components/tasksList/AddCardComponent";
+import TasksList from "@/components/tasksList/TaskList";
 import React from "react";
 import useTasks from "../hooks/useTasks";
 import "./tasks.scss";

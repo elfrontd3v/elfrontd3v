@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext, ThemeContext } from "core/context";
-import EarningService from "api/counts/EarningsService";
-import ExpensesService from "api/counts/ExpensesService";
-import LoansService from "api/counts/LoansService";
+import { AuthContext, ThemeContext } from "@/core/context";
+import EarningService from "@/api/counts/EarningsService";
+import ExpensesService from "@/api/counts/ExpensesService";
+import LoansService from "@/api/counts/LoansService";
 
 const useDashboard = () => {
   const [authState] = useContext(AuthContext);

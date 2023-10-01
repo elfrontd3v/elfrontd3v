@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext";
-import { fireStore } from "api/firebase/Config";
+import { fireStore } from "@/api/firebase/Config";
 import {
   collection,
   onSnapshot,

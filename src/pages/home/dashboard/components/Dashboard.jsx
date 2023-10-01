@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
-import HeaderSection from "components/headerSection/HeaderSection";
-import LineGraphic from "components/lineGraphic/LineGraphic";
-import { GraphColor } from "helpers/utils/constants/constants";
+import HeaderSection from "@/components/headerSection/HeaderSection";
+import LineGraphic from "@/components/lineGraphic/LineGraphic";
+import { GraphColor } from "@/helpers/utils/constants/constants";
 import React from "react";
 import useDashboard from "../hooks/useDashboard";
 

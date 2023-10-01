@@ -15,26 +15,28 @@ export const PublicRoute = ({ children }) => {
   const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
   return sessionInfo ? <Navigate to={"/home"} /> : children;
 };
-const LogIn = lazy(() => import("pages/signIn/components/LogIn"));
-const Home = lazy(() => import("pages/home/home/components/Home"));
+const LogIn = lazy(() => import("@/pages/signIn/components/LogIn"));
+const Home = lazy(() => import("@/pages/home/home/components/Home.jsx"));
 const Dashboard = lazy(() =>
-  import("pages/home/dashboard/components/Dashboard")
+  import("@/pages/home/dashboard/components/Dashboard")
 );
 const Earnings = lazy(() =>
-  import("pages/counts/earnings/components/Earnings")
+  import("@/pages/counts/earnings/components/Earnings")
 );
 const Expenses = lazy(() =>
-  import("pages/counts/expenses/components/Expenses")
+  import("@/pages/counts/expenses/components/Expenses")
 );
-const Loans = lazy(() => import("pages/counts/loans/components/Loans"));
-const Fast = lazy(() => import("pages/calculator/fast/components/Fast"));
+const Loans = lazy(() => import("@/pages/counts/loans/components/Loans"));
+const Fast = lazy(() => import("@/pages/calculator/fast/components/Fast"));
 const Subject = lazy(() =>
-  import("pages/calculator/subject/components/Subject")
+  import("@/pages/calculator/subject/components/Subject")
 );
-const Profile = lazy(() => import("pages/profile/profile/components/Profile"));
-const Tasks = lazy(() => import("pages/profile/tasks/components/Tasks"));
-const LogOut = lazy(() => import("pages/profile/logOut/components/LogOut"));
-const Users = lazy(() => import("pages/admin/users/components/Users"));
+const Profile = lazy(() =>
+  import("@/pages/profile/profile/components/Profile")
+);
+const Tasks = lazy(() => import("@/pages/profile/tasks/components/Tasks"));
+const LogOut = lazy(() => import("@/pages/profile/logOut/components/LogOut"));
+const Users = lazy(() => import("@/pages/admin/users/components/Users"));
 
 export const routes = ({ generalDictionary }) => [
   {

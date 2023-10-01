@@ -1,4 +1,4 @@
-import { ThemeContext } from "core/context";
+import { ThemeContext } from "@/core/context";
 import React, { useContext } from "react";
 
 const useFast = () => {

@@ -1,0 +1,1 @@
+.headerSectionClass{margin-bottom:10px;border-radius:5px;box-shadow:0 1px 2px #0003;transition:.5s;animation:appearFromTop .5s ease}.headerSectionClass:hover{box-shadow:0 2px 4px #0003}@keyframes appearFromTop{0%{transform:translateY(-100%)}to{transform:translate(0)}}

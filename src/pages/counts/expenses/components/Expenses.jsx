@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import DataTable from "components/dataTable/DataTable";
-import HeaderSection from "components/headerSection/HeaderSection";
+import DataTable from "@/components/dataTable/DataTable";
+import HeaderSection from "@/components/headerSection/HeaderSection";
 import useExpenses from "../hooks/useExpenses";
 import ExpensesCards from "./ExpensesCards";
 import CreateExpense from "./CreateExpense";

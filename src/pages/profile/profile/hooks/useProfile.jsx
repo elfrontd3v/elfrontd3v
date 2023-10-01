@@ -1,4 +1,4 @@
-import { AuthContext, ThemeContext } from "core/context";
+import { AuthContext, ThemeContext } from "@/core/context";
 import { useContext, useEffect, useState } from "react";
 
 const useProfile = () => {
