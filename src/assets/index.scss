@@ -4,6 +4,14 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+body::-webkit-scrollbar {
+  width: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $gradientPrimary;
+  border-radius: 5px;
+}
 
 .contentClass {
   min-height: calc(100vh - 64px);
