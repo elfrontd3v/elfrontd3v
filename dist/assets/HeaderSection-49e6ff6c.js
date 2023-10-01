@@ -1,0 +1,1 @@
+import{j as e,c8 as l}from"./index-13de64b0.js";const n=({title:a,subtitle:s,backIcon:r,backFunction:o,buttons:t})=>e.jsx(e.Fragment,{children:e.jsx(l,{className:"headerSectionClass",title:a||!1,subTitle:s||!1,backIcon:r||!1,onBack:o||!1,extra:t||[],ghost:!1})});export{n as H};

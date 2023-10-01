@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import HeaderSection from "components/headerSection/HeaderSection";
+import HeaderSection from "@/components/headerSection/HeaderSection";
 import useEarnings from "../hooks/useEarnings";
 import EarningsCards from "./EarningsCards";
 import CreateEarning from "./CreateEarning";
 import "./earnings.scss";
-import DataTable from "components/dataTable/DataTable";
+import DataTable from "@/components/dataTable/DataTable";
 
 const Earnings = () => {
   const {

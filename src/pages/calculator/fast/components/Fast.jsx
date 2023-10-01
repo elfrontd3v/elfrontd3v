@@ -1,5 +1,5 @@
 import { Button, Card, Col, Form, Input, InputNumber, Row, Space } from "antd";
-import HeaderSection from "components/headerSection/HeaderSection";
+import HeaderSection from "@/components/headerSection/HeaderSection";
 import React from "react";
 import useFast from "../hooks/useFast";
 

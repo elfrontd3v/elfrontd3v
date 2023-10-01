@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "importHelpers": true,
-    "baseUrl": "src/"
-  }
-}

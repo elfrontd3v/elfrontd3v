@@ -5,12 +5,12 @@ import {
   gitHubSignInFirebase,
   googleSignInFirebase,
   signInFirebase,
-} from "api/firebase/Auth";
+} from "@/api/firebase/Auth";
 
 import { message } from "antd";
-import { AuthContext, ThemeContext } from "core/context";
-import UserClass from "core/class/UserClass";
-import AuthService from "api/AuthService";
+import { AuthContext, ThemeContext } from "@/core/context";
+import UserClass from "@/core/class/UserClass";
+import AuthService from "@/api/AuthService";
 
 const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);

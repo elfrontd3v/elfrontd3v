@@ -1,8 +1,8 @@
 import React from "react";
 import useUsers from "../hooks/useUsers";
 
-import DataTable from "components/dataTable/DataTable";
-import HeaderSection from "components/headerSection/HeaderSection";
+import DataTable from "@/components/dataTable/DataTable";
+import HeaderSection from "@/components/headerSection/HeaderSection";
 
 const Users = () => {
   const { generalDictionary, columns, userList, loading } = useUsers();
