@@ -34,8 +34,8 @@ const App = () => {
                 xs={0}
                 sm={0}
                 md={0}
-                lg={5}
-                xl={4}
+                lg={4}
+                xl={3}
                 xxl={3}
                 style={{ backgroundColor: "#fafafa" }}
               >
@@ -46,8 +46,8 @@ const App = () => {
               xs={24}
               sm={24}
               md={24}
-              lg={authState.uid ? 19 : 24}
-              xl={authState.uid ? 20 : 24}
+              lg={authState.uid ? 20 : 24}
+              xl={authState.uid ? 21 : 24}
               xxl={authState.uid ? 21 : 24}
             >
               <Content
