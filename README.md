@@ -47,7 +47,3 @@ Si tienes preguntas o sugerencias, no dudes en contactarnos:
 - Sitio Web: https://elfrontd3v.web.app/
 
 ¡Gracias por elegir **el front d3v** para tu gestión financiera!
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
