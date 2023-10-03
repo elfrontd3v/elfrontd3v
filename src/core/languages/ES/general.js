@@ -131,6 +131,9 @@ export const generalDictionary = {
   EARNINGS_TEXT: "Visualiza tus ingresos",
   EXPENSES_TEXT: "Visualiza tus gastos",
   LOANS_TEXT: "Visualiza tus prestamos",
+  COMPARATIVE: "Comparativa",
+  COMPARATIVE_TEXT:
+    "Comparativa entre los gastos, los ingresos y el dinero prestado",
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",

@@ -4,6 +4,7 @@ import LineGraphic from "@/components/lineGraphic/LineGraphic";
 import { GraphColor } from "@/helpers/utils/constants/constants";
 import React from "react";
 import useDashboard from "../hooks/useDashboard";
+import DoughnutGraphic from "@/components/doughnutGraphic/DoughnutGraphic";
 
 const Dashboard = () => {
   const { generalDictionary, earnings, expenses, loans } = useDashboard();
@@ -11,13 +12,26 @@ const Dashboard = () => {
     <>
       <HeaderSection title={generalDictionary.DASHBOARD} />
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+        <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
           <LineGraphic
             title={generalDictionary.EARNINGS}
             tooltip={generalDictionary.EARNINGS_TEXT}
             color={GraphColor.green}
             labels={earnings.name}
             values={earnings.value}
+            loading={earnings.loading}
+          />
+        </Col>
+        <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
+          <DoughnutGraphic
+            title={generalDictionary.COMPARATIVE}
+            tooltip={generalDictionary.COMPARATIVE_TEXT}
+            labels={[
+              generalDictionary.EARNINGS,
+              generalDictionary.EXPENSES,
+              generalDictionary.LOANS,
+            ]}
+            values={[earnings.total, expenses.total, loans.total]}
             loading={earnings.loading}
           />
         </Col>
