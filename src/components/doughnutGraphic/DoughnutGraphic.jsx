@@ -7,7 +7,6 @@ import {
 } from "@/components/graphicAddons/GraphicAddons";
 import { Card } from "antd";
 import { getRandomColor } from "@/helpers/functions/functions";
-import "./doughnutGraphic.scss";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutGraphic = ({ title, labels, values, loading, tooltip }) => {

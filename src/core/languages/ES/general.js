@@ -45,6 +45,7 @@ export const generalDictionary = {
   CALCULATOR: "Calculadora",
   FAST: "Rápido",
   SUBJECT: "Materia",
+  REPORTS: "Reportes",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
