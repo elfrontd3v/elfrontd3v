@@ -12,18 +12,21 @@ const useDashboard = () => {
     name: [],
     value: [],
     loading: false,
+    total: 0,
   });
 
   const [expenses, setExpenses] = useState({
     name: [],
     value: [],
     loading: false,
+    total: 0,
   });
 
   const [loans, setLoans] = useState({
     name: [],
     value: [],
     loading: false,
+    total: 0,
   });
 
   useEffect(() => {
@@ -46,6 +49,10 @@ const useDashboard = () => {
           name: responseData.map((element) => element.name),
           value: responseData.map((element) => element.monthValue),
           loading: false,
+          total: responseData.reduce(
+            (acumulador, element) => acumulador + parseInt(element.monthValue),
+            0
+          ),
         });
       })
       .catch((error) => {
@@ -65,6 +72,10 @@ const useDashboard = () => {
           name: responseData.map((element) => element.name),
           value: responseData.map((element) => element.monthValue),
           loading: false,
+          total: responseData.reduce(
+            (acumulador, element) => acumulador + parseInt(element.monthValue),
+            0
+          ),
         });
       })
       .catch((error) => {
@@ -84,6 +95,10 @@ const useDashboard = () => {
           name: responseData.map((element) => element.name),
           value: responseData.map((element) => element.value),
           loading: false,
+          total: responseData.reduce(
+            (acumulador, element) => acumulador + element.value,
+            0
+          ),
         });
       })
       .catch((error) => {

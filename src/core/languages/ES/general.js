@@ -45,6 +45,7 @@ export const generalDictionary = {
   CALCULATOR: "Calculadora",
   FAST: "Rápido",
   SUBJECT: "Materia",
+  REPORTS: "Reportes",
 
   //SIGN_IN
   SIGN_IN: "Iniciar sesión",
@@ -131,6 +132,9 @@ export const generalDictionary = {
   EARNINGS_TEXT: "Visualiza tus ingresos",
   EXPENSES_TEXT: "Visualiza tus gastos",
   LOANS_TEXT: "Visualiza tus prestamos",
+  COMPARATIVE: "Comparativa",
+  COMPARATIVE_TEXT:
+    "Comparativa entre los gastos, los ingresos y el dinero prestado",
 
   //VALIDATIONS
   REQUIRED: "Este campo es obligatorio",

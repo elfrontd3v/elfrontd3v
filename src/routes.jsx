@@ -37,6 +37,7 @@ const Profile = lazy(() =>
 const Tasks = lazy(() => import("@/pages/profile/tasks/components/Tasks"));
 const LogOut = lazy(() => import("@/pages/profile/logOut/components/LogOut"));
 const Users = lazy(() => import("@/pages/admin/users/components/Users"));
+const Reports = lazy(() => import("@/pages/admin/reports/components/Reports"));
 
 export const routes = ({ generalDictionary }) => [
   {
@@ -230,6 +231,19 @@ export const routes = ({ generalDictionary }) => [
         disabled: false,
         isHidden: false,
       },
+      {
+        path: "/reports",
+        name: "/reports",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <h1>Reportes</h1>
+          </PrivateRoute>
+        ),
+        text: generalDictionary.REPORTS,
+        disabled: false,
+        isHidden: false,
+      },
     ],
   },
   {
@@ -256,7 +270,7 @@ export const routes = ({ generalDictionary }) => [
     children: null,
     element: (
       <PublicRoute>
-        <></>
+        <Reports />
       </PublicRoute>
     ),
   },
