@@ -35,7 +35,8 @@ const useDashboard = () => {
       getAllExpenses();
       getAllLoans();
     }
-  }, [authState?.uid]);
+    console.log("rerender");
+  }, []);
 
   const getAllEarnings = () => {
     setEarnings({ ...earnings, loading: true });
