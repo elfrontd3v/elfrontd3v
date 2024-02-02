@@ -12,6 +12,7 @@ const useApp = () => {
   const [authLoading, setAuthLoading] = useState(false);
   const [configProvider] = useState({ locale: es_ES, direction: "ltr" });
   const navigate = useNavigate();
+  const isAdmin = authState.rol === "Administrador";
 
   useEffect(() => {
     setAuthLoading(true);
@@ -89,8 +90,8 @@ const useApp = () => {
     }
   };
 
-  const items = generateList(RoutesComponent({ generalDictionary }));
-  const routesList = getRoutes(RoutesComponent({ generalDictionary }));
+  const items = generateList(RoutesComponent({ generalDictionary, isAdmin }));
+  const routesList = getRoutes(RoutesComponent({ generalDictionary, isAdmin }));
 
   return { authState, authLoading, items, routesList, configProvider };
 };

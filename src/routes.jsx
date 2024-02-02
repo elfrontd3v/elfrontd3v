@@ -39,7 +39,7 @@ const LogOut = lazy(() => import("@/pages/profile/logOut/components/LogOut"));
 const Users = lazy(() => import("@/pages/admin/users/components/Users"));
 const Reports = lazy(() => import("@/pages/admin/reports/components/Reports"));
 
-export const RoutesComponent = ({ generalDictionary }) => [
+export const RoutesComponent = ({ generalDictionary, isAdmin }) => [
   {
     path: "",
     name: "home",
@@ -71,6 +71,42 @@ export const RoutesComponent = ({ generalDictionary }) => [
           </PrivateRoute>
         ),
         text: generalDictionary.DASHBOARD,
+        disabled: false,
+        isHidden: false,
+      },
+    ],
+  },
+  {
+    path: "",
+    name: "admin",
+    icon: <CoffeeOutlined />,
+    text: generalDictionary.ADMIN,
+    disabled: false,
+    isHidden: !isAdmin,
+    children: [
+      {
+        path: "/users",
+        name: "/users",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <Users />
+          </PrivateRoute>
+        ),
+        text: generalDictionary.USERS,
+        disabled: false,
+        isHidden: false,
+      },
+      {
+        path: "/reports",
+        name: "/reports",
+        icon: null,
+        element: (
+          <PrivateRoute>
+            <h1>Reportes</h1>
+          </PrivateRoute>
+        ),
+        text: generalDictionary.REPORTS,
         disabled: false,
         isHidden: false,
       },
@@ -210,42 +246,7 @@ export const RoutesComponent = ({ generalDictionary }) => [
       },
     ],
   },
-  {
-    path: "",
-    name: "admin",
-    icon: <CoffeeOutlined />,
-    text: generalDictionary.ADMIN,
-    disabled: false,
-    isHidden: false,
-    children: [
-      {
-        path: "/users",
-        name: "/users",
-        icon: null,
-        element: (
-          <PrivateRoute>
-            <Users />
-          </PrivateRoute>
-        ),
-        text: generalDictionary.USERS,
-        disabled: false,
-        isHidden: false,
-      },
-      {
-        path: "/reports",
-        name: "/reports",
-        icon: null,
-        element: (
-          <PrivateRoute>
-            <h1>Reportes</h1>
-          </PrivateRoute>
-        ),
-        text: generalDictionary.REPORTS,
-        disabled: false,
-        isHidden: false,
-      },
-    ],
-  },
+
   {
     path: "/",
     name: "logIn",
