@@ -12,7 +12,7 @@ import { AuthContext, ThemeContext } from "@/core/context";
 import UserClass from "@/core/class/UserClass";
 import AuthService from "@/api/AuthService";
 
-const useSignIn = () => {
+const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [, authDispatch] = useContext(AuthContext);
@@ -167,4 +167,4 @@ const useSignIn = () => {
   };
 };
 
-export default useSignIn;
+export default useLogin;
