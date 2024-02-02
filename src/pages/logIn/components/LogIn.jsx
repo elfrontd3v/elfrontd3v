@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Spin } from "antd";
 import { FaFacebookF, FaGooglePlusG, FaGithub } from "react-icons/fa";
-import useSignIn from "../hooks/useSignIn";
+import useLogin from "../hooks/useLogin";
 import "./logIn.scss";
 
 const LogIn = () => {
@@ -17,7 +17,7 @@ const LogIn = () => {
     signInGoogle,
     sigInFacebook,
     sigInGitHub,
-  } = useSignIn();
+  } = useLogin();
 
   return (
     <div className={"center-webkit"}>

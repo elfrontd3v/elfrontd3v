@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import {
   HomeOutlined,
@@ -15,7 +15,7 @@ export const PublicRoute = ({ children }) => {
   const sessionInfo = JSON.parse(sessionStorage.getItem("storage"));
   return sessionInfo ? <Navigate to={"/home"} /> : children;
 };
-const LogIn = lazy(() => import("@/pages/signIn/components/LogIn"));
+const LogIn = lazy(() => import("@/pages/logIn/components/LogIn"));
 const Home = lazy(() => import("@/pages/home/home/components/Home.jsx"));
 const Dashboard = lazy(() =>
   import("@/pages/home/dashboard/components/Dashboard")
@@ -39,7 +39,7 @@ const LogOut = lazy(() => import("@/pages/profile/logOut/components/LogOut"));
 const Users = lazy(() => import("@/pages/admin/users/components/Users"));
 const Reports = lazy(() => import("@/pages/admin/reports/components/Reports"));
 
-export const routes = ({ generalDictionary }) => [
+export const RoutesComponent = ({ generalDictionary }) => [
   {
     path: "",
     name: "home",
@@ -248,7 +248,7 @@ export const routes = ({ generalDictionary }) => [
   },
   {
     path: "/",
-    name: "signIn",
+    name: "logIn",
     icon: null,
     text: "",
     disabled: false,
