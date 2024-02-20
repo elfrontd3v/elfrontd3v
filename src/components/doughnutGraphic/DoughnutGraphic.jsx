@@ -6,7 +6,7 @@ import {
   TittleGraph,
 } from "@/components/graphicAddons/GraphicAddons";
 import { Card } from "antd";
-import { getRandomColor } from "@/helpers/functions/functions";
+import { validColors } from "@/helpers/utils/constants/constants";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutGraphic = ({ title, labels, values, loading, tooltip }) => {
@@ -15,7 +15,8 @@ const DoughnutGraphic = ({ title, labels, values, loading, tooltip }) => {
     const borderColors = [];
 
     for (let i = 0; i < size; i++) {
-      const randomColor = getRandomColor();
+      const randomColor =
+        validColors[Math.floor(Math.random() * validColors.length)];
       backgroundColors.push(randomColor.replace("1)", "0.2)")); // Cambia el valor alfa a 0.2
       borderColors.push(randomColor);
     }
@@ -25,7 +26,9 @@ const DoughnutGraphic = ({ title, labels, values, loading, tooltip }) => {
       borderColors,
     };
   };
+
   const colors = getRandomColorForDoughnut(labels.length);
+
   const data = {
     labels,
     datasets: [
