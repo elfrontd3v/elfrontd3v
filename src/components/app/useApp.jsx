@@ -4,7 +4,7 @@ import AuthService from "@/api/AuthService";
 import { AuthContext, ThemeContext } from "@/core/context";
 import { routes } from "@/routes";
 import es_ES from "antd/es/locale/es_ES";
-
+import ReactGA from "react-ga";
 const useApp = () => {
   const [authState, authDispatch] = useContext(AuthContext);
   const [themeState, themeDispatch] = useContext(ThemeContext);
@@ -12,6 +12,8 @@ const useApp = () => {
   const [authLoading, setAuthLoading] = useState(false);
   const [configProvider] = useState({ locale: es_ES, direction: "ltr" });
   const navigate = useNavigate();
+  const TRACKING_ID = "G-F60JYQJ8S7";
+  ReactGA.initialize(TRACKING_ID);
 
   useEffect(() => {
     setAuthLoading(true);

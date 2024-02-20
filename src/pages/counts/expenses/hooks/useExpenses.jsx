@@ -14,7 +14,7 @@ import ExpensesService from "@/api/counts/ExpensesService";
 import { PeriodicityValue } from "@/helpers/utils/constants/constants";
 import { numThousand } from "@/helpers/utils/validateFormat";
 import ModalAlertMessage from "@/components/modalAlertMessage/ModalAlertMessage";
-
+import ReactGA from "react-ga";
 const useExpenses = () => {
   const [authState] = useContext(AuthContext);
   const [themeState] = useContext(ThemeContext);
@@ -40,6 +40,7 @@ const useExpenses = () => {
 
   useEffect(() => {
     if (authState?.uid) {
+      ReactGA.pageview(window.location.pathname);
       getAllExpenses();
     }
   }, [authState?.uid]);
@@ -114,7 +115,11 @@ const useExpenses = () => {
         if (response && response.id) {
           handleCancel();
           getAllExpenses();
-
+          ReactGA.event({
+            category: "Expenses",
+            action: "Insert expenses",
+            value: 1,
+          });
           message.success(
             oldValues
               ? generalDictionary.ENDPOINT_UPDATE_OK
